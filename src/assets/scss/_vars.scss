@@ -1,8 +1,8 @@
 // @Author: Michael Neumair <mBook>
 // @Date:   2015-10-16T18:20:49+02:00
 // @Email:  7q7w7e7r@gmail.com
-// @Last modified by:   Matze
-// @Last modified time: 2016-07-05T15:11:03+02:00
+// @Last modified by:   mBook
+// @Last modified time: 2017-01-19T17:28:10+01:00
 
 
 
@@ -62,10 +62,10 @@ $mq-responsive: true;
 // across team members. It will improve communication between
 // stakeholders, designers, developers, and testers.
 $mq-breakpoints: (
-    mobile:  380px,
-    tablet:  580px,
+    mobile: 380px,
+    tablet: 580px,
     desktop: 880px,
-    wide:    1160px
+    wide: 1160px
     // Tweakpoints
     // desktopAd: 810px,
     // mobileLandscape: 480px
@@ -91,12 +91,12 @@ $mq-static-breakpoint: desktop;
 //## Define your custom responsive grid.
 
 //** Number of columns in the grid.
-$grid-columns:              12 !default;
+$grid-columns: 12 !default;
 //** Padding between columns. Gets divided in half for the left and right.
-$grid-gutter-width:         20px !default;
+$grid-gutter-width: 20px !default;
 
 //** use it within your code - it is applied to .box class and box mixin
-$max-grid-width: 			1200px;
+$max-grid-width: 1200px;
 
 
 //== Container sizes
@@ -105,15 +105,15 @@ $max-grid-width: 			1200px;
 
 // Small screen / tablet
 //** For `$screen-sm-min` and up.
-$container-tablet:                 	((720px + $grid-gutter-width)) !default;
+$container-tablet:  ((720px + $grid-gutter-width)) !default;
 
 // Medium screen / desktop
 //** For `$screen-md-min` and up.
-$container-desktop:                 ((940px + $grid-gutter-width)) !default;
+$container-desktop: ((940px + $grid-gutter-width)) !default;
 
 // Large screen / wide desktop
 //** For `$screen-lg-min` and up.
-$container-wide:                 	((1140px + $grid-gutter-width)) !default;
+$container-wide:    ((1140px + $grid-gutter-width)) !default;
 
 
 
@@ -122,8 +122,9 @@ $container-wide:                 	((1140px + $grid-gutter-width)) !default;
 //
 
 //** font families
-$ff-proxima: 		"proxima-nova", arial, sans-serif;
-$ff-lexia: 		       "lexia", "Times New Roman", serif;
+$ff-proxima:       "proxima-nova", helvetica, arial, sans-serif;
+$ff-lexia:         "lexia", "Times New Roman", serif;
+$ff-futura:        "futura-pt", helvetica, arial, sans-serif;
 
 //** font families for whom
 $ff-first: 			$ff-proxima;
@@ -155,7 +156,7 @@ $fw-x-bold: 		800;
 //$fw-black:		900;
 
 //** line-height
-$lh: 				1.5;
+$lh: 				1.4;
 $lh-flat: 			1.1;
 $lh-small: 			1.3;
 $lh-big:			1.7;

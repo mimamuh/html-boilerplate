@@ -11,7 +11,9 @@
         <!-- Place favicon.ico in the root directory -->
 
         <link rel="stylesheet" href="./css/main.css">
-        <!-- <script src="js/vendor/modernizr-2.8.3.min.js"></script> -->
+
+        <!-- picturefill -->
+        <script src="../src/assets/js/libs/picturefill.min.js"></script>
 
         <!-- google font roboto -->
         <script type="text/javascript">
@@ -31,10 +33,20 @@
 
     </head>
     <body>
+
+
+        <!-- your content -->
         <h2 class="a-headline a-headline-page">This is what we do!</h2>
 
-        <!-- JavaScript -->
-        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+
+
+
+        <!-- ### PLACE LIBS HERE WHICH LOAD ON THE END ### -->
+
+        <script
+          src="https://code.jquery.com/jquery-3.1.1.min.js"
+          integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+          crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="../assets/js/libs/jquery-3.1.1.min.js"><\/script>')</script>
     </body>
 </html>
