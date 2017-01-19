@@ -3,7 +3,7 @@
 * @Date:   2017-01-11T12:17:51+01:00
 * @Email:  matze_lebt@gmx.de
 * @Last modified by:   Matze
-* @Last modified time: 2017-01-19T11:06:49+01:00
+* @Last modified time: 2017-01-19T14:48:11+01:00
 */
 'use strict';
 
@@ -13,6 +13,7 @@ var inject = require('gulp-inject');
 var tap = require('gulp-tap')
 var path = require('path');
 var array = require('lodash/array');
+
 
 /**
  * This function replaces a certain file extension with another extension
@@ -27,10 +28,10 @@ function switchFileExtensions(sourceFile, newExtension) {
 const checkForMissingStoryFiles = () => (
     new Promise((resolve, reject) => {
         const relativePathsToHtmlFiles = [
-            'code/src/**/*.html',
+            'src/**/*.html',
         ];
         const relativePathsToStoryFiles = [
-            'code/src/**/stories/*.js'
+            'src/**/stories/*.js'
         ];
         let htmlFilesArr = [];
         let storyFilesArr = [];
@@ -100,9 +101,9 @@ const createStoryFiles = (files) => (
 );
 
 /**
- * [injectImportStatements description]
- * @param  {[type]} targetPath          [description]
- * @param  {[type]} targetFile          [description]
+ * injects html import statements inside a story file
+ * @param  {[type]} targetPath          directory of the story file
+ * @param  {[type]} targetFile
  * @param  {[type]} targetFileExtension [description]
  * @param  {[type]} source              [description]
  * @return {[type]}                     [description]
@@ -143,7 +144,7 @@ const injectImportStatements = (targetPath, targetFile, targetFileExtension, sou
 
 const injectSassImportStatements = (srcPath, file) => (
     new Promise((resolve, reject) => {
-        const cwd = './code/src';  // currentWorkingDirectory
+        const cwd = './src';  // currentWorkingDirectory
         const target = `${srcPath}/${file}`;
         const source = [`${cwd}/**/styles/*.scss`, '!'+target];
         const options = { read: false };
@@ -173,22 +174,14 @@ const injectSassImportStatements = (srcPath, file) => (
     })
 )
 
-const compile = () => {
-    // checkForMissingStoryFiles().then((result) => {
-    //     console.log(result);
-    // }).catch((error) => {
-    //     console.log(error);
-    // });
-    // injectSassImportStatements('code/dev/scss')
-    injectSassImportStatements('code/src/scss', '_main.scss')
-    // .then(() => (
-    //
-    //     createStoryFiles()
-    // ))
+
+const injectSass = () => {
+    injectSassImportStatements('src/scss', '_main.scss')
     .catch((error) => {
          console.log(error);
     });
 }
+
 
 const createStories = () => {
     checkForMissingStoryFiles().then((result) => {
@@ -201,23 +194,12 @@ const createStories = () => {
     });
 }
 
+/**
+ * creates story files for all html files inside /src
+ */
 gulp.task('create-stories', createStories);
 
 /**
  * once-only build
  */
-gulp.task('build', compile);
-
-/**
- * initial build and watches for changes or new files code
- */
-gulp.task('watch', function() {
-    compile();
-    // gulp.watch(
-    //     [
-    //         'code/dev/common/**/*.html',
-    //         'code/dev/common/**/*.scss',
-    //         '!**/_styles.scss'
-    //     ], compile
-    // );
-});
+gulp.task('inject-scss', injectSass);
