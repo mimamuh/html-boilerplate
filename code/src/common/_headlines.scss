@@ -1,0 +1,70 @@
+// @Author: Michael Neumair <mBook>
+// @Date:   2015-10-16T18:20:49+02:00
+// @Email:  7q7w7e7r@gmail.com
+// @Last modified by:   Matze
+// @Last modified time: 2017-01-12T09:18:07+01:00
+
+
+
+@mixin headline-font($__size: $fs-base) {
+	color:          $c-black;
+	font-family:    $ff-first;
+	font-style:     normal;
+	font-weight:    $fw-bold;
+	font-size:      $__size;
+	line-height:    $lh-flat;
+	text-transform: uppercase;
+	word-wrap:      break-word;
+}
+
+
+h1,h2,h3,h4,h5,h6,
+.h1,.h2,.h3,.h4,.h5,.h6,
+.a-headline {
+	@include headline-font();
+
+	//margin: $text-base-margin;
+	margin: 0px;
+
+	/* Suggest linebreak with &hyphen; or &shy - active for mobile and phone size only */
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	-ms-hyphens: auto;
+	-o-hyphens: auto;
+	hyphens: auto;
+}
+
+
+// -logo
+.a-headline-logo {
+	font-size: 	16px;
+	font-weight: normal;
+	color: #aaa;
+	text-transform: uppercase;
+	line-height: 1.1;
+}
+
+
+// -page
+.a-headline-page {
+	font-size: 	38px;
+	margin-bottom: 15px;
+	font-weight: $fw-x-bold;
+}
+
+
+// -section
+.a-headline-section {
+	font-size: 28px;
+	font-weight: $fw-bold;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+
+// -paragraph
+.a-headline-paragraph {
+	font-size:      	18px;
+	font-weight:    	$fw-bold;
+	margin-bottom: 	5px;
+}

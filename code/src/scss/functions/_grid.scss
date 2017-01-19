@@ -1,0 +1,3 @@
+@function gridWidth($__columns) {
+    @return percentage(($__columns / $grid-columns));
+}

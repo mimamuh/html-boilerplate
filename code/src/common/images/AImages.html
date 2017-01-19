@@ -1,0 +1,65 @@
+<!doctype html>
+<html class="no-js" lang="de">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="../css/main.css">
+        <!-- <script src="js/vendor/modernizr-2.8.3.min.js"></script> -->
+
+        <!-- google font roboto -->
+        <script type="text/javascript">
+            WebFontConfig = {
+                google: { families: [ 'Roboto:400,500,300,100:latin' ] }
+            };
+            (function() {
+                var wf = document.createElement('script');
+                wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+                wf.type = 'text/javascript';
+                wf.async = 'true';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(wf, s);
+            })();
+        </script>
+
+
+    </head>
+    <body>
+
+        <!-- Add your site or application content here -->
+
+        <!-- AImage -->
+        <img src="/img/feathers_middle_w.jpg" class="a-image" alt="Needs an alternative text!!">
+        <br>
+
+        <!-- AImageCenter -->
+        <picture>
+    		<!--[if IE 9]><video style="display: none;"><![endif]-->
+
+    		<!--[if IE 9]></video><![endif]-->
+    		<img class="a-image a-image-center " alt="Needs an alternative text!!">
+	    </picture>
+        <br>
+
+        <!-- AImagePicture -->
+        <picture>
+    		<!--[if IE 9]><video style="display: none;"><![endif]-->
+    		<source srcset="/img/feathers_middle_w.jpg" media="(min-width: 1200px)">
+    		<source srcset="/img/feathers_middle_d.jpg" media="(min-width: 880px)">
+    		<source srcset="/img/feathers_middle_t.jpg" media="(min-width: 580px)">
+    		<!--[if IE 9]></video><![endif]-->
+    		<img srcset="/img/feathers_middle_p.jpg" class="a-image a-image-picture " alt="Needs an alternative text!!">
+	    </picture>
+        <br>
+
+        <!-- JavaScript -->
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+    </body>
+</html>

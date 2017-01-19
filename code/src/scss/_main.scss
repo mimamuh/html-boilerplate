@@ -1,0 +1,37 @@
+// @Author: Michael Neumair <mBook>
+// @Date:   2015-10-16T18:20:49+02:00
+// @Email:  7q7w7e7r@gmail.com
+// @Last modified by:   Matze
+// @Last modified time: 2017-01-19T10:14:41+01:00
+
+
+//libs
+@import 'vars';
+@import 'media-queries';
+@import 'grid';
+
+// boilerplate
+@import 'boilerplate_start';
+
+// fonts and icons
+@import 'fonts';
+@import 'icons';
+
+// animations
+@import './../scss/animate'; // not in use?
+
+/* inject:imports */
+@import './../common/headlines/styles/_a-headline-page';
+@import './../common/headlines/styles/_a-headline-paragraph';
+@import './../common/headlines/styles/_a-headline-section';
+@import './../common/texts/styles/_a-text-bold';
+@import './../common/texts/styles/_a-text-footer';
+@import './../common/texts/styles/_a-text-info';
+@import './../common/texts/styles/_a-text-intro';
+@import './../common/texts/styles/_a-text-paragraph';
+/* endinject */
+
+
+// end !! must be at the total end !!
+@import './../scss/grid-utilities';
+@import './../scss/boilerplate_end';

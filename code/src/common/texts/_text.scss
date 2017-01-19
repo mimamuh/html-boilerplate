@@ -1,0 +1,90 @@
+// @Author: Michael Neumair <mBook>
+// @Date:   2015-10-16T18:20:49+02:00
+// @Email:  7q7w7e7r@gmail.com
+// @Last modified by:   Matze
+// @Last modified time: 2016-07-04T17:18:11+02:00
+
+
+
+@mixin text-font($__size: $fs-base) {
+	color:          $c-dark;
+	font-family:    $ff-first;
+	font-style:     normal;
+	font-weight:    $fw-regular;
+	font-size:      $__size;
+	line-height:    $lh;
+	word-wrap:      break-word;
+}
+
+
+
+p, .p, .a-text {
+	@include text-font($fs-base);
+	margin: $text-base-margin;
+}
+
+p,
+.p {
+
+}
+
+
+
+
+// -intro
+.a-text-intro {
+	font-size:   	20px;
+	color: $c-black;
+	font-weight: 	$fw-bold;
+	line-height: 	(26/20);
+	text-align:  	center;
+}
+
+// -intro-home
+.a-text-intro-home {
+	font-family: $ff-second;
+	font-size:   	20px;
+	color: #a7a7a7;
+	line-height: 	1.3;
+	text-align:  	center;
+	font-style: italic;
+}
+
+// -info
+.a-text-info {
+	font-family:    $ff-second;
+	color: 		$c-grey-dark;
+	font-style: italic;
+	font-size: 15px;
+}
+
+// -info-black
+.a-text-info-black {
+	font-family:    $ff-second;
+	font-style: italic;
+	color: 		 #4a4a4a;
+	line-height: $lh-huge;
+	font-size: $fs-small;
+}
+
+// -pre-head-info
+.a-text-pre-head-info {
+	font-family:    $ff-second;
+	color: 		$c-grey-dark;
+	font-style: italic;
+	font-size: 18px;
+}
+
+// -footer
+.a-text-footer {
+	color: 		#666666;
+	font-weight: $fw-medium;
+	font-size: 14px;
+	line-height: $lh-small;
+}
+@include mq(tablet) {
+	.a-text-info {
+		font-size: 20px;
+		line-height: 1.3;
+	}
+}

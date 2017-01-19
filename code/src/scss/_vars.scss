@@ -1,0 +1,213 @@
+// @Author: Michael Neumair <mBook>
+// @Date:   2015-10-16T18:20:49+02:00
+// @Email:  7q7w7e7r@gmail.com
+// @Last modified by:   Matze
+// @Last modified time: 2016-07-05T15:11:03+02:00
+
+
+
+//== Media queries breakpoints
+//
+//## Define the breakpoints at which your layout will change, adapting to different screen sizes.
+
+// Extra tiny screens / tiny
+// $screen-tiny-min:             	260px !default;
+//
+// // Tiny screen / phone
+// $screen-small-min:             	380px !default;
+//
+// // Small screen / tablet
+// $screen-middle-min:             580px !default;	// picture-scaling: 580/320 =  1.9
+//
+// // Medium screen / desktop
+// $screen-normal-min:             880px !default;	// picture-scaling: 880/680 = 1.3
+//
+// // Large screen / wide
+// $screen-big-min:             	1200px !default; // picture-scaling: 1200/1024 = 1.2
+//
+// // Large screen / extra-wide
+// $screen-huge-min:             	1500px !default; // picture-scaling: 1600/1440 = 1.2
+//
+// // Maximale ausdehnung der Layout-Komponenten, in _grid.scss entfernen, wenn nicht gewünscht.
+// //$screen-max: 1200px;
+//
+// // So media queries don't overlap when required, provide a maximum
+// //$screen-tiny-max:              	($screen-small-min - 1) !default;
+// $screen-small-max:              ($screen-middle-min - 1) !default;
+// $screen-middle-max:             ($screen-normal-min - 1) !default;
+// $screen-normal-max:             ($screen-big-min - 1) !default;
+// //$screen-big-max:              	($screen-huge-min - 1) !default;
+
+
+
+//== Translate Names
+// translates the breakpoint names in more logic names
+
+// $tiny:    	"tiny";
+// $phone:   	"small";
+// $tablet:  	"middle";
+// $desktop: 	"normal";
+// $wide:    	"big";
+// $hd:      	"huge"; // not in use ...
+
+
+//== Media queries breakpoints
+// To enable support for browsers that do not support @media queries,
+// (IE <= 8, Firefox <= 3, Opera <= 9) set $mq-responsive to false
+// Create a separate stylesheet served exclusively to these browsers,
+// meaning @media queries will be rasterized, relying on the cascade itself
+$mq-responsive: true;
+
+// Name your breakpoints in a way that creates a ubiquitous language
+// across team members. It will improve communication between
+// stakeholders, designers, developers, and testers.
+$mq-breakpoints: (
+    mobile:  380px,
+    tablet:  580px,
+    desktop: 880px,
+    wide:    1160px
+    // Tweakpoints
+    // desktopAd: 810px,
+    // mobileLandscape: 480px
+);
+
+// Define the breakpoint from the $mq-breakpoints list that should
+// be used as the target width when outputting a static stylesheet
+// (i.e. when $mq-responsive is set to 'false').
+$mq-static-breakpoint: desktop;
+
+// If you want to display the currently active breakpoint in the top
+// right corner of your site during development, add the breakpoints
+// to this list, ordered by width, e.g. (mobile, tablet, desktop).
+// $mq-show-breakpoints: (mobile, tablet, desktop, wide);
+
+
+
+
+
+
+//== Grid system
+//
+//## Define your custom responsive grid.
+
+//** Number of columns in the grid.
+$grid-columns:              12 !default;
+//** Padding between columns. Gets divided in half for the left and right.
+$grid-gutter-width:         20px !default;
+
+//** use it within your code - it is applied to .box class and box mixin
+$max-grid-width: 			1200px;
+
+
+//== Container sizes
+//
+//## Define the maximum width of `.container` for different screen sizes.
+
+// Small screen / tablet
+//** For `$screen-sm-min` and up.
+$container-tablet:                 	((720px + $grid-gutter-width)) !default;
+
+// Medium screen / desktop
+//** For `$screen-md-min` and up.
+$container-desktop:                 ((940px + $grid-gutter-width)) !default;
+
+// Large screen / wide desktop
+//** For `$screen-lg-min` and up.
+$container-wide:                 	((1140px + $grid-gutter-width)) !default;
+
+
+
+
+//== Fonts
+//
+
+//** font families
+$ff-proxima: 		"proxima-nova", arial, sans-serif;
+$ff-lexia: 		       "lexia", "Times New Roman", serif;
+
+//** font families for whom
+$ff-first: 			$ff-proxima;
+$ff-second: 		$ff-lexia;
+
+$text-base-margin:	0 0 12px 0;
+
+
+//** font-sizes
+$fs-atomic: 		em(10);
+$fs-tiny: 			em(12);
+$fs-small: 			em(14);
+$fs-base: 			em(16);
+$fs-middle: 		em(18);
+$fs-stable:			em(23);
+$fs-big: 			em(24);
+// $fs-huge: 		em(1000);
+// $fs-massive: 	em(1000);
+
+
+//** font-weights
+//$fw-thin: 			200;
+//$fw-light: 			300;
+$fw-regular: 		400;
+$fw-medium: 		500;
+$fw-semibold:       600;
+$fw-bold: 			700;
+$fw-x-bold: 		800;
+//$fw-black:		900;
+
+//** line-height
+$lh: 				1.5;
+$lh-flat: 			1.1;
+$lh-small: 			1.3;
+$lh-big:			1.7;
+$lh-huge:			1.9;
+
+
+
+
+
+//== Colors
+//
+$c-black:			#383838;
+$c-dark:			#484848;
+
+$c-grey-dark:		#A4A4A4;
+$c-grey:			#BBBBBB;
+$c-grey-light:		#E4E4E4;
+
+//$c-light-dark:	#CCCCCC;
+$c-light:			#E4E4E4;
+$c-light-light:		#f4f4f4;
+
+
+$c-white:			#ffffff;
+
+$bg-active:			$c-light-light;
+$c-error: 			#D40F4C;
+
+
+$c-blue: 			#4A90E2;
+
+//== Semantic Colors
+$c-footer-text: #E4E4E4;
+
+
+
+
+
+//== Icons
+$icon-size: 24px;
+$icon-size-huge: 48px;
+$icon-size-small: 18px;
+$icon-size-tiny: 16px;
+
+
+
+//== Linien
+$line: 1px solid $c-light;
+
+
+//== Shadows
+$text-shadow-strong: 0 0 3px rgba(0,0,0,0.88);
+$error-shadow: 	inset 0 0 10px rgba($c-error, 0.15);
+
+//== Menu

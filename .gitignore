@@ -1,0 +1,11 @@
+# Mehr dazu: http://blog.bitfluent.com/post/173740409/ignoring-icon-in-gitignore
+.DS_Store
+.VolumeIcon.icns
+.fseventsd
+node_modules/
+
+.sass-cache
+
+# do not add in git, as they has to be secure
+dev-settings.json
+prod-settings.json
