@@ -5,7 +5,4 @@
 node_modules/
 
 .sass-cache
-
-# do not add in git, as they has to be secure
-dev-settings.json
-prod-settings.json
+npm-debug.log
