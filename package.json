@@ -20,7 +20,6 @@
     "@kadira/storybook-addon-notes": "^1.0.1",
     "autoprefixer": "^6.6.1",
     "css-loader": "^0.26.1",
-    "eslint": "^3.13.1",
     "gulp": "^3.9.1",
     "gulp-inject": "^4.2.0",
     "gulp-minify-css": "^1.2.4",
