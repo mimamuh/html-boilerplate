@@ -2,8 +2,8 @@
 * @Author: Matthias Gohla <Matze>
 * @Date:   2016-12-19T11:04:37+01:00
 * @Email:  matze_lebt@gmx.de
-* @Last modified by:   Matze
-* @Last modified time: 2017-01-18T18:34:46+01:00
+* @Last modified by:   mBook
+* @Last modified time: 2017-01-20T10:10:35+01:00
 */
 
 
@@ -33,6 +33,11 @@ module.exports = {
             {
                 test: /\.scss$/,
                 loader: 'style!css!postcss!sass',
+            },
+            { // load static assets like fonts, png, and resolve path ...
+                test: /\.(woff|woff2|eot|ttf|svg)$/,
+                loader: 'file-loader?name=assets/fonts/[name].[ext]', // ?name=css/[name].[ext]
+                include: [path.resolve(__dirname, '../src/assets/fonts')],
             },
         ],
     },
