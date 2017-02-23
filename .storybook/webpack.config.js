@@ -15,15 +15,6 @@ var webpack = require('webpack');
 
 
 module.exports = {
-
-    // devtool: 'eval-source-map',
-
-    // entry: path.join(__dirname, '/app/main.js'),
-    // output: {
-    //     path: path.join(__dirname, '/build'),
-    //     filename: 'bundle.js'
-    // },
-
     module: {
         loaders: [
             {
@@ -53,21 +44,4 @@ module.exports = {
         'react/lib/ExecutionEnvironment': true,
         'react/lib/ReactContext': true,
     },
-
-    // plugins: [
-    //     // new webpack.BannerPlugin("React training like a boss!"), // plugin to add strings to the head of a file
-    //     // new HTMLWebpackPlugin({ // compiles my html files and bundles needed header stuff to it
-    //     //     template: __dirname + '/app/index.tmpl.html'
-    //     // }),
-    //     // new webpack.HotModuleReplacementPlugin() // plugin for hot-module-replacement, with javascript needs some extra-tweaks
-    // ],
-
-    // devServer: {
-    //     // contentBase: './public', // where files get served for the devserver
-    //     // port: '8080', // port of the devserver, default 8080
-    //     inline: true, // auto-load
-    //     colors: true, // add colors to the terminal when the server is running
-    //     historyApiFallback: true, //
-    //     // hot: true // needed for hot-module-replacement-plugin
-    // }
 };

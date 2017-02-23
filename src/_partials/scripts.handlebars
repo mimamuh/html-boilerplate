@@ -1,0 +1,23 @@
+{{#if htmlWebpackPlugin.options.devServer}}
+<script src="{{htmlWebpackPlugin.options.devServer}}/webpack-dev-server.js" type="text/javascript"></script>
+{{/if}}
+
+{{#if htmlWebpackPlugin.files.chunks.main}}
+<script src="{{htmlWebpackPlugin.files.chunks.main.entry}}"></script>
+{{/if}}
+
+{{#if htmlWebpackPlugin.options.googleAnalytics}}
+<script type="text/javascript">
+    window.GoogleAnalyticsObject='ga';window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+    {{#if htmlWebpackPlugin.options.googleAnalytics.trackingId}}
+        ga('create','{{htmlWebpackPlugin.options.googleAnalytics.trackingId}}','auto');
+    {{/if}}
+    {{#if htmlWebpackPlugin.options.googleAnalytics.pageViewOnLoad}}
+        ga('send','pageview');
+    {{/if}}
+    {{#if htmlWebpackPlugin.options.googleAnalytics.anonymizeIp}}
+        ga('set', 'anonymizeIp', {{htmlWebpackPlugin.options.googleAnalytics.anonymizeIp}});
+    {{/if}}
+</script>
+<script async defer src="https://www.google-analytics.com/analytics.js" type="text/javascript"></script>
+{{/if}}

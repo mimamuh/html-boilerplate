@@ -74,12 +74,12 @@ const getFileArray = (sourcePath) => (
 
 const createStoryFiles = (files) => (
     new Promise((resolve, reject) => {
-        const pathToStoryExample = './.storybook/storyExample.js';
+        const pathToBaseStory = './.storybook/BaseStory.js';
         gulp.src(files)
         .pipe(tap((file) =>{
             const parsedPath = path.parse(file.path);
             const storyDestinationPath = `${parsedPath.dir}/stories/`;
-            gulp.src(pathToStoryExample)
+            gulp.src(pathToBaseStory)
             .pipe(rename((filePath) => {
                 filePath.dirname = '';
                 filePath.basename = parsedPath.name;

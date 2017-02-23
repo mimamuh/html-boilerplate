@@ -1,11 +1,3 @@
-// @Author: Michael Neumair <mBook>
-// @Date:   2015-10-16T18:20:49+02:00
-// @Email:  7q7w7e7r@gmail.com
-// @Last modified by:   mBook
-// @Last modified time: 2017-01-19T17:28:10+01:00
-
-
-
 //== Media queries breakpoints
 //
 //## Define the breakpoints at which your layout will change, adapting to different screen sizes.
@@ -62,10 +54,10 @@ $mq-responsive: true;
 // across team members. It will improve communication between
 // stakeholders, designers, developers, and testers.
 $mq-breakpoints: (
-    mobile: 380px,
-    tablet: 580px,
-    desktop: 880px,
-    wide: 1160px
+    mobile: 380px, // 2x
+    tablet: 580px, // 1.4x
+    desktop: 880px, // 1.4x
+    wide: 1160px // 1.4x
     // Tweakpoints
     // desktopAd: 810px,
     // mobileLandscape: 480px
@@ -122,28 +114,18 @@ $container-wide:    ((1140px + $grid-gutter-width)) !default;
 //
 
 //** font families
-$ff-proxima:       "proxima-nova", helvetica, arial, sans-serif;
-$ff-lexia:         "lexia", "Times New Roman", serif;
-$ff-futura:        "futura-pt", helvetica, arial, sans-serif;
+$ff-proxima:       'proxima-nova', helvetica, arial, sans-serif;
+$ff-lexia:         'lexia', 'Times New Roman', serif;
 
 //** font families for whom
 $ff-first: 			$ff-proxima;
 $ff-second: 		$ff-lexia;
 
-$text-base-margin:	0 0 12px 0;
-
-
 //** font-sizes
-$fs-atomic: 		em(10);
-$fs-tiny: 			em(12);
-$fs-small: 			em(14);
-$fs-base: 			em(16);
-$fs-middle: 		em(18);
-$fs-stable:			em(23);
-$fs-big: 			em(24);
-// $fs-huge: 		em(1000);
-// $fs-massive: 	em(1000);
-
+$fs-normal:         em(16);
+$fs-text: 		    em(16);
+$fs-headline:	    em(18);
+$fs-headline-big:	em(32);
 
 //** font-weights
 //$fw-thin: 			200;
@@ -156,43 +138,21 @@ $fw-x-bold: 		800;
 //$fw-black:		900;
 
 //** line-height
-$lh: 				1.4;
-$lh-flat: 			1.1;
-$lh-small: 			1.3;
-$lh-big:			1.7;
-$lh-huge:			1.9;
-
-
-
+$lh-headline-big: 	.9;
+$lh-headline: 		1.1;
+$lh-normal: 		1.2;
+$lh-text: 			1.5;
 
 
 //== Colors
 //
 $c-black:			#383838;
-$c-dark:			#484848;
-
-$c-grey-dark:		#A4A4A4;
-$c-grey:			#BBBBBB;
-$c-grey-light:		#E4E4E4;
-
-//$c-light-dark:	#CCCCCC;
-$c-light:			#E4E4E4;
-$c-light-light:		#f4f4f4;
-
-
-$c-white:			#ffffff;
-
-$bg-active:			$c-light-light;
 $c-error: 			#D40F4C;
 
 
-$c-blue: 			#4A90E2;
-
-//== Semantic Colors
-$c-footer-text: #E4E4E4;
-
-
-
+//== Font Colors
+//
+$fc-normal:			#383838;
 
 
 //== Icons
@@ -202,13 +162,18 @@ $icon-size-small: 18px;
 $icon-size-tiny: 16px;
 
 
-
 //== Linien
 $line: 1px solid $c-light;
 
 
 //== Shadows
-$text-shadow-strong: 0 0 3px rgba(0,0,0,0.88);
 $error-shadow: 	inset 0 0 10px rgba($c-error, 0.15);
 
-//== Menu
+
+//== Ease Functions
+$ease-out-cubic: cubic-bezier(.215, .61, .355, 1); // http://easings.net/#easeOutCubic
+$ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1); // http://easings.net/#easeInOutCubic
+
+
+//== z-index
+// $z-menu: 200;

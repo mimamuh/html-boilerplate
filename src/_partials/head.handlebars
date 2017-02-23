@@ -1,0 +1,26 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {{#if htmlWebpackPlugin.options.baseHref}}
+        <base href="{{htmlWebpackPlugin.options.baseHref}}">
+    {{/if}}
+
+    <title>{{htmlWebpackPlugin.options.title}}</title>
+
+    <meta name="description" content="{{htmlWebpackPlugin.options.description}}">
+
+    {{#each htmlWebpackPlugin.files.favicon}}
+        <link href="{{this}}" rel="shortcut icon">
+    {{/each}}
+
+    {{#each htmlWebpackPlugin.files.css}}
+        <link href="{{this}}" rel="stylesheet">
+    {{/each}}
+
+    {{#if htmlWebpackPlugin.files.chunks.head}}
+        <script src="{{htmlWebpackPlugin.files.chunks.head.entry}}"></script>
+    {{/if}}
+
+</head>

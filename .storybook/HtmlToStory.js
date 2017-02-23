@@ -6,16 +6,14 @@
 * @Last modified time: 2017-01-16T12:15:32+01:00
 */
 import React, { Component, PropTypes } from 'react';
-// import mustache from 'mustache';
 
 /**
- * HtmlToStoryWithMustache - …
+ * HtmlToStory - …
 **/
-class HtmlToStoryWithMustache extends Component {
+class HtmlToStory extends Component {
 
     render() {
         const { htmlTemplate } = this.props;
-        // const parsedHtml = this.replaceTokensWithText(htmlTemplate);
         const parsedHtml = htmlTemplate;
         return (
             <div
@@ -23,18 +21,13 @@ class HtmlToStoryWithMustache extends Component {
             />
         );
     }
-
-    // replaceTokensWithText(textWithTokens) {
-    //     const { templateVars } = this.props;
-    //     return mustache.render(textWithTokens, templateVars);
-    // }
 }
-HtmlToStoryWithMustache.propTypes = {
+HtmlToStory.propTypes = {
     htmlTemplate: PropTypes.string.isRequired,
     templateVars: PropTypes.shape({
         team: PropTypes.string.isRequired,
         sessionStartDate: PropTypes.string.isRequired,
     }),
 };
-HtmlToStoryWithMustache.defaultProps = {};
-export default HtmlToStoryWithMustache;
+HtmlToStory.defaultProps = {};
+export default HtmlToStory;

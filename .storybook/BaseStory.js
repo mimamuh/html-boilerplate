@@ -22,7 +22,7 @@ import backgrounds from 'react-storybook-addon-backgrounds'; // eslint-disable-l
 // import { specs, describe, it } from 'storybook-addon-specifications'; // eslint-disable-line no-unused-vars
 
 // your imports
-import HtmlToStoryWithMustache from './../../../../../.storybook/HtmlToStoryWithMustache';
+import HtmlToStory from './../../../../../.storybook/HtmlToStory';
 /* inject:imports */
 /* endinject */
 
@@ -34,7 +34,7 @@ storiesOf(/* inject:filename *//* endinject */, module)
         { name: 'black', value: '#000' },
     ]))
     .add('default', () => (
-        <HtmlToStoryWithMustache
+        <HtmlToStory
             htmlTemplate={htmlTemplate}
         />
     ));

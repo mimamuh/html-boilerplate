@@ -1,0 +1,24 @@
+{
+    "presets": [
+        "react",
+        "stage-2",
+        [
+            "env", {
+                "targets": {
+                    "browsers": [
+                        "last 3 versions",
+                        "> 1% in DE",
+                        "Chrome >= 20",
+                        "Firefox >= 20",
+                        "Safari >= 7",
+                        "iOS >= 7",
+                        "Explorer >= 9",
+                        "ExplorerMobile >= 10",
+                        "Edge >= 12",
+                    ]
+                }
+            }
+        ]
+    ],
+    "plugins": ["transform-class-properties"],
+}
