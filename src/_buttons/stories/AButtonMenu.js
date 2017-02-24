@@ -24,9 +24,10 @@ import backgrounds from 'react-storybook-addon-backgrounds'; // eslint-disable-l
 // your imports
 import HtmlToStory from './../../../.storybook/HtmlToStory';
 /* inject:imports */
+import htmlTemplate from './../AButtonMenu.html';
 /* endinject */
 
-storiesOf(/* inject:filename *//* endinject */, module)
+storiesOf(/* inject:filename */'AButtonMenu'/* endinject */, module)
     .addDecorator(withKnobs)
     .addDecorator(backgrounds([
         { name: 'white', value: '#fff' },

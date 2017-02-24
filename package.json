@@ -68,6 +68,8 @@
       "picturefill": "^3.0.2",
       "fastdom": "^1.0.5",
       "gsap": "^1.19.1",
-      "jquery": "^3.1.1"
+      "scrollmagic": "^2.0.5",
+      "jquery": "^3.1.1",
+      "waypoints": "^4.0.1"
   }
 }

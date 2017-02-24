@@ -12,7 +12,7 @@ import { configure } from '@kadira/storybook';
 import 'picturefill';
 
 // global css files
-import './../src/scss/_main.scss';
+import './../src/assets/scss/main.scss';
 
 // require all stories by using a convention:
 const req = require.context('./../src/', true, /\/stories\/[A-Z,a-z,0-9]*\.js$/);

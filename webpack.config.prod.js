@@ -34,7 +34,7 @@ const waypointsRules = { // passes loaders to waypoints alias
 
 
 const htmlRules = { // load html files
-    test: /\.(html|handlebars)$/,
+    test: /\.(html|hbs)$/,
     loader: 'handlebars-loader',
     options: {
         // Defines additional directories to be searched for helpers.

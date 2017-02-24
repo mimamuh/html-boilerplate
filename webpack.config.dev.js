@@ -15,7 +15,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const getHtmlFilePlugins = require('./webpack.config.common').getHtmlFilePlugins;
 
 
-
 const pixijsRules = { // passes loaders to pixi-particles
     test: /pixi-particles/,
     loader: 'imports-loader?PIXI=pixi.js',
@@ -34,7 +33,7 @@ const waypointsRules = { // passes loaders to waypoints alias
 
 
 const htmlRules = { // load html files
-    test: /\.(html|handlebars)$/,
+    test: /\.(html|hbs)$/,
     loader: 'handlebars-loader',
     options: {
         // Defines additional directories to be searched for helpers.

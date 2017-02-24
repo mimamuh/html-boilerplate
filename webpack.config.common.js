@@ -69,7 +69,7 @@ function useHtmlTemplateFactory(globalOptions) {
             description: defaultValue(options, 'description', ''),
 
             // -- global options
-            filename: path.resolve(__dirname, globalOptions.outputPath, path.parse(options.template).base),
+            filename: path.resolve(__dirname, globalOptions.outputPath, path.parse(options.template).name + '.html'),
             minify: globalOptions.minify,
             inject: globalOptions.inject,
             outputPath: globalOptions.outputPath,
@@ -81,46 +81,16 @@ function useHtmlTemplateFactory(globalOptions) {
 }
 
 
-/** CONFIG YOUR HTML FILES HERE **/
-// config your html files here ...
+/** CONFIG YOUR HTML PAGES HERE **/
+// config your html pages here ...
 function getHtmlFilePlugins(options) {
     const useHtml = useHtmlTemplateFactory(options);
 
     return [
         useHtml({
-            title: 'Was wir tun – Squares And Brackets – Webseiten, Apps & WebApps',
+            title: '404',
             description: 'Squares And Brackets erstellt Webseiten, Apps & WebApps in hoher Qualität.',
-            template: './src/whatwedo/PWhatWeDo.html',
-        }),
-        useHtml({
-            title: 'Kompetenzen – Squares And Brackets – Webseiten, Apps & WebApps',
-            description: 'Squares And Brackets erstellt Webseiten, Apps & WebApps in hoher Qualität.',
-            template: './src/ourskills/POurSkills.html',
-        }),
-        useHtml({
-            title: 'Unser Stil – Squares And Brackets – Webseiten, Apps & WebApps',
-            description: 'Squares And Brackets erstellt Webseiten, Apps & WebApps in hoher Qualität.',
-            template: './src/ourstyle/POurStyle.html',
-        }),
-        useHtml({
-            title: 'Kontakt – Squares And Brackets – Webseiten, Apps & WebApps',
-            description: 'Squares And Brackets erstellt Webseiten, Apps & WebApps in hoher Qualität.',
-            template: './src/contact/PContact.html',
-        }),
-        useHtml({
-            title: 'Impressum – Squares And Brackets – Webseiten, Apps & WebApps',
-            description: 'Squares And Brackets erstellt Webseiten, Apps & WebApps in hoher Qualität.',
-            template: './src/legal/PImprint.html',
-        }),
-        useHtml({
-            title: 'Datenschutz – Squares And Brackets – Webseiten, Apps & WebApps',
-            description: 'Squares And Brackets erstellt Webseiten, Apps & WebApps in hoher Qualität.',
-            template: './src/legal/PPrivacy.html',
-        }),
-        useHtml({
-            title: '404 – Squares And Brackets – Webseiten, Apps & WebApps',
-            description: 'Squares And Brackets erstellt Webseiten, Apps & WebApps in hoher Qualität.',
-            template: './src/404/P404.html',
+            template: './src/404/P404.hbs',
         }),
     ];
 }
