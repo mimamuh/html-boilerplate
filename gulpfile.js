@@ -176,7 +176,7 @@ const injectSassImportStatements = (srcPath, file) => (
 
 
 const injectSass = () => {
-    injectSassImportStatements('src/scss', 'main.scss')
+    injectSassImportStatements('src/assets/scss', 'main.scss')
     .catch((error) => {
          console.log(error);
     });
