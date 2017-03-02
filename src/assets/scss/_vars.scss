@@ -171,8 +171,38 @@ $error-shadow: 	inset 0 0 10px rgba($c-error, 0.15);
 
 
 //== Ease Functions
+$linear: cubic-bezier(.25, .25, .75, .75); // http://easings.net/#linear
+$ease: cubic-bezier(.25, .1, .25, 1); // http://easings.net/#ease
+$ease-in: cubic-bezier(.42, 0, 1, 1); // http://easings.net/#ease
+$ease-out: cubic-bezier(0, 0, .58, 1); // http://easings.net/#ease
+$ease-in-out: cubic-bezier(.42, 0, .58, 1); // http://easings.net/#ease
+
+$ease-in-quad: cubic-bezier(.55, .085, .68, .53); // http://easings.net/#easeInQuad
+$ease-in-cubic: cubic-bezier(.55, .055, .675, .19); // http://easings.net/#easeInCubic
+$ease-in-quart: cubic-bezier(.895, .03, .685, .22); // http://easings.net/#easeInQuart
+$ease-in-quint: cubic-bezier(.755, .05, .855, .06); // http://easings.net/#easeInQuint
+$ease-in-sine: cubic-bezier(.47, 0, .745, .715); // http://easings.net/#easeInSine
+$ease-in-expo: cubic-bezier(.95, .05, .795, .035); // http://easings.net/#easeInExpo
+$ease-in-circ: cubic-bezier(.6, .04, .98, .335); // http://easings.net/#easeInCirc
+$ease-in-back: cubic-bezier(.6, -.28, .735, .045); // http://easings.net/#easeInBack
+
+$ease-out-quad: cubic-bezier(.25, .46, .45, .94); // http://easings.net/#easeOutQuad
 $ease-out-cubic: cubic-bezier(.215, .61, .355, 1); // http://easings.net/#easeOutCubic
-$ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1); // http://easings.net/#easeInOutCubic
+$ease-out-quart: cubic-bezier(.165, .84, .44, 1); // http://easings.net/#easeOutQuart
+$ease-out-quint: cubic-bezier(.23, 1, .32, 1); // http://easings.net/#easeOutQuint
+$ease-out-sine: cubic-bezier(.39, .575, .565, 1); // http://easings.net/#easeOutSine
+$ease-out-expo: cubic-bezier(.19, 1, .22, 1); // http://easings.net/#easeOutExpo
+$ease-out-circ: cubic-bezier(.075, .82, .165, 1); // http://easings.net/#easeOutCirc
+$ease-out-back: cubic-bezier(.175, .885, .32, 1.275); // http://easings.net/#easeOutBack
+
+$ease-in-out-quad: cubic-bezier(.455, .03, .515, .955); // http://easings.net/#easeInOutQuad
+$ease-in-out-cubic: cubic-bezier(.645, .045, .355, 1); // http://easings.net/#easeInOutCubic
+$ease-in-out-quart: cubic-bezier(.77, 0, .175, 1); // http://easings.net/#easeInOutQuart
+$ease-in-out-quint: cubic-bezier(.86, 0, .07, 1); // http://easings.net/#easeInOutQuint
+$ease-in-out-sine: cubic-bezier(.445, .05, .55, .95); // http://easings.net/#easeInOutSine
+$ease-in-out-expo: cubic-bezier(0, 0, 0, 1); // http://easings.net/#easeInOutExpo
+$ease-in-out-circ: cubic-bezier(.785, .135, .15, .86); // http://easings.net/#easeInOutCirc
+$ease-in-out-back: cubic-bezier(.68, -.55, .265, 1.55); // http://easings.net/#easeInOutBack
 
 
 //== z-index
