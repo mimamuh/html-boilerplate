@@ -23,7 +23,7 @@ const fontRules = { // load static assets like fonts, png, and resolve path ...
     test: /\.(woff|woff2|eot|ttf|svg)$/,
     loader: 'file-loader',
     query: {
-        name: '/assets/fonts/[name].[ext]',
+        name: './assets/fonts/[name].[ext]',
     },
     include: [path.resolve(__dirname, '../src/assets/fonts')],
 };
@@ -33,7 +33,7 @@ const assetRules = { // load static assets (images) ...
     test: /\.(png|jpg|jpeg|gif|svg)$/,
     loader: 'file-loader',
     query: {
-        name: '/assets/img/[name].[ext]',
+        name: './assets/img/[name].[ext]',
     },
     exclude: [path.resolve(__dirname, '../src/assets/fonts')],
 };
