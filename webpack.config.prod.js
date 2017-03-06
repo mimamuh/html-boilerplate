@@ -45,6 +45,8 @@ const htmlRules = { // load html files
         ],
         // Defines a regex that will exclude paths from resolving.
         exclude: /node_modules/,
+        // Defines a regex that identifies strings within helper/partial parameters that should be replaced by inline require statements.
+        inlineRequires: '/img/',
         // Shows trace information to help debug issues (e.g. resolution of helpers).
         debug: true,
     },
