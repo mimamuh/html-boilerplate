@@ -64,7 +64,7 @@ const fontRules = { // load static assets like fonts, png, and resolve path ...
 
 
 const jsRules = { // babel loader - may not be used in storybook
-    test: /\.js$/,
+    test: /\.(js|jsx)$/,
     loader: 'babel-loader',
     exclude: [/node_modules/],
 };
