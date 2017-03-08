@@ -1,14 +1,5 @@
-/**
-* @Author: Matthias Gohla <Matze>
-* @Date:   2017-01-14T14:25:16+01:00
-* @Email:  matze_lebt@gmx.de
-* @Last modified by:   Matze
-* @Last modified time: 2017-01-16T12:41:41+01:00
-*/
-
-
-// import mustache from 'mustache';
 /* eslint-disable prefer-arrow-callback */
+
 // storybook imports
 import React, { Component, PropTypes } from 'react';
 import { storiesOf, action } from '@kadira/storybook'; // eslint-disable-line no-unused-vars
