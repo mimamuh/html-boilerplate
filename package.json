@@ -11,6 +11,7 @@
     "storybook": "start-storybook -p 9001 -c .storybook",
     "link-styles": "gulp inject-scss",
     "build-stories": "gulp create-stories",
+    "create-jsx": "gulp create-jsx --filename ",
     "analyze-bundlesize": "webpack --json | webpack-bundle-size-analyzer"
   },
   "keywords": [
@@ -62,7 +63,8 @@
       "style-loader": "^0.13.1",
       "webpack": "^2.2.0",
       "webpack-bundle-size-analyzer": "^2.5.0",
-      "webpack-dev-server": "^1.16.2"
+      "webpack-dev-server": "^1.16.2",
+      "yargs": "^7.0.1"
   },
   "dependencies": {
       "picturefill": "^3.0.2",

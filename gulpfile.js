@@ -13,6 +13,8 @@ var inject = require('gulp-inject');
 var tap = require('gulp-tap')
 var path = require('path');
 var array = require('lodash/array');
+var argv = require('yargs').argv;
+var fs = require('fs');
 
 
 /**
@@ -174,6 +176,56 @@ const injectSassImportStatements = (srcPath, file) => (
     })
 )
 
+/**
+ * This function creates an empty file.
+ * @param  string filepath  path of the file which should be created e. g. component/text/Atext
+ * @return {
+ *              root    root directory of the file
+ *              dir     directory of the file
+ *              base    filename + extension
+ *              ext     extension of the file
+ *              name    filename
+ *         }
+ */
+const createEmptyFile = (filepath) => {
+    if(!filepath || filepath.length === 0) {
+        throw ('createEmptyFile demands a path as parameter, but you have passed ' + filepath);
+    } else if (typeof filepath !== 'string') {
+        throw ('createEmptyFile a parameter of type string, but you have passed ' + typeof filepath);
+    }
+
+    const parsedFile = path.parse(filepath);
+    const root = 'src/';
+    console.log(parsedFile);
+    fs.mkdir(root + parsedFile.dir, 511, function(error){
+        fs.writeFileSync(root + filepath, ' ', {mode: 511, flag: 'w'});
+    });
+    return parsedFile;
+}
+
+const camelCaseToHyphen = (filename) => {
+    const charArray = [...filename];
+    charArray.forEach((element, index) => {
+        if (element === element.toUpperCase() && index > 0) {
+
+            charArray[index] = `-${element.toLowerCase()}`;
+        } else if (index === 0) {
+            charArray[index] = `${element.toLowerCase()}`;
+        }
+    });
+    return charArray.join("");
+}
+
+const createJSXComponent = (filepath) => {
+    const jsxFile = createEmptyFile(filepath);
+    const storyFilePath = `${jsxFile.dir}/stories/${jsxFile.name}.jsx.js`;
+    const styleFilePath = `${jsxFile.dir}/styles/${camelCaseToHyphen(jsxFile.name)}.scss`;
+    const storyFile = createEmptyFile(storyFilePath);
+    const styleFile = createEmptyFile(styleFilePath);
+}
+
+
+
 
 const injectSass = () => {
     injectSassImportStatements('src/assets/scss', 'main.scss')
@@ -194,6 +246,14 @@ const createStories = () => {
     });
 }
 
+const createJSX = () => {
+    createJsxBundle()
+    // .
+    // catch((error) => {
+    //     console.log(error);
+    // });
+}
+
 /**
  * creates story files for all html files inside /src
  */
@@ -203,3 +263,12 @@ gulp.task('create-stories', createStories);
  * once-only build
  */
 gulp.task('inject-scss', injectSass);
+
+/**
+ * this task creates a jsx file, it's story and its scss-file
+ */
+gulp.task('create-jsx', function(){
+    // console.log(process.argv[4]);
+    //console.log(argv.filename);
+    createJSXComponent(argv.filename);
+});
