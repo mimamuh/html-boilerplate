@@ -11,6 +11,7 @@
     "storybook": "start-storybook -p 9001 -c .storybook",
     "link-styles": "gulp inject-scss",
     "build-stories": "gulp create-stories",
+    "create-jsx": "gulp create-jsx --filename ",
     "analyze-bundlesize": "webpack --json | webpack-bundle-size-analyzer"
   },
   "keywords": [
