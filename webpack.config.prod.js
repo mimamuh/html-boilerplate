@@ -58,7 +58,8 @@ const fontRules = { // load static assets like fonts, png, and resolve path ...
     test: /\.(woff|woff2|eot|ttf|svg)$/,
     loader: 'file-loader',
     options: {
-        name: '/assets/fonts/[name].[ext]',
+        name: 'fonts/[name].[ext]',
+        outputPath: 'assets/',
     },
     include: [path.resolve(__dirname, './src/assets/fonts')],
 };
@@ -74,7 +75,8 @@ const assetRules = { // load static assets (images) ...
     test: /\.(png|jpg|jpeg|gif|svg)$/,
     loader: 'file-loader',
     options: {
-        name: '/assets/img/[name].[ext]',
+        name: 'img/[name].[ext]',
+        outputPath: 'assets/',
     },
     exclude: [path.resolve(__dirname, './src/assets/fonts')],
 };
@@ -88,21 +90,31 @@ const scssRules = { // scss loader - uses postcss and autoprefixer
             {
                 loader: 'css-loader',
                 options: {
-                    minimize: true,
+                    // Path to resolve URLs, URLs starting
+                    // with / will not be translated
+                    minimize: false,
                     sourceMap: true,
                 },
             },
             {
                 loader: 'postcss-loader',
                 options: {
-                    plugins: function () {
+                    plugins() {
                         return [
                             require('autoprefixer'),
                         ];
-                    }
-                }
+                    },
+                    sourceMap: 'inline',
+                },
             },
-            'sass-loader',
+            {
+                loader: 'sass-loader',
+                options: {
+                    // must be enabled as resolve-url-loader need it, see:
+                    // https://github.com/bholloway/resolve-url-loader#important
+                    sourceMap: true,
+                },
+            },
         ],
     }),
 };
@@ -182,7 +194,7 @@ module.exports = {
     plugins: [
         getFaviconPlugin(),
         ...getHtmlFilePlugins({
-            outputPath: './dist/pages',
+            outputPath: './dist',
             inject: false,
             baseHref: 'http://squaresandbrackets.com',
             // don't inject the dev-server script (to use it, pass: http://localhost:8080/)
@@ -194,7 +206,7 @@ module.exports = {
         }),
 
         new ExtractTextPlugin({
-            filename: 'assets/css/main.css',
+            filename: 'assets/main.css',
             disable: false,
             allChunks: true,
         }),
