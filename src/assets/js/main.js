@@ -4,6 +4,11 @@
  */
 
 import $ from 'jquery';
+
+// This will emulate a full ES2015 environment and is
+// intended to be used in an application rather than a library/tool.
+import 'babel-polyfill';
+
 import './../scss/main.scss';
 
 // needed plugins for scrollmagic

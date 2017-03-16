@@ -115,11 +115,11 @@ function getFaviconPlugin() {
         // Your source logo
         logo: './src/assets/img/favicon/favicon.png',
         // The prefix for all image files (might be a folder or a name)
-        prefix: 'assets/img/favicon/icons-[hash]/',
+        prefix: 'assets/img/favicon/',
         // Emit all stats of the generated icons
         emitStats: false,
         // The name of the json containing all favicon information
-        statsFilename: 'iconstats-[hash].json',
+        statsFilename: 'iconstats.json',
         // Generate a cache file with control hashes and
         // don't rebuild the favicons until those hashes change
         persistentCache: true,
