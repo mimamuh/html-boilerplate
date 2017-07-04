@@ -1,10 +1,18 @@
 /* eslint-disable prefer-arrow-callback */
 
 // storybook imports
-import React, { Component, PropTypes } from 'react';
-import { storiesOf, action } from '@kadira/storybook'; // eslint-disable-line no-unused-vars
-import { WithNotes } from '@kadira/storybook-addon-notes'; // eslint-disable-line no-unused-vars
-import { text, boolean, number, object, select } from '@kadira/storybook-addon-knobs'; // eslint-disable-line no-unused-vars
+import React from 'react';
+import { storiesOf, action } from '@storybook/react'; // eslint-disable-line no-unused-vars
+import {
+    text,
+    boolean,
+    number,
+    color,
+    object,
+    array,
+    select,
+    date,
+} from '@storybook/addon-knobs'; // eslint-disable-line no-unused-vars
 
 // testing
 // import { mount } from 'enzyme'; // eslint-disable-line no-unused-vars

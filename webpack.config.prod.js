@@ -1,28 +1,20 @@
-/**
-* @Author: Matthias Gohla <Matze>
-* @Date:   2016-12-19T11:04:37+01:00
-* @Email:  matze_lebt@gmx.de
-* @Last modified by:   mBook
-* @Last modified time: 2017-02-22T17:25:33+01:00
-*/
-
-
 const path = require('path');
 const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
-const getHtmlFilePlugins = require('./webpack.config.common').getHtmlFilePlugins;
+const getHtmlFilePlugins = require('./webpack.config.common')
+    .getHtmlFilePlugins;
 // good tutorial: http://www.pro-react.com/materials/appendixA/
 
-
-const pixijsRules = { // passes loaders to pixi-particles
+const pixijsRules = {
+    // passes loaders to pixi-particles
     test: /pixi-particles/,
     loader: 'imports-loader?PIXI=pixi.js',
 };
 
-
-const waypointsRules = { // passes loaders to waypoints alias
+const waypointsRules = {
+    // passes loaders to waypoints alias
     test: /waypoints\//,
     use: [
         // inject jquery as global
@@ -32,17 +24,15 @@ const waypointsRules = { // passes loaders to waypoints alias
     ],
 };
 
-
-const htmlRules = { // load html files
+const htmlRules = {
+    // load html files
     test: /\.(html|hbs)$/,
     loader: 'handlebars-loader',
     options: {
         // Defines additional directories to be searched for helpers.
         helperDirs: '',
         // Defines additional directories to be searched for partials.
-        partialDirs: [
-            path.join(__dirname, 'src', '_partials'),
-        ],
+        partialDirs: [path.join(__dirname, 'src', '_partials')],
         // Defines a regex that will exclude paths from resolving.
         exclude: /node_modules/,
         // Defines a regex that identifies strings within helper/partial parameters that should be replaced by inline require statements.
@@ -53,8 +43,8 @@ const htmlRules = { // load html files
     exclude: [/node_modules/],
 };
 
-
-const fontRules = { // load static assets like fonts, png, and resolve path ...
+const fontRules = {
+    // load static assets like fonts, png, and resolve path ...
     test: /\.(woff|woff2|eot|ttf|svg)$/,
     loader: 'file-loader',
     options: {
@@ -64,14 +54,15 @@ const fontRules = { // load static assets like fonts, png, and resolve path ...
     include: [path.resolve(__dirname, './src/assets/fonts')],
 };
 
-const jsRules = { // babel loader - may not be used in storybook
+const jsRules = {
+    // babel loader - may not be used in storybook
     test: /\.(js|jsx)$/,
     loader: 'babel-loader',
     exclude: [/node_modules/],
 };
 
-
-const assetRules = { // load static assets (images) ...
+const assetRules = {
+    // load static assets (images) ...
     test: /\.(png|jpg|jpeg|gif|svg)$/,
     loader: 'file-loader',
     options: {
@@ -81,11 +72,11 @@ const assetRules = { // load static assets (images) ...
     exclude: [path.resolve(__dirname, './src/assets/fonts')],
 };
 
-
-const scssRules = { // scss loader - uses postcss and autoprefixer
+const scssRules = {
+    // scss loader - uses postcss and autoprefixer
     test: /\.(scss|css)$/,
     use: ExtractTextPlugin.extract({
-        fallbackLoader: 'style-loader',
+        fallback: 'style-loader',
         loader: [
             {
                 loader: 'css-loader',
@@ -100,9 +91,7 @@ const scssRules = { // scss loader - uses postcss and autoprefixer
                 loader: 'postcss-loader',
                 options: {
                     plugins() {
-                        return [
-                            require('autoprefixer'),
-                        ];
+                        return [require('autoprefixer')];
                     },
                     sourceMap: 'inline',
                 },
@@ -118,7 +107,6 @@ const scssRules = { // scss loader - uses postcss and autoprefixer
         ],
     }),
 };
-
 
 /** CONFIG YOUR FAVICON HERE **/
 // see more: https://github.com/jantimon/favicons-webpack-plugin
@@ -158,9 +146,7 @@ function getFaviconPlugin() {
     });
 }
 
-
 module.exports = {
-
     devtool: 'cheap-module-source-map',
 
     entry: {
@@ -212,7 +198,7 @@ module.exports = {
         }),
 
         new webpack.DefinePlugin({
-             'process.env.NODE_ENV': JSON.stringify('production'),
+            'process.env.NODE_ENV': JSON.stringify('production'),
         }),
 
         // plugin for hot-module-replacement

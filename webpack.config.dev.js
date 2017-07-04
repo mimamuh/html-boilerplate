@@ -1,27 +1,19 @@
-/**
-* @Author: Matthias Gohla <Matze>
-* @Date:   2016-12-19T11:04:37+01:00
-* @Email:  matze_lebt@gmx.de
-* @Last modified by:   mBook
-* @Last modified time: 2017-02-22T17:29:53+01:00
-*/
-
-
 const path = require('path');
 const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // good tutorial: http://www.pro-react.com/materials/appendixA/
-const getHtmlFilePlugins = require('./webpack.config.common').getHtmlFilePlugins;
+const getHtmlFilePlugins = require('./webpack.config.common')
+    .getHtmlFilePlugins;
 
-
-const pixijsRules = { // passes loaders to pixi-particles
+const pixijsRules = {
+    // passes loaders to pixi-particles
     test: /pixi-particles/,
     loader: 'imports-loader?PIXI=pixi.js',
 };
 
-
-const waypointsRules = { // passes loaders to waypoints alias
+const waypointsRules = {
+    // passes loaders to waypoints alias
     test: /waypoints\//,
     use: [
         // inject jquery as global
@@ -31,17 +23,15 @@ const waypointsRules = { // passes loaders to waypoints alias
     ],
 };
 
-
-const htmlRules = { // load html files
+const htmlRules = {
+    // load html files
     test: /\.(html|hbs)$/,
     loader: 'handlebars-loader',
     options: {
         // Defines additional directories to be searched for helpers.
         helperDirs: '',
         // Defines additional directories to be searched for partials.
-        partialDirs: [
-            path.join(__dirname, 'src', '_partials'),
-        ],
+        partialDirs: [path.join(__dirname, 'src', '_partials')],
         // Defines a regex that will exclude paths from resolving.
         exclude: /node_modules/,
         // Defines a regex that identifies strings within helper/partial parameters that should be replaced by inline require statements.
@@ -52,8 +42,8 @@ const htmlRules = { // load html files
     exclude: [/node_modules/],
 };
 
-
-const fontRules = { // load static assets like fonts, png, and resolve path ...
+const fontRules = {
+    // load static assets like fonts, png, and resolve path ...
     test: /\.(woff|woff2|eot|ttf|svg)$/,
     loader: 'file-loader',
     options: {
@@ -62,15 +52,15 @@ const fontRules = { // load static assets like fonts, png, and resolve path ...
     include: [path.resolve(__dirname, './src/assets/fonts')],
 };
 
-
-const jsRules = { // babel loader - may not be used in storybook
+const jsRules = {
+    // babel loader - may not be used in storybook
     test: /\.(js|jsx)$/,
     loader: 'babel-loader',
     exclude: [/node_modules/],
 };
 
-
-const assetRules = { // load static assets (images) ...
+const assetRules = {
+    // load static assets (images) ...
     test: /\.(png|jpg|jpeg|gif|svg)$/,
     loader: 'file-loader',
     options: {
@@ -79,19 +69,17 @@ const assetRules = { // load static assets (images) ...
     exclude: [path.resolve(__dirname, './src/assets/fonts')],
 };
 
-
-const scssRules = { // scss loader - uses postcss and autoprefixer
+const scssRules = {
+    // scss loader - uses postcss and autoprefixer
     test: /\.(scss|css)$/,
     use: ExtractTextPlugin.extract({
-        fallbackLoader: 'style-loader',
+        fallback: 'style-loader',
         loader: [
             'css-loader',
             {
                 loader: 'postcss-loader',
                 options: {
-                    plugins: () => [
-                        require('autoprefixer'),
-                    ],
+                    plugins: () => [require('autoprefixer')],
                 },
             },
             'sass-loader',
@@ -99,9 +87,7 @@ const scssRules = { // scss loader - uses postcss and autoprefixer
     }),
 };
 
-
 module.exports = {
-
     devtool: 'eval-source-map',
 
     entry: {
@@ -186,9 +172,7 @@ module.exports = {
         // auto-load
         inline: true,
         // dont show all bundle infos ...
-        stats: 'error-only',
-        // add colors to the terminal when the server is running
-        colors: true,
+        stats: 'errors-only',
         // Set this as true if you want to access dev server from
         // arbitrary url. This is handy if you are using a html5 router.
         historyApiFallback: true,

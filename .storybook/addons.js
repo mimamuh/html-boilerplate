@@ -1,13 +1,3 @@
-/**
-* @Author: Matthias Gohla <Matze>
-* @Date:   2017-01-16T12:22:16+01:00
-* @Email:  matze_lebt@gmx.de
-* @Last modified by:   mBook
-* @Last modified time: 2017-01-20T11:20:16+01:00
-*/
-
-
-import '@kadira/storybook/addons';
-import '@kadira/storybook-addon-notes/register';
-import '@kadira/storybook-addon-knobs/register';
-import 'react-storybook-addon-backgrounds/register';
+import '@storybook/addon-knobs/register';
+import '@storybook/addon-actions/register';
+import '@storybook/addon-links/register';

@@ -26,6 +26,7 @@ build/Release
 # Dependency directory
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
+app/node_modules
 
 # OSX
 .DS_Store
@@ -34,9 +35,8 @@ node_modules
 flow-typed/npm/*
 !flow-typed/npm/module_vx.x.x.js
 
-# App packaged
-release
-dist
-
-.idea
-npm-debug.log.*
+# App files
+webpack.config.js
+webpack.config.common.js
+webpack.config.dev.js
+webpack.config.prod.js
