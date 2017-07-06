@@ -48,7 +48,7 @@ const fontRules = {
     test: /\.(woff|woff2|eot|ttf|svg)$/,
     loader: 'file-loader',
     options: {
-        name: 'fonts/[name].[ext]',
+        name: 'fonts/[name]-[hash].[ext]',
         outputPath: 'assets/',
     },
     include: [path.resolve(__dirname, './src/assets/fonts')],
@@ -66,7 +66,7 @@ const assetRules = {
     test: /\.(png|jpg|jpeg|gif|svg)$/,
     loader: 'file-loader',
     options: {
-        name: 'img/[name].[ext]',
+        name: 'img/[name]-[hash].[ext]',
         outputPath: 'assets/',
     },
     exclude: [path.resolve(__dirname, './src/assets/fonts')],

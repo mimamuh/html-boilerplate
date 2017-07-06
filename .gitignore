@@ -40,3 +40,4 @@ dist
 
 .idea
 npm-debug.log.*
+storybook-static/*

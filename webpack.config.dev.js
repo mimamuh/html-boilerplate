@@ -9,7 +9,9 @@ const getHtmlFilePlugins = require('./webpack.config.common')
 const pixijsRules = {
     // passes loaders to pixi-particles
     test: /pixi-particles/,
-    loader: 'imports-loader?PIXI=pixi.js',
+    use: [{
+        loader: 'imports-loader?PIXI=pixi.js',
+    }]
 };
 
 const waypointsRules = {
@@ -26,46 +28,57 @@ const waypointsRules = {
 const htmlRules = {
     // load html files
     test: /\.(html|hbs)$/,
-    loader: 'handlebars-loader',
-    options: {
-        // Defines additional directories to be searched for helpers.
-        helperDirs: '',
-        // Defines additional directories to be searched for partials.
-        partialDirs: [path.join(__dirname, 'src', '_partials')],
-        // Defines a regex that will exclude paths from resolving.
-        exclude: /node_modules/,
-        // Defines a regex that identifies strings within helper/partial parameters that should be replaced by inline require statements.
-        inlineRequires: '/img/',
-        // Shows trace information to help debug issues (e.g. resolution of helpers).
-        debug: true,
-    },
-    exclude: [/node_modules/],
+    use: [{
+        loader: 'handlebars-loader',
+        options: {
+            // Defines additional directories to be searched for helpers.
+            helperDirs: '',
+            // Defines additional directories to be searched for partials.
+            partialDirs: [path.join(__dirname, 'src', '_partials')],
+            // Defines a regex that will exclude paths from resolving.
+            exclude: /node_modules/,
+            // Defines a regex that identifies strings within helper/partial parameters that should be replaced by inline require statements.
+            inlineRequires: '/img/',
+            // Shows trace information to help debug issues (e.g. resolution of helpers).
+            debug: true,
+            exclude: [/node_modules/],
+        },
+    }],
+
 };
 
 const fontRules = {
     // load static assets like fonts, png, and resolve path ...
     test: /\.(woff|woff2|eot|ttf|svg)$/,
-    loader: 'file-loader',
-    options: {
-        name: '/assets/fonts/[name].[ext]',
-    },
+    use: [{
+        loader: 'file-loader',
+        options: {
+            name: 'fonts/[name]-[hash].[ext]',
+            outputPath: 'assets/',
+        },
+    }],
     include: [path.resolve(__dirname, './src/assets/fonts')],
 };
 
 const jsRules = {
     // babel loader - may not be used in storybook
     test: /\.(js|jsx)$/,
-    loader: 'babel-loader',
+    use: [{
+        loader: 'babel-loader'
+    }],
     exclude: [/node_modules/],
 };
 
 const assetRules = {
     // load static assets (images) ...
     test: /\.(png|jpg|jpeg|gif|svg)$/,
-    loader: 'file-loader',
-    options: {
-        name: '/assets/img/[name].[ext]',
-    },
+    use: [{
+        loader: 'file-loader',
+        options: {
+            name: 'img/[name]-[hash].[ext]',
+            outputPath: 'assets/',
+        },
+    }],
     exclude: [path.resolve(__dirname, './src/assets/fonts')],
 };
 
@@ -178,6 +191,8 @@ module.exports = {
         historyApiFallback: true,
         // needed for hot-module-replacement-plugin
         hot: true,
+        // set to true to be able to call the server from other devices
+        disableHostCheck: false,
     },
 };
 

@@ -12,11 +12,10 @@
         "gulp-jsx": "gulp create-jsx --filename ",
         "dev": "webpack-dev-server --config ./webpack.config.dev.js --watch",
         "build": "webpack --config ./webpack.config.prod.js",
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "jest",
         "analyze-bundlesize": "webpack --json | webpack-bundle-size-analyzer",
         "storybook": "start-storybook -p 9001",
         "storybook-build": "build-storybook",
-        "test": "jest",
         "lint": "eslint --cache --format=node_modules/eslint-formatter-pretty .",
         "lint-fix": "npm run lint -- --fix",
         "lint-styles": "stylelint app/*.css app/components/*.css --syntax scss",
@@ -24,7 +23,9 @@
         "flow": "flow check",
         "flow-typed": "rimraf flow-typed/npm && flow-typed install --overwrite || true"
     },
-    "keywords": ["squares-and-brackets"],
+    "keywords": [
+        "squares-and-brackets"
+    ],
     "devDependencies": {
         "@storybook/addon-knobs": "^3.1.6",
         "@storybook/react": "^3.1.6",
@@ -74,7 +75,7 @@
         "react-dom": "^15.6.1",
         "sass-loader": "^4.1.1",
         "style-loader": "^0.18.2",
-        "webpack": "^3.0.0",
+        "webpack": "2.6.1",
         "webpack-bundle-size-analyzer": "^2.7.0",
         "webpack-dev-server": "^2.5.0"
     },
@@ -90,6 +91,6 @@
     "devEngines": {
         "node": ">=6.x",
         "npm": ">=3.x",
-        "yarn": ">=0.24.6"
+        "yarn": ">=0.27.5"
     }
 }

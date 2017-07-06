@@ -14,7 +14,7 @@ const fontRules = {
     test: /\.(woff|woff2|eot|ttf|svg)$/,
     loader: 'file-loader',
     query: {
-        name: './assets/fonts/[name].[ext]',
+        name: './assets/fonts/[name]-[hash].[ext]',
     },
     include: [path.resolve(__dirname, '../src/assets/fonts')],
 };
@@ -24,7 +24,7 @@ const assetRules = {
     test: /\.(png|jpg|jpeg|gif|svg)$/,
     loader: 'file-loader',
     query: {
-        name: './assets/img/[name].[ext]',
+        name: './assets/img/[name]-[hash].[ext]',
     },
     exclude: [path.resolve(__dirname, '../src/assets/fonts')],
 };
