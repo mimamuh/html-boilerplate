@@ -1,10 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // good tutorial: http://www.pro-react.com/materials/appendixA/
-const getHtmlFilePlugins = require('./webpack.config.common')
-    .getHtmlFilePlugins;
+const getPages = require('./webpack.config.pages').getPages;
 
 const pixijsRules = {
     // passes loaders to pixi-particles
@@ -28,58 +26,79 @@ const waypointsRules = {
 const htmlRules = {
     // load html files
     test: /\.(html|hbs)$/,
-    use: [{
-        loader: 'handlebars-loader',
-        options: {
-            // Defines additional directories to be searched for helpers.
-            helperDirs: '',
-            // Defines additional directories to be searched for partials.
-            partialDirs: [path.join(__dirname, 'src', '_partials')],
-            // Defines a regex that will exclude paths from resolving.
-            exclude: /node_modules/,
-            // Defines a regex that identifies strings within helper/partial parameters that should be replaced by inline require statements.
-            inlineRequires: '/img/',
-            // Shows trace information to help debug issues (e.g. resolution of helpers).
-            debug: true,
-            exclude: [/node_modules/],
-        },
-    }],
-
+    use: [
+        {
+            loader: 'handlebars-loader',
+            options: {
+                // Defines additional directories to be searched for helpers.
+                helperDirs: '',
+                // Defines additional directories to be searched for partials.
+                partialDirs: [path.join(__dirname, 'src', '_partials')],
+                // Defines a regex that will exclude paths from resolving.
+                exclude: /node_modules/,
+                // Defines a regex that identifies strings within helper/partial parameters that should be replaced by inline require statements.
+                inlineRequires: '/img/',
+                // Shows trace information to help debug issues (e.g. resolution of helpers).
+                debug: false,
+                exclude: [/node_modules/]
+            }
+        }
+    ]
 };
 
 const fontRules = {
     // load static assets like fonts, png, and resolve path ...
     test: /\.(woff|woff2|eot|ttf|svg)$/,
-    use: [{
-        loader: 'file-loader',
-        options: {
-            name: 'fonts/[name]-[hash].[ext]',
-            outputPath: 'assets/',
-        },
-    }],
+    use: [
+        {
+            loader: 'file-loader',
+            options: {
+                name: 'fonts/[name]-[hash].[ext]',
+                outputPath: 'assets/',
+            },
+        }
+    ],
     include: [path.resolve(__dirname, './src/assets/fonts')],
+};
+
+const audioRules = {
+    // load static audio assest like mp3, mav ...
+    test: /\.(mp3|wav)$/,
+    use: [
+        {
+            loader: 'file-loader',
+            options: {
+                name: 'audio/[name]-[hash].[ext]',
+                outputPath: 'assets/'
+            }
+        }
+    ]
 };
 
 const jsRules = {
     // babel loader - may not be used in storybook
     test: /\.(js|jsx)$/,
-    use: [{
-        loader: 'babel-loader'
-    }],
-    exclude: [/node_modules/],
+    use: [
+        {
+            loader: 'babel-loader'
+        }
+    ],
+    exclude: [/node_modules/]
 };
 
 const assetRules = {
     // load static assets (images) ...
     test: /\.(png|jpg|jpeg|gif|svg)$/,
-    use: [{
-        loader: 'file-loader',
-        options: {
-            name: 'img/[name]-[hash].[ext]',
-            outputPath: 'assets/',
-        },
-    }],
-    exclude: [path.resolve(__dirname, './src/assets/fonts')],
+    use: [
+        {
+            loader: 'file-loader',
+            options: {
+                name: 'img/[name]-[hash].[ext]',
+                outputPath: 'assets/'
+            }
+        }
+    ],
+    exclude: [path.resolve(__dirname, './src/assets/fonts')]
 };
 
 const scssRules = {
@@ -87,7 +106,7 @@ const scssRules = {
     test: /\.(scss|css)$/,
     use: ExtractTextPlugin.extract({
         fallback: 'style-loader',
-        loader: [
+        use: [
             'css-loader',
             {
                 loader: 'postcss-loader',
@@ -125,6 +144,7 @@ module.exports = {
             waypointsRules,
             htmlRules,
             fontRules,
+            audioRules,
             jsRules,
             assetRules,
             scssRules,
@@ -140,12 +160,12 @@ module.exports = {
     },
 
     plugins: [
-        ...getHtmlFilePlugins({
+        ...getPages({
             outputPath: '/',
             inject: false,
             baseHref: 'http://localhost:8080',
             devServer: 'http://localhost:8080',
-            googleAnalytics: null,
+            googleAnalytics: null
         }),
 
         // It moves every require("style.css") in entry chunks into a separate css output file.

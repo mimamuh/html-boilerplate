@@ -1,16 +1,18 @@
 const path = require('path');
 const webpack = require('webpack');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
-const getHtmlFilePlugins = require('./webpack.config.common')
-    .getHtmlFilePlugins;
+const getPages = require('./webpack.config.pages')
+    .getPages;
+const getFavicons = require('./webpack.config.favicons')
+    .getFavicons;
 // good tutorial: http://www.pro-react.com/materials/appendixA/
 
 const pixijsRules = {
     // passes loaders to pixi-particles
     test: /pixi-particles/,
-    loader: 'imports-loader?PIXI=pixi.js',
+    use: [
+        'imports-loader?PIXI=pixi.js',
+    ],
 };
 
 const waypointsRules = {
@@ -27,48 +29,70 @@ const waypointsRules = {
 const htmlRules = {
     // load html files
     test: /\.(html|hbs)$/,
-    loader: 'handlebars-loader',
-    options: {
-        // Defines additional directories to be searched for helpers.
-        helperDirs: '',
-        // Defines additional directories to be searched for partials.
-        partialDirs: [path.join(__dirname, 'src', '_partials')],
-        // Defines a regex that will exclude paths from resolving.
-        exclude: /node_modules/,
-        // Defines a regex that identifies strings within helper/partial parameters that should be replaced by inline require statements.
-        inlineRequires: '/img/',
-        // Shows trace information to help debug issues (e.g. resolution of helpers).
-        debug: true,
-    },
+    use: [{
+        loader: 'handlebars-loader',
+        options: {
+            // Defines additional directories to be searched for helpers.
+            helperDirs: '',
+            // Defines additional directories to be searched for partials.
+            partialDirs: [path.join(__dirname, 'src', '_partials')],
+            // Defines a regex that will exclude paths from resolving.
+            exclude: /node_modules/,
+            // Defines a regex that identifies strings within helper/partial parameters that should be replaced by inline require statements.
+            inlineRequires: '/img/',
+            // Shows trace information to help debug issues (e.g. resolution of helpers).
+            debug: false,
+        },
+    }],
     exclude: [/node_modules/],
 };
 
 const fontRules = {
     // load static assets like fonts, png, and resolve path ...
     test: /\.(woff|woff2|eot|ttf|svg)$/,
-    loader: 'file-loader',
-    options: {
-        name: 'fonts/[name]-[hash].[ext]',
-        outputPath: 'assets/',
-    },
+    use: [{
+        loader: 'file-loader',
+        options: {
+            name: 'fonts/[name]-[hash].[ext]',
+            outputPath: 'assets/',
+        },
+    }],
     include: [path.resolve(__dirname, './src/assets/fonts')],
+};
+
+const audioRules = {
+    // load static audio assest like mp3, mav ...
+    test: /\.(mp3|wav)$/,
+    use: [
+        {
+            loader: 'file-loader',
+            options: {
+                name: 'audio/[name]-[hash].[ext]',
+                outputPath: 'assets/'
+            }
+        }
+    ]
 };
 
 const jsRules = {
     // babel loader - may not be used in storybook
     test: /\.(js|jsx)$/,
-    loader: 'babel-loader',
+    use: [{
+        loader: 'babel-loader',
+    }],
     exclude: [/node_modules/],
 };
 
 const assetRules = {
     // load static assets (images) ...
     test: /\.(png|jpg|jpeg|gif|svg)$/,
-    loader: 'file-loader',
-    options: {
-        name: 'img/[name]-[hash].[ext]',
-        outputPath: 'assets/',
-    },
+    use: [{
+        loader: 'file-loader',
+        options: {
+            name: 'img/[name]-[hash].[ext]',
+            outputPath: 'assets/',
+        },
+    }],
     exclude: [path.resolve(__dirname, './src/assets/fonts')],
 };
 
@@ -108,43 +132,7 @@ const scssRules = {
     }),
 };
 
-/** CONFIG YOUR FAVICON HERE **/
-// see more: https://github.com/jantimon/favicons-webpack-plugin
-function getFaviconPlugin() {
-    return new FaviconsWebpackPlugin({
-        // Your source logo
-        logo: './src/assets/img/favicon/favicon.png',
-        // The prefix for all image files (might be a folder or a name)
-        prefix: 'assets/img/favicon/',
-        // Emit all stats of the generated icons
-        emitStats: false,
-        // The name of the json containing all favicon information
-        statsFilename: 'iconstats.json',
-        // Generate a cache file with control hashes and
-        // don't rebuild the favicons until those hashes change
-        persistentCache: true,
-        // Inject the html into the html-webpack-plugin
-        inject: true,
-        // favicon background color (see https://github.com/haydenbleasel/favicons#usage)
-        background: '#fff',
-        // favicon app title (see https://github.com/haydenbleasel/favicons#usage)
-        title: 'Squares And Brackets',
 
-        // which icons should be generated (see https://github.com/haydenbleasel/favicons#usage)
-        icons: {
-            android: true,
-            appleIcon: true,
-            appleStartup: true,
-            coast: true,
-            favicons: true,
-            firefox: true,
-            opengraph: false,
-            twitter: true,
-            yandex: false,
-            windows: false,
-        },
-    });
-}
 
 module.exports = {
     devtool: 'cheap-module-source-map',
@@ -171,6 +159,7 @@ module.exports = {
             waypointsRules,
             htmlRules,
             fontRules,
+            audioRules,
             jsRules,
             assetRules,
             scssRules,
@@ -178,21 +167,27 @@ module.exports = {
     },
 
     plugins: [
-        getFaviconPlugin(),
-        ...getHtmlFilePlugins({
+        getFavicons(),
+
+        ...getPages({
             outputPath: './dist',
             inject: false,
-            baseHref: 'http://squaresandbrackets.com',
+            baseHref: './',
             // don't inject the dev-server script (to use it, pass: http://localhost:8080/)
             devServer: false,
             googleAnalytics: {
+                // the tracking id for your site
                 trackingId: 'UA-XXXX-XX',
+                // Log a pageview event after the analytics code loads.
                 pageViewOnLoad: true,
-            },
+                // if the ip of the visitors should be anonymized
+                // needed by german privacy law
+                anonymizeIp: true,
+            }
         }),
 
         new ExtractTextPlugin({
-            filename: 'assets/main.css',
+            filename: 'assets/global.css',
             disable: false,
             allChunks: true,
         }),
