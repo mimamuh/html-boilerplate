@@ -162,7 +162,7 @@ const injectSassImportStatements = (srcPath, file) =>
             .pipe(gulp.dest(srcPath))
             .on('end', () => {
                 resolve();
-                console.log('finished injecting files into main.scss');
+                console.log('finished injecting files into global.scss');
             });
     });
 
@@ -218,7 +218,7 @@ const createJSXComponent = filepath => {
 };
 
 const injectSass = () => {
-    injectSassImportStatements('src/assets/scss', 'main.scss').catch(error => {
+    injectSassImportStatements('src/assets/scss', 'global.scss').catch(error => {
         console.log(error);
     });
 };

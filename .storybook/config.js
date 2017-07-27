@@ -5,7 +5,7 @@ import { withKnobs } from '@storybook/addon-knobs';
 import 'picturefill';
 
 // global css files
-import './../src/assets/scss/main.scss';
+import './../src/assets/scss/global.scss';
 
 // global knobs decorator
 addDecorator(withKnobs);

@@ -33,6 +33,7 @@ const scssRules = {
     // scss loader - uses postcss and autoprefixer
     test: /\.(scss|css)$/,
     loader: [
+        'style-loader',
         'css-loader',
         {
             loader: 'postcss-loader',

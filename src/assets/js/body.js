@@ -9,7 +9,7 @@ import $ from 'jquery';
 // intended to be used in an application rather than a library/tool.
 import 'babel-polyfill';
 
-import './../scss/main.scss';
+import './../scss/global.scss';
 
 // needed plugins for scrollmagic
 // NOTE: we has to use the import-loader?define=>false as we
@@ -21,7 +21,6 @@ import 'imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugin
 if (process.env.NODE_ENV === 'development') {
     require('imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators');
 }
-
 
 $(document).ready(() => {
     console.log('Page ready');
