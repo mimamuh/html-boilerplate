@@ -23,9 +23,7 @@
         "flow": "flow check",
         "flow-typed": "rimraf flow-typed/npm && flow-typed install --overwrite || true"
     },
-    "keywords": [
-        "squares-and-brackets"
-    ],
+    "keywords": ["squares-and-brackets"],
     "devDependencies": {
         "@storybook/addon-knobs": "^3.1.6",
         "@storybook/react": "^3.1.6",
@@ -44,15 +42,16 @@
         "babel-preset-react": "^6.24.1",
         "babel-preset-stage-0": "^6.24.1",
         "css-loader": "^0.28.4",
-        "eslint": "^4.1.1",
-        "eslint-config-airbnb": "^15.0.1",
+        "eslint": "^3.19.0",
+        "eslint-config-airbnb": "^15.0.2",
         "eslint-config-prettier": "^2.3.0",
         "eslint-formatter-pretty": "^1.1.0",
         "eslint-plugin-compat": "^1.0.4",
         "eslint-plugin-flowtype": "^2.34.0",
-        "eslint-plugin-import": "^2.6.0",
+        "eslint-plugin-flowtype-errors": "^3.3.1",
+        "eslint-plugin-import": "^2.7.0",
         "eslint-plugin-jest": "^20.0.3",
-        "eslint-plugin-jsx-a11y": "^5.0.3",
+        "eslint-plugin-jsx-a11y": "^5.1.1",
         "eslint-plugin-promise": "^3.5.0",
         "eslint-plugin-react": "^7.1.0",
         "exports-loader": "^0.6.4",

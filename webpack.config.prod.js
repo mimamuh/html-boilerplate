@@ -151,7 +151,7 @@ module.exports = {
 
     entry: {
         head: './src/assets/js/head.js',
-        main: './src/assets/js/main.js',
+        body: './src/assets/js/body.js',
     },
 
     output: {
