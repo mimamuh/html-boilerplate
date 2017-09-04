@@ -1,15 +1,7 @@
-// @Author: Michael Neumair <mBook>
-// @Date:   2016-03-25T13:19:08+01:00
-// @Email:  7q7w7e7r@gmail.com
-// @Last modified by:   mBook
-// @Last modified time: 2016-07-29T11:13:51+02:00
+@charset 'UTF-8'; // Fixes an issue where Ruby locale is not set properly
+// See https://github.com/sass-mq/sass-mq/pull/10
 
-
-
-@charset "UTF-8"; // Fixes an issue where Ruby locale is not set properly
-                  // See https://github.com/sass-mq/sass-mq/pull/10
-
-@import "vars"; // get settings
+@import '../breakpoints'; // get settings
 
 /// Base font size on the `<body>` element
 /// @type Number (unit)
@@ -41,12 +33,8 @@ $mq-responsive: true !default;
 ///
 /// @type Map
 /// @link https://github.com/sass-mq/sass-mq#seeing-the-currently-active-breakpoint Full documentation and examples
-$mq-breakpoints: (
-    mobile:  320px,
-    tablet:  740px,
-    desktop: 980px,
-    wide:    1300px
-) !default;
+$mq-breakpoints: (mobile: 320px, tablet: 740px, desktop: 980px, wide: 1300px)
+    !default;
 
 /// Static breakpoint (for fixed-width layouts)
 ///
@@ -97,7 +85,8 @@ $mq-media-type: all !default;
 /// @returns {Number}
 @function mq-px2em($px, $base-font-size: $mq-base-font-size) {
     @if unitless($px) {
-        @warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels.";
+        @warn 'Assuming #{$px} to be in pixels,
+            attempting to convert it into pixels.';
         @return mq-px2em($px * 1px, $base-font-size);
     } @else if unit($px) == em {
         @return $px;
@@ -198,33 +187,40 @@ $mq-media-type: all !default;
         @if type-of($until) == number {
             $max-width: mq-px2em($until);
         } @else {
-            $max-width: mq-px2em(mq-get-breakpoint-width($until, $breakpoints)) - .01em;
+            $max-width: mq-px2em(
+                    mq-get-breakpoint-width($until, $breakpoints)
+                ) - .01em;
         }
     }
 
     // Responsive support is disabled, rasterize the output outside @media blocks
     // The browser will rely on the cascade itself.
     @if $responsive == false {
-        $static-breakpoint-width: mq-get-breakpoint-width($static-breakpoint, $breakpoints);
+        $static-breakpoint-width: mq-get-breakpoint-width(
+            $static-breakpoint,
+            $breakpoints
+        );
         $target-width: mq-px2em($static-breakpoint-width);
 
         // Output only rules that start at or span our target width
-        @if (
-            $and == false
-            and $min-width <= $target-width
-            and (
-                $until == false or $max-width >= $target-width
-            )
-        ) {
+        @if ($and == false
+ and $min-width <= $target-width
+ and (
+ $until == false or $max-width >= $target-width
+ )) {
             @content;
         }
-    }
-
-    // Responsive support is enabled, output rules inside @media queries
-    @else {
-        @if $min-width != 0 { $media-query: '#{$media-query} and (min-width: #{$min-width})'; }
-        @if $max-width != 0 { $media-query: '#{$media-query} and (max-width: #{$max-width})'; }
-        @if $and            { $media-query: '#{$media-query} and #{$and}'; }
+    } @else {
+        // Responsive support is enabled, output rules inside @media queries
+        @if $min-width != 0 {
+            $media-query: '#{$media-query} and (min-width: #{$min-width})';
+        }
+        @if $max-width != 0 {
+            $media-query: '#{$media-query} and (max-width: #{$max-width})';
+        }
+        @if $and {
+            $media-query: '#{$media-query} and #{$and}';
+        }
 
         // Remove unnecessary media query prefix 'all and '
         @if ($media-type == 'all' and $media-query != '') {
@@ -270,10 +266,10 @@ $mq-media-type: all !default;
 ///  @include mq-show-breakpoints((L, XL), (S: 300px, L: 800px, XL: 1200px));
 @mixin mq-show-breakpoints($show-breakpoints: $mq-show-breakpoints, $breakpoints: $mq-breakpoints) {
     body:before {
-        background-color: #FCF8E3;
-        border-bottom: 1px solid #FBEED5;
-        border-left: 1px solid #FBEED5;
-        color: #C09853;
+        background-color: #fcf8e3;
+        border-bottom: 1px solid #fbeed5;
+        border-left: 1px solid #fbeed5;
+        color: #c09853;
         font: small-caption;
         padding: 3px 6px;
         pointer-events: none;
@@ -286,7 +282,7 @@ $mq-media-type: all !default;
         @each $show-breakpoint in $show-breakpoints {
             $width: mq-get-breakpoint-width($show-breakpoint, $breakpoints);
             @include mq($show-breakpoint, $breakpoints: $breakpoints) {
-                content: "#{$show-breakpoint} ≥ #{$width} (#{mq-px2em($width)})";
+                content: '#{$show-breakpoint} ≥ #{$width} (#{mq-px2em($width)})';
             }
         }
     }
