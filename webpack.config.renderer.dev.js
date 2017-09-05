@@ -170,7 +170,7 @@ module.exports = {
 
         // It moves every require("style.css") in entry chunks into a separate css output file.
         new ExtractTextPlugin({
-            filename: 'assets/css/main.css',
+            filename: 'main.css',
             allChunks: true,
         }),
 
@@ -213,6 +213,12 @@ module.exports = {
         hot: true,
         // set to true to be able to call the server from other devices
         disableHostCheck: false,
+        // headers to prevent CORS issues
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+            "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+        },
     },
 };
 
