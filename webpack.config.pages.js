@@ -21,7 +21,6 @@ const defaultConfig = {
     googleAnalytics: null,
 };
 
-
 /** CONFIG YOUR HTML PAGES HERE **/
 // Add all pages you wanna build here to the array.
 // We use the HTMLWebpackPlugin to extract. You could
@@ -34,10 +33,11 @@ const pages = [
         // page title
         title: '404',
         // description text for search engines – max 160 chars!
-        description: 'Squares And Brackets erstellt Webseiten, Apps & WebApps in hoher Qualität.',
+        description:
+            'Squares And Brackets erstellt Webseiten, Apps & WebApps in hoher Qualität.',
         // filename after build
-        filename: '404.html'
-    }
+        filename: '404.html',
+    },
     // // example.html
     // {
     //     // path of the html template in src
@@ -60,13 +60,13 @@ function getPages(overwrites) {
             Object.assign(
                 page,
                 defaultConfig, // base config …
-                overwrites // overwrite defaults …
-            )
+                overwrites, // overwrite defaults …
+            ),
         );
     });
 }
 
 // export stuff
 module.exports = {
-    getPages
+    getPages,
 };
