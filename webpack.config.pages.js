@@ -29,7 +29,7 @@ const pages = [
     // index.hbs -> index.html
     {
         // path of the html template in src
-        template: './src/404/P404.hbs',
+        template: './src/404/404.hbs',
         // page title
         title: '404',
         // description text for search engines – max 160 chars!

@@ -1,17 +1,24 @@
-//libs
-@import 'vars';
-@import 'media-queries';
-@import 'grid';
+// vars
+@import './breakpoints';
+@import './vars';
+@import './animate';
+@import './grid-settings';
 
-// boilerplate
-@import 'boilerplate_start';
+// libs
+@import './libs/clearfix';
+@import './libs/media-queries';
+@import './libs/grid';
+
+// initial styles
+@import './normalize';
+@import './base-styles';
 
 // fonts and icons
-@import 'fonts';
-@import 'icons';
+@import './fonts';
+@import './icons';
 
-// animations
-@import './../scss/animate'; // not in use?
+// base-styles
+@import './base-styles';
 
 /* inject:imports */
 @import './../../_buttons/styles/a-button-menu';
@@ -19,6 +26,7 @@
 @import './../../_texts/styles/a-text-paragraph';
 /* endinject */
 
-// end !! must be at the total end !!
-@import './../scss/grid-utilities';
-@import './../scss/boilerplate_end';
+// helpers
+// !! must be at the total end !!
+@import './grid-helpers';
+@import './helper-classes';

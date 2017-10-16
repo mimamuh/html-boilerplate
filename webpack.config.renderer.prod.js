@@ -87,7 +87,7 @@ module.exports = {
         }),
 
         new ExtractTextPlugin({
-            filename: 'assets/global.css',
+            filename: 'main.css',
             disable: false,
             allChunks: true,
         }),
