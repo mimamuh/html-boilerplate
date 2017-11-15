@@ -51,7 +51,7 @@ rules:
   class-name-format:
       - 1
       -
-          convention: 'strictbem'
+          convention: 'hyphenatedbem'
   function-name-format: 1
   id-name-format: 0
   mixin-name-format: 1
