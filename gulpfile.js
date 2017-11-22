@@ -47,7 +47,7 @@ const checkForMissingStoryFiles = () =>
 
 const getFileArray = sourcePath =>
 	new Promise((resolve, reject) => {
-		const files = [];
+		let fileArray = [];
 		gulp
 			.src(sourcePath)
 			.pipe(
@@ -59,7 +59,7 @@ const getFileArray = sourcePath =>
 				})
 			)
 			.on('finish', () => {
-				resolve(files);
+				resolve(fileArray);
 			});
 	});
 
