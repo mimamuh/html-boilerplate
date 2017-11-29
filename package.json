@@ -10,22 +10,23 @@
 		"gulp-styles": "gulp inject-scss",
 		"gulp-stories": "gulp create-stories",
 		"gulp-jsx": "gulp create-jsx --filename ",
-		"dev": "webpack-dev-server --config ./webpack.config.renderer.dev.js --watch",
+		"dev":
+			"webpack-dev-server --config ./webpack.config.renderer.dev.js --watch",
 		"build": "webpack --config ./webpack.config.renderer.prod.js",
 		"test": "jest",
 		"analyze-bundlesize": "webpack --json | webpack-bundle-size-analyzer",
 		"storybook": "start-storybook -p 9001",
 		"storybook-build": "build-storybook",
-		"lint": "eslint --cache --format=node_modules/eslint-formatter-pretty .",
+		"lint":
+			"eslint --cache --format=node_modules/eslint-formatter-pretty .",
 		"lint-fix": "npm run lint -- --fix",
 		"lint-styles": "stylelint app/*.css app/components/*.css --syntax scss",
 		"lint-styles-fix": "stylefmt -r app/*.css app/components/*.css",
 		"flow": "flow check",
-		"flow-typed": "rimraf flow-typed/npm && flow-typed install --overwrite || true"
+		"flow-typed":
+			"rimraf flow-typed/npm && flow-typed install --overwrite || true"
 	},
-	"keywords": [
-		"squares-and-brackets"
-	],
+	"keywords": ["squares-and-brackets"],
 	"devDependencies": {
 		"@storybook/addon-knobs": "^3.1.6",
 		"@storybook/react": "^3.1.6",
