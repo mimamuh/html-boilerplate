@@ -4,9 +4,20 @@ var webpack = require('webpack');
 // good tutorial: http://www.pro-react.com/materials/appendixA/
 
 const htmlRules = {
-    // load html files
-    test: /\.(html)$/,
-    loader: 'html-loader',
+// load html files
+    test: /\.(html|htm)$/,
+    use: [
+        {
+            loader: 'html-loader',
+            options: {
+                // which tag:attribute combination should be processed
+                attrs: [':data-src', 'img:src', 'img:srcset', 'source:srcset'],
+                // if it interploates ES6 string syntax in our
+                // html like ${require('./example.html')}
+                interpolate: true
+            }
+        },
+    ]
 };
 
 const fontRules = {
@@ -45,9 +56,15 @@ const scssRules = {
     ],
 };
 
+const vueRules = {
+    // scss loader - uses postcss and autoprefixer
+    test: /\.vue$/,
+    loader: 'vue-loader',
+};
+
 module.exports = {
     module: {
-        rules: [htmlRules, assetRules, fontRules, scssRules],
+        rules: [htmlRules, assetRules, fontRules, scssRules, vueRules],
     },
 
     // needed for enzyme to work properly

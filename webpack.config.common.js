@@ -26,23 +26,20 @@ const waypointsRules = {
 
 const htmlRules = {
 // load html files
-    test: /\.(html|hbs)$/,
-        use: [{
-        loader: 'handlebars-loader',
-        options: {
-            // Defines additional directories to be searched for helpers.
-            helperDirs: '',
-            // Defines additional directories to be searched for partials.
-            partialDirs: [path.join(__dirname, 'src', '_partials')],
-            // Defines a regex that will exclude paths from resolving.
-            exclude: /node_modules/,
-            // Defines a regex that identifies strings within helper/partial parameters that should be replaced by inline require statements.
-            inlineRequires: '/img/',
-            // Shows trace information to help debug issues (e.g. resolution of helpers).
-            debug: false,
-            exclude: [/node_modules/]
-        }
-    }]
+    test: /\.(html|htm)$/,
+    use: [
+        {
+            loader: 'html-loader',
+            options: {
+                // which tag:attribute combination should be processed
+                attrs: [':data-src', 'img:src', 'img:srcset', 'source:srcset'],
+                removeComments: true,
+                // if it interploates ES6 string syntax in our
+                // html like ${require('./example.html')}
+                interpolate: true
+            }
+        },
+    ]
 };
 
 const fontRules = {
@@ -118,6 +115,12 @@ const scssRules = {
     }),
 };
 
+const vueRules = {
+    // scss loader - uses postcss and autoprefixer
+    test: /\.vue$/,
+    loader: 'vue-loader',
+};
+
 function getCommonLoaders() {
     return [
         pixijsRules,
@@ -126,7 +129,8 @@ function getCommonLoaders() {
         fontRules,
         audioRules,
         jsRules,
-        assetRules
+        assetRules,
+        vueRules
     ];
 }
 
