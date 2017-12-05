@@ -67,6 +67,17 @@ module.exports = {
         rules: [htmlRules, assetRules, fontRules, scssRules, vueRules],
     },
 
+    resolve: {
+        alias: {
+            waypoints: 'waypoints/lib/noframework.waypoints.js',
+            swiper: 'swiper/dist/js/swiper.js',
+            // using the standalone build (compiler + runtime)
+            // instead of the default runtime-only build
+            // see: https://github.com/vuejs/vue/tree/dev/dist#explanation-of-build-files
+            vue: 'vue/dist/vue.js',
+        },
+    },
+
     // needed for enzyme to work properly
     // see: http://airbnb.io/enzyme/docs/guides/webpack.html
     externals: {

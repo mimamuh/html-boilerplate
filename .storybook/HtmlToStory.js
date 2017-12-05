@@ -1,21 +1,26 @@
-import React, { Component, PropTypes } from 'react';
+// @flow
+import React, { Component } from 'react';
+
+// flow types
+type DefaultProps = {};
+type Props = {
+	htmlTemplate: string,
+};
+type State = {};
 
 /**
  * HtmlToStory - …
-**/
+ **/
 class HtmlToStory extends Component {
-    render() {
-        const { htmlTemplate } = this.props;
-        const parsedHtml = htmlTemplate;
-        return <div dangerouslySetInnerHTML={{ __html: parsedHtml }} />;
-    }
+	props: Props;
+	state: State;
+	static defaultProps: DefaultProps;
+	static defaultProps = {};
+
+	render() {
+		const { htmlTemplate } = this.props;
+		const parsedHtml = htmlTemplate;
+		return <div dangerouslySetInnerHTML={{ __html: parsedHtml }} />;
+	}
 }
-HtmlToStory.propTypes = {
-    htmlTemplate: PropTypes.string.isRequired,
-    templateVars: PropTypes.shape({
-        team: PropTypes.string.isRequired,
-        sessionStartDate: PropTypes.string.isRequired,
-    }),
-};
-HtmlToStory.defaultProps = {};
 export default HtmlToStory;
