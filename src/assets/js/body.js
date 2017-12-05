@@ -11,7 +11,7 @@ import 'babel-polyfill';
 
 // –– jquery
 // (optional)
-import $ from 'jquery';
+// import $ from 'jquery';
 
 // –– scss
 // imports all our scss with webpack
@@ -36,7 +36,8 @@ import iniVueApp from './iniVueApp';
 
 // –– inis our website
 // run all your global ini code for your website here ...
-$(document).ready(() => {
+window.onload = () => {
 	iniVueApp({ element: '.vue-app' });
-	console.log('Page ready');
-});
+
+	console.log('%cPage ready', 'background: #8be09f; color: #39485e');
+};
