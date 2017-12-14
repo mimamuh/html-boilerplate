@@ -4,7 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const getPages = require('./webpack.config.pages').getPages;
 const getFavicons = require('./webpack.config.favicons').getFavicons;
 const getCommonLoaders = require('./webpack.config.common').getCommonLoaders;
-// good tutorial: http://www.pro-react.com/materials/appendixA/
+const entry = require('./webpack.config.entry');
 
 console.log(getCommonLoaders());
 const scssRules = {
@@ -46,10 +46,7 @@ const scssRules = {
 module.exports = {
 	devtool: 'cheap-module-source-map',
 
-	entry: {
-		head: './src/assets/js/head.js',
-		body: './src/assets/js/body.js',
-	},
+	entry: entry.entries,
 
 	output: {
 		path: path.resolve(__dirname, './dist'),
@@ -72,7 +69,7 @@ module.exports = {
 	},
 
 	plugins: [
-		getFavicons(),
+		...entry.plugins,
 
 		...getPages({
 			outputPath: './dist',
@@ -101,10 +98,6 @@ module.exports = {
 			'process.env.NODE_ENV': JSON.stringify('production'),
 		}),
 
-		// plugin for hot-module-replacement
-		// with javascript needs some extra-tweaks
-		new webpack.HotModuleReplacementPlugin(),
-
 		new webpack.ProvidePlugin({
 			// inject for every global $ the jquery dependency
 			// needed for legacy libs like waypoints
@@ -123,10 +116,7 @@ module.exports = {
 			minimize: true,
 		}),
 
-		// new CommonsChunkPlugin({
-		//     filename: 'commons.js',
-		//     name: 'commons'
-		// }),
+		getFavicons(),
 	],
 };
 
