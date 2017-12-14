@@ -9,6 +9,10 @@
 // intended to be used in an application rather than a library/tool.
 import 'babel-polyfill';
 
+// –– picturefill
+// (optional)
+import 'picturefill';
+
 // –– jquery
 // (optional)
 // import $ from 'jquery';

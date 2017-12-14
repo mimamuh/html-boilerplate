@@ -34,10 +34,6 @@
             <% }); %>
         <% } %>
 
-        <% if (htmlWebpackPlugin.files.chunks.head) { %>
-            <script src="<%= htmlWebpackPlugin.files.chunks.head.entry %>"></script>
-        <% } %>
-
     </head>
     <body>
 
@@ -50,8 +46,12 @@
         <script src="<%= htmlWebpackPlugin.options.devServer %>/webpack-dev-server.js" type="text/javascript"></script>
         <% } %>
 
-        <% if (htmlWebpackPlugin.files.chunks.body) { %>
-        <script src="<%= htmlWebpackPlugin.files.chunks.body.entry %>"></script>
+        <% if (htmlWebpackPlugin.files.chunks.commons) { %>
+        <script src="<%= htmlWebpackPlugin.files.chunks.commons.entry %>"></script>
+        <% } %>
+
+        <% if (htmlWebpackPlugin.files.chunks.main) { %>
+        <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
         <% } %>
 
         <% if (htmlWebpackPlugin.options.googleAnalytics) { %>

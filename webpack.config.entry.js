@@ -6,8 +6,7 @@ const webpack = require('webpack');
 // fiel-name structure: 'assets/js/[name].bundle.js'
 const entries = {
 	// main bundles
-	head: './src/assets/js/head.js',
-	body: './src/assets/js/body.js',
+	main: './src/assets/js/main.js',
 
 	// page sepific bundles
 	'404': './src/404/js/404.js',
