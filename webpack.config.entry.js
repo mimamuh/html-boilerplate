@@ -26,7 +26,13 @@ function excludeFromArray(array, excludeList) {
 // commonly used dependencies/chunks within commons.js
 var commonsChunkPlugin = new webpack.optimize.CommonsChunkPlugin({
 	name: 'commons',
-	filename: 'commons.js',
+	filename: '/assets/js/[name]-[hash].bundle.js',
+	// The minimum number of chunks which need to contain a
+	// module before it's moved into the commons chunk.
+	minChunks: 2,
+	// To prevent duplication, children common dependencies can be moved into the parent.
+	// This reduces overall size, but does have a negative effect on the initial load time
+	// children: true,
 	chunks: excludeFromArray(Object.keys(entries), excludedFromCommons),
 });
 
