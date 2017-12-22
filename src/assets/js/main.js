@@ -2,16 +2,7 @@
     Import stuff which should be placed at
     the end of the <body> section
  */
-
-// –– babel polyfill
-// (optional)
-// This will emulate a full ES2015 environment and is
-// intended to be used in an application rather than a library/tool.
-import 'babel-polyfill';
-
-// –– picturefill
-// (optional)
-import 'picturefill';
+import './polyfills';
 
 // –– jquery
 // (optional)
