@@ -1,8 +1,10 @@
 # Browsers that we support
 
-> 0.5%
+> 1% in DE
 Last 2 versions
-IE >= 9
-Firefox >= 40
+IE >= 10
+Firefox >= 35
+Chrome >= 40
 iOS >= 9
 Safari >= 8
+Edge >= 12
