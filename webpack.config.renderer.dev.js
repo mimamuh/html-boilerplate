@@ -40,6 +40,7 @@ module.exports = {
 		alias: {
 			waypoints: 'waypoints/lib/noframework.waypoints.js',
 			swiper: 'swiper/dist/js/swiper.js',
+			lazyload: 'vanilla-lazyload/dist/lazyload.js',
 			// using the standalone build (compiler + runtime)
 			// instead of the default runtime-only build
 			// see: https://github.com/vuejs/vue/tree/dev/dist#explanation-of-build-files

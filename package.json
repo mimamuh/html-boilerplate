@@ -10,24 +10,22 @@
 		"gulp-styles": "gulp inject-scss",
 		"gulp-stories": "gulp create-stories",
 		"gulp-jsx": "gulp create-jsx --filename ",
-		"dev":
-			"webpack-dev-server --config ./webpack.config.renderer.dev.js --watch",
-		"build":
-			"webpack --config ./webpack.config.renderer.prod.js --env.production",
+		"dev": "webpack-dev-server --config ./webpack.config.renderer.dev.js --watch",
+		"build": "webpack --config ./webpack.config.renderer.prod.js --env.production",
 		"test": "jest",
 		"analyze-bundlesize": "webpack --json | webpack-bundle-size-analyzer",
 		"storybook": "start-storybook -p 9001",
 		"storybook-build": "build-storybook",
-		"lint":
-			"eslint --cache --format=node_modules/eslint-formatter-pretty .",
+		"lint": "eslint --cache --format=node_modules/eslint-formatter-pretty .",
 		"lint-fix": "npm run lint -- --fix",
 		"lint-styles": "stylelint app/*.css app/components/*.css --syntax scss",
 		"lint-styles-fix": "stylefmt -r app/*.css app/components/*.css",
 		"flow": "flow check",
-		"flow-typed":
-			"rimraf flow-typed/npm && flow-typed install --overwrite || true"
+		"flow-typed": "rimraf flow-typed/npm && flow-typed install --overwrite || true"
 	},
-	"keywords": ["squares-and-brackets"],
+	"keywords": [
+		"squares-and-brackets"
+	],
 	"devDependencies": {
 		"@storybook/addon-backgrounds": "^3.2.17",
 		"@storybook/addon-knobs": "^3.2.17",
@@ -42,8 +40,8 @@
 		"babel-plugin-transform-class-properties": "^6.24.1",
 		"babel-plugin-transform-es2015-classes": "^6.24.1",
 		"babel-polyfill": "^6.26.0",
-		"babel-preset-react": "^6.24.1",
 		"babel-preset-env": "^1.6.1",
+		"babel-preset-react": "^6.24.1",
 		"babel-preset-stage-0": "^6.24.1",
 		"browser-sync": "^2.19.0",
 		"browser-sync-webpack-plugin": "^1.2.0",
@@ -97,6 +95,7 @@
 		"picturefill": "^3.0.2",
 		"scrollmagic": "^2.0.5",
 		"swiper": "^4.0.7",
+		"vanilla-lazyload": "^10.4.1",
 		"vue": "^2.5.9",
 		"vue-touch": "^2.0.0-beta.4",
 		"waypoints": "^4.0.1"

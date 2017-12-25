@@ -12,6 +12,10 @@ import './polyfills';
 // imports all our scss with webpack
 import './../scss/global.scss';
 
+// –– vanilla-lazyload
+// see: https://github.com/verlok/lazyload
+import LazyLoad from 'lazyload';
+
 // –– scrollmagic
 // (optional)
 // needed plugins for scrollmagic
@@ -33,6 +37,9 @@ import iniVueApp from './iniVueApp';
 // run all your global ini code for your website here ...
 window.onload = () => {
 	iniVueApp({ element: '.vue-app' });
+
+	// ini lazyloading
+	new LazyLoad();
 
 	console.log('%cPage ready', 'background: #8be09f; color: #39485e');
 };
