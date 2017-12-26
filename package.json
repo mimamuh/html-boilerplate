@@ -86,6 +86,7 @@
 	},
 	"dependencies": {
 		"babel-polyfill": "^6.23.0",
+		"custom-event-polyfill": "^0.3.0",
 		"fastdom": "^1.0.6",
 		"gsap": "^1.20.2",
 		"intersection-observer": "^0.5.0",

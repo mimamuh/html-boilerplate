@@ -39,6 +39,7 @@ window.onload = () => {
 	iniVueApp({ element: '.vue-app' });
 
 	// ini lazyloading
+	// see: https://github.com/verlok/lazyload
 	new LazyLoad();
 
 	console.log('%cPage ready', 'background: #8be09f; color: #39485e');
