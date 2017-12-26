@@ -1,7 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const critical = require('critical');
 const getPages = require('./webpack.config.pages').getPages;
+const pages = require('./webpack.config.pages').pages;
 const getFavicons = require('./webpack.config.favicons').getFavicons;
 const getCommonLoaders = require('./webpack.config.common').getCommonLoaders;
 const entry = require('./webpack.config.entry');
@@ -118,6 +120,28 @@ module.exports = {
 		}),
 
 		getFavicons(),
+
+		// do stuff after build
+		new WebpackOnBuildPlugin(() => {
+			// after build, we run through all the
+			// pages we configured in webpack.config.pages.js
+			// and run 'critical' through them so we inline
+			// the page critical css in the head section
+			// and defer the loading of the rest of our big css
+			pages.forEach(page => {
+				critical.generate({
+					base: './dist',
+					src: page.filename,
+					dest: page.filename,
+					inline: true,
+					minify: true,
+					extract: false,
+					width: 1300,
+					height: 1200,
+					ignore: ['font-face', '@font-face'],
+				});
+			});
+		}),
 	],
 };
 

@@ -68,4 +68,5 @@ function getPages(overwrites) {
 // export stuff
 module.exports = {
 	getPages,
+	pages,
 };
