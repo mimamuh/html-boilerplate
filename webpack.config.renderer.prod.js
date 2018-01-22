@@ -30,7 +30,7 @@ const scssRules = {
 					plugins() {
 						return [require('autoprefixer')];
 					},
-					sourceMap: 'inline',
+					sourceMap: true,
 				},
 			},
 			{
