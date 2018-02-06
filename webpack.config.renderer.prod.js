@@ -52,6 +52,7 @@ module.exports = {
 
 	output: {
 		path: path.resolve(__dirname, './dist'),
+		publicPath: '/',
 		filename: 'assets/js/[name]-[hash].bundle.js',
 	},
 
