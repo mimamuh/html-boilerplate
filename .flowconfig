@@ -1,7 +1,8 @@
 [ignore]
 # <PROJECT_ROOT>/node_modules/*
 <PROJECT_ROOT>/.storybook/*
-<PROJECT_ROOT>/git/.*
+<PROJECT_ROOT>/.git/.*
+<PROJECT_ROOT>/dist/.*
 
 # This package can give you a lot of flow errors, better ignore it
 .*/node_modules/fbjs/.*
