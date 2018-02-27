@@ -7,6 +7,7 @@ const pages = require('./webpack.config.pages').pages;
 const getFavicons = require('./webpack.config.favicons').getFavicons;
 const getCommonLoaders = require('./webpack.config.common').getCommonLoaders;
 const entry = require('./webpack.config.entry');
+const WebpackOnBuildPlugin = require('on-build-webpack');
 
 console.log(getCommonLoaders());
 const scssRules = {
