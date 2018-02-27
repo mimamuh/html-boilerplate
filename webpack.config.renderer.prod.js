@@ -46,7 +46,7 @@ const scssRules = {
 };
 
 module.exports = {
-	devtool: 'cheap-module-source-map',
+	devtool: 'source-map',
 
 	entry: entry.entries,
 
