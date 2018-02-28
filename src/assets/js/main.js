@@ -24,7 +24,13 @@ import iniVueApp from './iniVueApp';
 // –– inis our website
 // run all your global ini code for your website here ...
 window.onload = () => {
-	iniVueApp({ element: '.vue-app' });
+	// vue
+	const vueContainer = document.querySelector('.vue-app');
+	if (vueContainer) {
+		iniVueApp({
+			element: vueContainer,
+		});
+	}
 
 	// ini lazyloading
 	// see: https://github.com/verlok/lazyload
