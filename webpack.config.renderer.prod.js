@@ -31,15 +31,13 @@ const scssRules = {
 					plugins() {
 						return [autoprefixer];
 					},
-					sourceMap: true,
+					sourceMap: false, // NOTE: Not shure if it generates a proper sourcemap this way
 				},
 			},
 			{
 				loader: 'sass-loader',
 				options: {
-					// must be enabled as resolve-url-loader need it, see:
-					// https://github.com/bholloway/resolve-url-loader#important
-					sourceMap: true,
+					sourceMap: false, // NOTE: Not shure if it generates a proper sourcemap this way
 				},
 			},
 		],
