@@ -4,6 +4,10 @@
  */
 import './polyfills';
 
+// –– vanilla-lazyload
+// see: https://github.com/verlok/lazyload
+import LazyLoad from 'lazyload';
+
 // –– jquery
 // (optional)
 // import $ from 'jquery';
@@ -11,10 +15,6 @@ import './polyfills';
 // –– scss
 // imports all our scss with webpack
 import './../scss/global.scss';
-
-// –– vanilla-lazyload
-// see: https://github.com/verlok/lazyload
-import LazyLoad from 'lazyload';
 
 // –– vue.js
 // (optional)
@@ -28,7 +28,7 @@ window.onload = () => {
 
 	// ini lazyloading
 	// see: https://github.com/verlok/lazyload
-	new LazyLoad();
+	const lazyLoad = new LazyLoad();
 
 	console.log('%cPage ready', 'background: #8be09f; color: #39485e');
 };
