@@ -21,7 +21,7 @@ const defaultConfig = {
 	googleAnalytics: null,
 };
 
-/** CONFIG YOUR HTML PAGES HERE **/
+/* CONFIGURE YOUR HTML PAGES HERE */
 // Add all pages you wanna build here to the array.
 // We use the HTMLWebpackPlugin to extract. You could
 // use either html files or handlebars files (.hbs).

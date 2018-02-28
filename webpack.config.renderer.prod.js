@@ -2,14 +2,14 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const critical = require('critical');
-const getPages = require('./webpack.config.pages').getPages;
-const pages = require('./webpack.config.pages').pages;
-const getFavicons = require('./webpack.config.favicons').getFavicons;
-const getCommonLoaders = require('./webpack.config.common').getCommonLoaders;
+const { getPages } = require('./webpack.config.pages');
+const { pages } = require('./webpack.config.pages');
+const { getFavicons } = require('./webpack.config.favicons');
+const { getCommonLoaders } = require('./webpack.config.common');
 const entry = require('./webpack.config.entry');
 const WebpackOnBuildPlugin = require('on-build-webpack');
+const autoprefixer = require('autoprefixer');
 
-console.log(getCommonLoaders());
 const scssRules = {
 	// scss loader - uses postcss and autoprefixer
 	test: /\.(scss|css)$/,
@@ -29,7 +29,7 @@ const scssRules = {
 				loader: 'postcss-loader',
 				options: {
 					plugins() {
-						return [require('autoprefixer')];
+						return [autoprefixer];
 					},
 					sourceMap: true,
 				},

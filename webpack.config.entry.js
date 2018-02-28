@@ -15,7 +15,7 @@ const entries = {
 // which entry chunks should not be included
 // within the commons.js bundle ...
 // Normally only head should be there ...
-var excludedFromCommons = ['head'];
+const excludedFromCommons = ['head'];
 
 // helper function which exludes values from an array
 function excludeFromArray(array, excludeList) {
@@ -24,9 +24,9 @@ function excludeFromArray(array, excludeList) {
 
 // our webpack commons chunk plugin to bundle
 // commonly used dependencies/chunks within commons.js
-var commonsChunkPlugin = new webpack.optimize.CommonsChunkPlugin({
+const commonsChunkPlugin = new webpack.optimize.CommonsChunkPlugin({
 	name: 'commons',
-	filename: '/assets/js/[name]-[hash].bundle.js',
+	filename: 'assets/js/[name]-[hash].bundle.js',
 	// The minimum number of chunks which need to contain a
 	// module before it's moved into the commons chunk.
 	minChunks: 2,

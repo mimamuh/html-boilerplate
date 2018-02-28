@@ -2,7 +2,7 @@
 
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
-/** CONFIG YOUR FAVICON HERE **/
+/* CONFIGURE YOUR FAVICON HERE */
 // see more: https://github.com/jantimon/favicons-webpack-plugin
 const faviconConfig = {
 	// Your source logo

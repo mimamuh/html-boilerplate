@@ -2,11 +2,11 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-	.BundleAnalyzerPlugin;
-const getPages = require('./webpack.config.pages').getPages;
-const getCommonLoaders = require('./webpack.config.common').getCommonLoaders;
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const { getPages } = require('./webpack.config.pages');
+const { getCommonLoaders } = require('./webpack.config.common');
 const entry = require('./webpack.config.entry');
+const autoprefixer = require('autoprefixer');
 
 const scssRules = {
 	// scss loader - uses postcss and autoprefixer
@@ -18,7 +18,7 @@ const scssRules = {
 			{
 				loader: 'postcss-loader',
 				options: {
-					plugins: () => [require('autoprefixer')],
+					plugins: () => [autoprefixer],
 				},
 			},
 			'sass-loader',
