@@ -10,25 +10,28 @@
 		"gulp-styles": "gulp inject-scss",
 		"gulp-stories": "gulp create-stories",
 		"gulp-jsx": "gulp create-jsx --filename ",
-		"dev": "webpack-dev-server --config ./webpack.config.renderer.dev.js --watch",
-		"build": "webpack --config ./webpack.config.renderer.prod.js --env.production",
+		"dev":
+			"webpack-dev-server --config ./webpack.config.renderer.dev.js --watch",
+		"build":
+			"webpack --config ./webpack.config.renderer.prod.js --env.production",
 		"test": "jest",
 		"analyze-bundlesize": "webpack --json | webpack-bundle-size-analyzer",
 		"storybook": "start-storybook -p 9001",
 		"storybook-build": "build-storybook",
-		"lint": "eslint --cache --format=node_modules/eslint-formatter-pretty .",
+		"lint":
+			"eslint --cache --format=node_modules/eslint-formatter-pretty .",
 		"lint-fix": "npm run lint -- --fix",
 		"lint-styles": "stylelint app/*.css app/components/*.css --syntax scss",
 		"lint-styles-fix": "stylefmt -r app/*.css app/components/*.css",
 		"flow": "flow check",
-		"flow-typed": "rimraf flow-typed/npm && flow-typed install --overwrite || true"
+		"flow-typed":
+			"rimraf flow-typed/npm && flow-typed install --overwrite || true"
 	},
-	"keywords": [
-		"squares-and-brackets"
-	],
+	"keywords": ["squares-and-brackets"],
 	"devDependencies": {
 		"@storybook/addon-backgrounds": "^3.3.14",
 		"@storybook/addon-knobs": "^3.3.14",
+		"@storybook/addons": "^3.3.14",
 		"@storybook/react": "^3.3.14",
 		"autoprefixer": "^8.0.0",
 		"babel-core": "^6.26.0",
@@ -69,6 +72,7 @@
 		"gulp-inject": "^4.3.1",
 		"gulp-rename": "^1.2.2",
 		"gulp-tap": "^1.0.1",
+		"gulp-util": "^3.0.8",
 		"html-loader": "^0.5.5",
 		"html-webpack-plugin": "^2.29.0",
 		"imports-loader": "^0.8.0",
