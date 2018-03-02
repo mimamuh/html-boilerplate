@@ -26,6 +26,7 @@ module.exports = {
 		'promise',
 		'compat',
 		'react',
+		'jest',
 		'jsx-a11y',
 	],
 	settings: {
