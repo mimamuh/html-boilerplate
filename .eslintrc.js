@@ -26,6 +26,7 @@ module.exports = {
 		'promise',
 		'compat',
 		'react',
+		'jsx-a11y',
 	],
 	settings: {
 		'import/resolver': {
