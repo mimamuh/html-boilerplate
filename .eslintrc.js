@@ -12,8 +12,12 @@ module.exports = {
 		sourceType: 'module',
 	},
 	extends: [
-		// 'eslint:recommended',
+		'eslint:recommended',
 		'plugin:react/recommended',
+		'plugin:jest/recommended',
+		'plugin:jsx-a11y/recommended',
+		'plugin:import/warnings',
+		'plugin:import/errors',
 		'airbnb',
 		'prettier',
 		'prettier/flowtype',
