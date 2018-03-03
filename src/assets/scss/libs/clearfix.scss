@@ -4,7 +4,6 @@
 // @Last modified by:   mBook
 // @Last modified time: 2016-10-15T15:05:42+02:00
 
-
 // Clearfix
 //
 // For modern browsers
@@ -18,14 +17,13 @@
 // Source: http://nicolasgallagher.com/micro-clearfix-hack/
 
 @mixin clearfix {
+	&::before,
+	&::after {
+		content: ' '; // 1
+		display: table; // 2
+	}
 
-    &::before,
-    &::after {
-        content: " "; // 1
-        display: table; // 2
-    }
-
-    &::after {
-        clear: both;
-    }
+	&::after {
+		clear: both;
+	}
 }

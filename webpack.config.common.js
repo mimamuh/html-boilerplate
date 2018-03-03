@@ -1,9 +1,5 @@
 const path = require('path');
-const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
-// good tutorial: http://www.pro-react.com/materials/appendixA/
-const getPages = require('./webpack.config.pages').getPages;
 
 const pixijsRules = {
 	// passes loaders to pixi-particles

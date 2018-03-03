@@ -11,32 +11,31 @@ Vue.use(VueTouch);
 Vue.component('my-component', MyComponent);
 
 /*
-    –– iniVueApp()
+  –– iniVueApp()
 
-    call this function to ini your vue-app on your html-page
-    This function reads the global window.appData var
-    and uses it as default data values. This way you can pass
-    down data to your components by setting appData
+  call this function to ini your vue-app on your html-page
+  This function reads the global window.appData var
+  and uses it as default data values. This way you can pass
+  down data to your components by setting appData
 
-    for example with a simple script tag withing your html file
-    like so:
+  for example with a simple script tag withing your html file
+  like so:
 
-    <script type="text/javascript">
-        var myData = { example: 'text' };
+  <script type="text/javascript">
+    var myData = { example: 'text' };
 
-        // merge data to global appData scope which our iniVueApp() uses later ...
-        window.appData = Object.assign({}, window.appData || {}, {
-            myData: myData,
-        });
-    </script>
+    // merge data to global appData scope which our iniVueApp() uses later ...
+    window.appData = Object.assign({}, window.appData || {}, {
+      myData: myData,
+    });
+  </script>
 
+  And in our html file we can pass down this data to a
+  component like so:
 
-    And in our html file we can pass down this data to a
-    component like so:
-
-    <my-component
-        :data="myData"
-    ></my-component>
+  <my-component
+    :data="myData"
+  ></my-component>
 */
 function iniVueApp({ element }: { element: string | HTMLElement }) {
 	const app = new Vue({

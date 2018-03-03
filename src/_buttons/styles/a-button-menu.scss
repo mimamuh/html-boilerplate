@@ -1,18 +1,13 @@
-
-
 .a-button-menu {
+	&:hover {
+	}
 
-    &:hover {
+	&:active {
+	}
 
-    }
-
-    &:active {
-
-    }
-
-    // option-blue
-    &.option-white {
-        background-color: #fff;
-        color: #ccc;
-    }
+	// option-blue
+	&.option-white {
+		background-color: #fff;
+		color: #ccc;
+	}
 }

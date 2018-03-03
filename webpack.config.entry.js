@@ -1,4 +1,5 @@
 'use strict';
+
 const webpack = require('webpack');
 
 // export entries

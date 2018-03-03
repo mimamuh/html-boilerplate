@@ -4,14 +4,14 @@
 import React from 'react';
 import { storiesOf, action } from '@storybook/react'; // eslint-disable-line no-unused-vars
 import {
-    text,
-    boolean,
-    number,
-    color,
-    object,
-    array,
-    select,
-    date,
+	text,
+	boolean,
+	number,
+	color,
+	object,
+	array,
+	select,
+	date,
 } from '@storybook/addon-knobs'; // eslint-disable-line no-unused-vars
 
 // testing
@@ -25,9 +25,7 @@ import HtmlToStory from './../../../.storybook/HtmlToStory';
 import htmlTemplate from './../ATextParagraph.html';
 /* endinject */
 
-storiesOf(/* inject:filename */'ATextParagraph'/* endinject */, module)
-    .add('default', () => (
-        <HtmlToStory
-            htmlTemplate={htmlTemplate}
-        />
-    ));
+storiesOf(/* inject:filename */ 'ATextParagraph' /* endinject */, module).add(
+	'default',
+	() => <HtmlToStory htmlTemplate={htmlTemplate} />
+);

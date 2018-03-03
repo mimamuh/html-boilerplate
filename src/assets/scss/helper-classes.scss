@@ -7,7 +7,7 @@
  */
 
 .hidden {
-    display: none !important;
+	display: none !important;
 }
 
 /*
@@ -16,14 +16,14 @@
  */
 
 .visuallyhidden {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
 }
 
 /*
@@ -34,12 +34,12 @@
 
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
-    clip: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    position: static;
-    width: auto;
+	clip: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	position: static;
+	width: auto;
 }
 
 /*
@@ -47,98 +47,98 @@
  */
 
 .invisible {
-    visibility: hidden;
+	visibility: hidden;
 }
 
 /*
  * helper to change display values based on breakpoints
  */
 .none {
-    display: none;
+	display: none;
 }
 .auto {
-    display: auto;
+	display: auto;
 }
 .block {
-    display: block;
+	display: block;
 }
 .inline-block {
-    display: inline-block;
+	display: inline-block;
 }
 .inline {
-    display: inline;
+	display: inline;
 }
 
 @include mq(mobile) {
-    .none-m {
-        display: none;
-    }
-    .auto-m {
-        display: auto;
-    }
-    .block-m {
-        display: block;
-    }
-    .inline-block-m {
-        display: inline-block;
-    }
-    .inline-m {
-        display: inline;
-    }
+	.none-m {
+		display: none;
+	}
+	.auto-m {
+		display: auto;
+	}
+	.block-m {
+		display: block;
+	}
+	.inline-block-m {
+		display: inline-block;
+	}
+	.inline-m {
+		display: inline;
+	}
 }
 
 @include mq(tablet) {
-    .none-t {
-        display: none;
-    }
-    .auto-t {
-        display: auto;
-    }
-    .block-t {
-        display: block;
-    }
-    .inline-block-t {
-        display: inline-block;
-    }
-    .inline-t {
-        display: inline;
-    }
+	.none-t {
+		display: none;
+	}
+	.auto-t {
+		display: auto;
+	}
+	.block-t {
+		display: block;
+	}
+	.inline-block-t {
+		display: inline-block;
+	}
+	.inline-t {
+		display: inline;
+	}
 }
 
 @include mq(desktop) {
-    .none-d {
-        display: none;
-    }
-    .auto-d {
-        display: auto;
-    }
-    .block-d {
-        display: block;
-    }
-    .inline-block-d {
-        display: inline-block;
-    }
-    .inline-d {
-        display: inline;
-    }
+	.none-d {
+		display: none;
+	}
+	.auto-d {
+		display: auto;
+	}
+	.block-d {
+		display: block;
+	}
+	.inline-block-d {
+		display: inline-block;
+	}
+	.inline-d {
+		display: inline;
+	}
 }
 
 @include mq(wide) {
-    .none-w {
-        display: none;
-    }
-    .auto-w {
-        display: auto;
-    }
-    .block-w {
-        display: block;
-    }
-    .inline-block-w {
-        display: inline-block;
-    }
-    .inline-w {
-        display: inline;
-    }
+	.none-w {
+		display: none;
+	}
+	.auto-w {
+		display: auto;
+	}
+	.block-w {
+		display: block;
+	}
+	.inline-block-w {
+		display: inline-block;
+	}
+	.inline-w {
+		display: inline;
+	}
 }
 
 /*
@@ -155,10 +155,10 @@
 
 .clearfix:before,
 .clearfix:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
+	content: ' '; /* 1 */
+	display: table; /* 2 */
 }
 
 .clearfix:after {
-    clear: both;
+	clear: both;
 }

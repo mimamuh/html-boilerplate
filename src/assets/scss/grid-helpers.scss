@@ -11,22 +11,22 @@
 // width for fluid, full width layouts.
 
 .box-double {
-    @include box-double;
+	@include box-double;
 }
 
 .box {
-    @include box;
+	@include box;
 }
 
 // Row
 //
 // Rows contain and clear the floats of your columns.
 .row-double {
-    @include row-double;
+	@include row-double;
 }
 
 .row {
-    @include row;
+	@include row;
 }
 
 // Columns

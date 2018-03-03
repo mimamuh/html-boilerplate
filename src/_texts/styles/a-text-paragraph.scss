@@ -1,14 +1,14 @@
 .a-text-paragraph {
-    font-family: $ff-first;
-    font-weight: $fw-regular;
-    font-size: $fs-text;
-    color: $fc-normal;
+	font-family: $ff-first;
+	font-weight: $fw-regular;
+	font-size: $fs-text;
+	color: $fc-normal;
 
-    &.option-white {
-        color: #fff;
-    }
+	&.option-white {
+		color: #fff;
+	}
 
-    &.option-semibold {
-        font-weight: $fw-semibold;
-    }
+	&.option-semibold {
+		font-weight: $fw-semibold;
+	}
 }
