@@ -48,6 +48,8 @@ const htmlRules = {
 				// if it interploates ES6 string syntax in our
 				// html like ${require('./example.html')}
 				interpolate: true,
+				// if we should minimize loaded html
+				minimize: false,
 			},
 		},
 	],
