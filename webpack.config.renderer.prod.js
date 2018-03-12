@@ -128,11 +128,20 @@ module.exports = {
 			// and run 'critical' through them so we inline
 			// the page critical css in the head section
 			// and defer the loading of the rest of our big css
+
+			// NOTE: set it to true, if you wanna have the cirtical
+			// css inlined in your html file. This also the cssLoader
+			// JavaScript. When you set it to false, will create files
+			// for each critial css by extending the filename with .css.
+			const inlineCriticalCss = true;
+
 			pages.forEach(page => {
 				critical.generate({
 					base: './dist',
 					src: page.filename,
-					dest: page.filename,
+					dest: inlineCriticalCss
+						? page.filename
+						: `./critical/${page.filename}.css`,
 					inline: true,
 					minify: true,
 					extract: false,
