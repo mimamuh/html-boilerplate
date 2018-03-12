@@ -142,7 +142,7 @@ module.exports = {
 					dest: inlineCriticalCss
 						? page.filename
 						: `./critical/${page.filename}.css`,
-					inline: true,
+					inline: inlineCriticalCss,
 					minify: true,
 					extract: false,
 					width: 1300,
