@@ -8,6 +8,7 @@ const { getFavicons } = require('./webpack.config.favicons');
 const { getCommonLoaders } = require('./webpack.config.common');
 const entry = require('./webpack.config.entry');
 const WebpackOnBuildPlugin = require('on-build-webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
 const scssRules = {
@@ -72,6 +73,8 @@ module.exports = {
 	},
 
 	plugins: [
+		getFavicons(),
+
 		...entry.plugins,
 
 		...getPages({
@@ -119,7 +122,25 @@ module.exports = {
 			minimize: true,
 		}),
 
-		getFavicons(),
+		// stuff we wanna cleanup from our dist folder
+		// before we run a new build
+		new CleanWebpackPlugin(
+			[
+				'dist/assets/js/*.js',
+				'dist/assets/js/*.js.map',
+				'dist/critical/*.css',
+				'dist/critical/*.css.map',
+				'dist/*.css',
+				'dist/*.css.map',
+			],
+			{
+				// Write logs to console.
+				verbose: true,
+				// Use boolean "true" to test/emulate delete.
+				// Default: false - remove files
+				dry: false,
+			}
+		),
 
 		// do stuff after build
 		new WebpackOnBuildPlugin(() => {
