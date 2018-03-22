@@ -25,12 +25,12 @@ import iniVueApp from './iniVueApp';
 // run all your global ini code for your website here ...
 window.onload = () => {
 	// vue
-	const vueContainer = document.querySelector('.vue-app');
-	if (vueContainer) {
+	const vueContainers = document.querySelectorAll('.vue-app');
+	vueContainers.forEach(element => {
 		iniVueApp({
-			element: vueContainer,
+			element,
 		});
-	}
+	});
 
 	// ini lazyloading
 	// see: https://github.com/verlok/lazyload
