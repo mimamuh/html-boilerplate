@@ -166,8 +166,8 @@ module.exports = {
 					inline: inlineCriticalCss,
 					minify: true,
 					extract: false,
-					width: 1300,
-					height: 1200,
+					width: 1600,
+					height: 1600,
 					ignore: ['font-face', '@font-face'],
 				});
 			});
