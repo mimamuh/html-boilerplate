@@ -1,26 +1,25 @@
 # html-boilerplate
-Our html boilerplate based on HTMLBoilerplate, Webpack and React Storybook
+Our html boilerplate based on [HTML5Boilerplate](https://html5boilerplate.com/), [Webpack](https://webpack.js.org/) and [React Storybook](https://storybook.js.org/)
 
 **What is it good for?**
 <br>This boilerplate will not magically build your websites on its own. But it comes with some pre configurations for webpack and gives you an easy life when you want to view your code and snippets whily coding them.
 
-<img align="center" alt="" src="https://media.giphy.com/media/hY3a4jYfZBQVq/giphy.gif" />
-<p style="" >source: <a href="https://media.giphy.com/media/hY3a4jYfZBQVq/giphy.gif">giphy</a></p>
-
 # Dependencies
-Make sure you have node installed otherwise it won't work ;-). As a packagemanager we use yarn. To add a new package use yarn add < packagename >.For more information see <a href="https://yarnpkg.com/lang/en/">yarn.com</a>.
-<br><br> **OS-limitation:** This Boilerplate only works for unix-based systems. That means only Mac OS, Linux Systems, etc. can use it. This is related to Microsoft and its usage of the backslash in their filesystem. Maybe there will be a future update to solve this issue.
+Make sure you have [node.js](https://nodejs.org/en/download/). As package manager we use [yarn.](https://yarnpkg.com/lang/en/). To add a new package run `yarn add <packagename>`.
+
+
+**OS-limitation:** This Boilerplate only works on unix-based systems. That means only Mac OS, Linux Systems, etc. can use it. This is related to Microsoft and its usage of the backslash in their filesystem. Maybe there will be a future update to solve this issue.
 
 # How To Start?
-You can simply start, by cloning this repository and rename the folder to your projectname. 
+You can simply start by cloning this repository and rename the folder to your projectname. 
 
 ## Important npm scripts
 This are the most important npm script to start the dev environments, storybook, automate boring tasks and build the project:
-* `gulp-styles`: Inject all scss files which are within a `styles` folder automatically in `src/assets/scss/main.scss`
-* `gulp-stories`: Automatically create story files for all html files (components)
-* `dev`: Starts the webpack dev server to test all pages configured in `webpack.config.pages.js`
-* `build`: Build the project code based on the `webpack.config.renderer.prod.js`
-* `storybook`: Run storybook to view the html components which have stories in the browser.
+* `npm run gulp-styles`: Inject all scss files which are within a `styles` folder automatically in `src/assets/scss/global.scss`
+* `npm run gulp-stories`: Automatically create [stories](https://storybook.js.org/basics/writing-stories/#docs-content) for all files ending with `*.html`  within `/src`
+* `npm run dev`: Starts the webpack dev server to test pages configured in `webpack.config.pages.js`
+* `npm run build`: Build the project based on the `webpack.config.renderer.prod.js` and output it to `/dist`.
+* `npm run storybook`: Run storybook. You could open it in your browser with [http://localhost:9001/](http://localhost:9001/)
 
 
 ## Atomic Design principle
