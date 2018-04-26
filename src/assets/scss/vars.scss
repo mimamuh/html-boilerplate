@@ -14,12 +14,9 @@ $z-example: 200;
 //
 
 //** font families
-$ff-proxima: 'proxima-nova', helvetica, arial, sans-serif;
-$ff-lexia: 'lexia', 'Times New Roman', serif;
-
-//** font families for whom
-$ff-first: $ff-proxima;
-$ff-second: $ff-lexia;
+$ff-first: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
+	Helvetica, Arial, sans-serif;
+$ff-second: 'Times New Roman', serif;
 
 //** font-sizes
 $fs-normal: em(16);
