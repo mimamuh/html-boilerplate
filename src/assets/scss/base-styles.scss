@@ -137,3 +137,10 @@ h6 {
 p {
 	margin: 0;
 }
+
+// needed for setting width and height attributes
+// and still properly scale like on default
+img {
+	height: auto;
+	width: auto;
+}
