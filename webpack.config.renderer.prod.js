@@ -95,7 +95,7 @@ module.exports = {
 		}),
 
 		new ExtractTextPlugin({
-			filename: 'main.css',
+			filename: 'main-[hash].css',
 			disable: false,
 			allChunks: true,
 		}),
