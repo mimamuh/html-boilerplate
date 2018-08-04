@@ -26,7 +26,7 @@ const scssRules = {
 	}),
 };
 
-module.exports = {
+module.exports = env => ({
 	devtool: 'eval-source-map',
 
 	entry: entry.entries,
@@ -172,6 +172,6 @@ module.exports = {
 				'X-Requested-With, content-type, Authorization',
 		},
 	},
-};
+});
 
 console.log('-> run webpack dev');

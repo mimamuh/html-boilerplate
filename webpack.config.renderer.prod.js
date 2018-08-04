@@ -45,7 +45,7 @@ const scssRules = {
 	}),
 };
 
-module.exports = {
+module.exports = env => ({
 	devtool: 'source-map',
 
 	entry: entry.entries,
@@ -173,6 +173,6 @@ module.exports = {
 			});
 		}),
 	],
-};
+});
 
 console.log('-> run webpack prod');
