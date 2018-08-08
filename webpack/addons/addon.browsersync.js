@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-const commonPaths = require('./../common-paths');
+const commonPaths = require('./../commonPaths');
 
 // eslint-disable-next-line no-unused-vars
 module.exports = (env, argv) => ({

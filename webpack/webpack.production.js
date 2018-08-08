@@ -1,4 +1,4 @@
-const config = {
+module.exports = {
 	resolve: {
 		// TODO: Make it part of the common config
 		alias: {
@@ -7,5 +7,3 @@ const config = {
 		},
 	},
 };
-
-module.exports = config;

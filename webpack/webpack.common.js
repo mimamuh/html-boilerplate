@@ -1,23 +1,26 @@
 /* eslint-disable import/no-extraneous-dependencies, import/no-dynamic-require, global-require */
-const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const { getPages } = require('./webpack.config.pages');
-const { getCommonLoaders } = require('./webpack.config.common');
-const entry = require('./webpack.config.entry');
-const autoprefixer = require('autoprefixer');
-const commonPaths = require('./common-paths');
+const commonPaths = require('./commonPaths');
+const constants = require('./constants');
+const requireFileByPath = require('./utils/requireFileByPath');
 
-module.exports = env => ({
-	entry: entry.entries,
+module.exports = (env, argv) => {
+	// required config.entries.js file
+	const entries = requireFileByPath(
+		commonPaths.configsFilesDir,
+		constants.entriesConfig,
+		true
+	);
 
-	output: {
-		path: commonPaths.outputPath, // path.join(__dirname, '/'),
-		publicPath: '/',
-		filename: 'assets/js/[name]-[hash].bundle.js',
-	},
+	return {
+		entry: entries,
 
-	plugins: [new webpack.ProgressPlugin()],
-});
+		output: {
+			path: commonPaths.outputPath,
+			publicPath: '/',
+			filename: 'assets/js/[name]-[hash].bundle.js',
+		},
+
+		plugins: [new webpack.ProgressPlugin()],
+	};
+};

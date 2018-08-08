@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies, import/no-dynamic-require, global-require */
-const commonPaths = require('./common-paths');
+const commonPaths = require('./commonPaths');
 
-const config = {
+module.exports = {
 	devtool: 'eval-source-map',
 
 	resolve: {
@@ -40,5 +40,3 @@ const config = {
 		},
 	},
 };
-
-module.exports = config;

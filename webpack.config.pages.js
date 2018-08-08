@@ -1,10 +1,8 @@
-'use strict';
-
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 // based on HTMLWebpackPlugin
 const defaultConfig = {
-	// // if the html files should be minified
+	// if the html files should be minified
 	// minify: false,
 	// where to inject the bundle files.
 	// One of true | 'head' | 'body' | false
@@ -66,7 +64,36 @@ function getPages(overwrites) {
 }
 
 // export stuff
-module.exports = {
-	getPages,
-	pages,
-};
+// module.exports = {
+// 	getPages,
+// 	pages,
+// };
+
+/* CONFIGURE YOUR HTML PAGES HERE */
+// Add all pages you wanna build here to the array.
+// We use the HTMLWebpackPlugin to extract. You could
+// use either html files or handlebars files (.hbs).
+exports.module = [
+	// index.html
+	{
+		// path of the html template in src
+		template: './src/pages/toc.page',
+		// filename after build
+		filename: 'index.html',
+		// page title
+		title: 'TOC',
+		// description text for search engines – max 160 chars!
+		description: '…',
+	},
+	// 404.html
+	{
+		// path of the html template in src
+		template: './src/pages/404.page',
+		// filename after build
+		filename: '404.html',
+		// page title
+		title: '404',
+		// description text for search engines – max 160 chars!
+		description: '…',
+	},
+];

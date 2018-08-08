@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const commonPaths = require('./../common-paths');
+const commonPaths = require('./../commonPaths');
 
 /**
  * Webpack rules to load image assets

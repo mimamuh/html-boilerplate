@@ -43,7 +43,7 @@ module.exports = {
 	rules: {
 		'no-bitwise': ['error', { allow: ['~'] }],
 		'no-plusplus': 0,
-		quotes: ['error', 'single'],
+		quotes: ['error', 'single', { avoidEscape: true }],
 		semi: ['error', 'always'],
 
 		// compat plugin
