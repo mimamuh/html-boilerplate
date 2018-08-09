@@ -51,20 +51,6 @@
     <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
     <% } %>
 
-    <% if (htmlWebpackPlugin.options.googleAnalytics) { %>
-    <script type="text/javascript">
-      window.GoogleAnalyticsObject='ga';window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
-      <% if (htmlWebpackPlugin.options.googleAnalytics.trackingId) { %>
-      ga('create','<%= htmlWebpackPlugin.options.googleAnalytics.trackingId %>','auto');
-      <% } %>
-      <% if (htmlWebpackPlugin.options.googleAnalytics.pageViewOnLoad) { %>
-      ga('send','pageview');
-      <% } %>
-      <% if (htmlWebpackPlugin.options.googleAnalytics.anonymizeIp) { %>
-      ga('set', 'anonymizeIp', <%= htmlWebpackPlugin.options.googleAnalytics.anonymizeIp %>);
-      <% } %>
-    </script>
-    <script async defer src="https://www.google-analytics.com/analytics.js" type="text/javascript"></script>
     <% } %>
   </body>
 </html>

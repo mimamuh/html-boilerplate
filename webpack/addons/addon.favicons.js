@@ -1,6 +1,6 @@
-/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import/no-extraneous-dependencies, consistent-return */
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
-const requireFileByPath = require('./../utils/requireFileByPath');
+const requireFileByPath = require('./../utils/requireFileByPath').default;
 const constants = require('./../constants');
 const commonPaths = require('./../commonPaths');
 
@@ -14,8 +14,9 @@ const commonPaths = require('./../commonPaths');
 module.exports = (env, argv) => {
 	if (!env.production) {
 		console.warn(
-			'WARNING: Addon addon.critical.js only works in production mode!'
+			'WARNING: Addon addon.favicons.js only works in production mode!'
 		);
+		return;
 	}
 
 	// required config.favicons.js file

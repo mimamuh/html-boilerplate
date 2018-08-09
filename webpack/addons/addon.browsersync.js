@@ -1,9 +1,16 @@
-/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import/no-extraneous-dependencies, consistent-return */
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const commonPaths = require('./../commonPaths');
 
 // eslint-disable-next-line no-unused-vars
 module.exports = (env, argv) => ({
+	if (!env.development) {
+		console.warn(
+			'WARNING: Addon addon.critical.js only works in development mode!'
+		);
+		return;
+	}
+
 	plugins: [
 		new BrowserSyncPlugin(
 			{

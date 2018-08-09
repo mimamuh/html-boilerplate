@@ -1,7 +1,7 @@
-/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import/no-extraneous-dependencies, consistent-return */
 const WebpackOnBuildPlugin = require('on-build-webpack');
 const critical = require('critical');
-const requireFileByPath = require('./../utils/requireFileByPath');
+const requireFileByPath = require('./../utils/requireFileByPath').default;
 const constants = require('./../constants');
 const commonPaths = require('./../commonPaths');
 
@@ -17,6 +17,7 @@ module.exports = (env, argv) => {
 		console.warn(
 			'WARNING: Addon addon.critical.js only works in production mode!'
 		);
+		return;
 	}
 
 	// required pages.config.js file

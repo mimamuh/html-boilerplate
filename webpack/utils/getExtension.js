@@ -7,7 +7,7 @@ const getAddons = (env = {}, argv = {}) => {
 		.filter(Boolean); // if addons is undefined, filter it out
 
 	return addons.map(addonName => {
-		const addon = require(`./webpack/addons/addon.${addonName}.js`);
+		const addon = require(`./../addons/addon.${addonName}.js`);
 		// execute module function with webpack env and argv context
 		if (typeof addon === 'function') {
 			return addon(env, argv);
@@ -23,7 +23,7 @@ const getRules = (env = {}, argv = {}) => {
 		.filter(Boolean); // if rules is undefined, filter it out
 
 	return rules.map(ruleName => {
-		const rule = require(`./webpack/rules/rule.${ruleName}.js`);
+		const rule = require(`./../rules/rule.${ruleName}.js`);
 		// execute module function with webpack env and argv context
 		if (typeof rule === 'function') {
 			return rule(env, argv);
@@ -39,7 +39,7 @@ const getVendors = (env = {}, argv = {}) => {
 		.filter(Boolean); // if vendors is undefined, filter it out
 
 	return vendors.map(vendorName => {
-		const vendor = require(`./webpack/vendors/vendor.${vendorName}.js`);
+		const vendor = require(`./../vendors/vendor.${vendorName}.js`);
 		// execute module function with webpack env and argv context
 		if (typeof vendor === 'function') {
 			return vendor(env, argv);
@@ -48,7 +48,7 @@ const getVendors = (env = {}, argv = {}) => {
 	});
 };
 
-module.export = {
+module.exports = {
 	getAddons,
 	getRules,
 	getVendors,

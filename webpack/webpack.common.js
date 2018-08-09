@@ -4,6 +4,7 @@ const commonPaths = require('./commonPaths');
 const constants = require('./constants');
 const requireFileByPath = require('./utils/requireFileByPath');
 
+// eslint-disable-next-line no-unused-vars
 module.exports = (env, argv) => {
 	// required config.entries.js file
 	const entries = requireFileByPath(
@@ -22,5 +23,11 @@ module.exports = (env, argv) => {
 		},
 
 		plugins: [new webpack.ProgressPlugin()],
+
+		optimization: {
+			splitChunks: {
+				chunks: 'all',
+			},
+		},
 	};
 };

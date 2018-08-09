@@ -1,8 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies, import/no-dynamic-require, global-require */
 const commonPaths = require('./commonPaths');
 
-module.exports = {
-	devtool: 'eval-source-map',
+// eslint-disable-next-line no-unused-vars
+module.exports = (env, argv) => ({
+	devtool: 'source-map',
 
 	resolve: {
 		// TODO: Make it part of the common config
@@ -13,6 +14,8 @@ module.exports = {
 	},
 
 	devServer: {
+		// When open is enabled, the dev server will open the browser.
+		open: true,
 		// Where files get served for the dev-server
 		contentBase: './',
 		// Serve === localhost
@@ -39,4 +42,4 @@ module.exports = {
 				'X-Requested-With, content-type, Authorization',
 		},
 	},
-};
+});

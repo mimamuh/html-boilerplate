@@ -1,10 +1,15 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const requireFileByPath = require('./../utils/requireFileByPath');
+const requireFileByPath = require('./../utils/requireFileByPath').default;
 const commonPaths = require('./../commonPaths');
 const constants = require('./../constants');
 
 // eslint-disable-next-line no-unused-vars
+/**
+ * Addon to cleanup old bundle files in the dist folder.
+ * @param {Object} env
+ * @param {Object} argv
+ */
 module.exports = (env, argv) => {
 	// optional config.cleanOutput.js file
 	const cleanOutputConfig =

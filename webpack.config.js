@@ -14,12 +14,13 @@ const {
  * 											are passed to it
  */
 module.exports = (env, argv) => {
-	console.log(env, argv);
+	console.log('env: ', argv);
+	console.log('argv: ', argv);
 
 	const envConfig = require(`./webpack/webpack.${argv.mode}.js`);
 	const mergedConfig = webpackMerge(
-		commonConfig,
-		envConfig,
+		commonConfig(env, argv),
+		envConfig(env, argv),
 		...getAddons(env, argv),
 		...getRules(env, argv),
 		...getVendors(env, argv)
@@ -40,7 +41,7 @@ module.exports = (env, argv) => {
 		- DONE: and WebpackOnBuildPlugin
 		- DONE: FavocionPlugin stuff ... :)
 	- we still need the 
-		- getPages config setup, where we load html files as entry
+		- DONE: getPages config setup, where we load html files as entry
 		- find a solution for CommonWebpackPlugin stuff
 		- 
 */

@@ -4,37 +4,37 @@
  */
 import './polyfills';
 
-// –– vanilla-lazyload
-// see: https://github.com/verlok/lazyload
-import LazyLoad from 'lazyload';
+// // –– vanilla-lazyload
+// // see: https://github.com/verlok/lazyload
+// import LazyLoad from 'lazyload';
 
-// –– jquery
-// (optional)
-// import $ from 'jquery';
+// // –– jquery
+// // (optional)
+// // import $ from 'jquery';
 
-// –– scss
-// imports all our scss with webpack
-import './../scss/global.scss';
+// // –– scss
+// // imports all our scss with webpack
+// import './../scss/global.scss';
 
-// –– vue.js
-// (optional)
-// inis our vue app
-import iniVueApp from './iniVueApp';
+// // –– vue.js
+// // (optional)
+// // inis our vue app
+// import iniVueApp from './iniVueApp';
 
-// –– inis our website
-// run all your global ini code for your website here ...
-window.onload = () => {
-	// vue
-	const vueContainers = document.querySelectorAll('.vue-app');
-	vueContainers.forEach(element => {
-		iniVueApp({
-			element,
-		});
-	});
+// // –– inis our website
+// // run all your global ini code for your website here ...
+// window.onload = () => {
+// 	// vue
+// 	const vueContainers = document.querySelectorAll('.vue-app');
+// 	vueContainers.forEach(element => {
+// 		iniVueApp({
+// 			element,
+// 		});
+// 	});
 
-	// ini lazyloading
-	// see: https://github.com/verlok/lazyload
-	const lazyLoad = new LazyLoad();
+// 	// ini lazyloading
+// 	// see: https://github.com/verlok/lazyload
+// 	const lazyLoad = new LazyLoad();
 
-	console.log('%cPage ready', 'background: #8be09f; color: #39485e');
-};
+// 	console.log('%cPage ready', 'background: #8be09f; color: #39485e');
+// };

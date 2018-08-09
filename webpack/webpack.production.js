@@ -1,4 +1,5 @@
-module.exports = {
+// eslint-disable-next-line no-unused-vars
+module.exports = (env, argv) => ({
 	resolve: {
 		// TODO: Make it part of the common config
 		alias: {
@@ -6,4 +7,4 @@ module.exports = {
 			lazyload: 'vanilla-lazyload/dist/lazyload.min.js',
 		},
 	},
-};
+});
