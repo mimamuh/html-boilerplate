@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies, consistent-return */
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const commonPaths = require('./../commonPaths');
+const constants = require('./../constants');
 
 // eslint-disable-next-line no-unused-vars
 module.exports = (env, argv) => {
@@ -25,7 +26,7 @@ module.exports = (env, argv) => {
 						commonPaths.devServer.https ? 'https' : 'http'
 					}://${commonPaths.devServer.host}:${
 						commonPaths.devServer.port
-					}/`,
+					}/${constants.tocPath}`,
 				},
 				// plugin options
 				{

@@ -4,4 +4,6 @@ module.exports = {
 	criticalConfig: 'config.critical.js',
 	cleanOutputConfig: 'config.cleanOutput.js',
 	faviconsConfig: 'config.favicons.js',
+	// Path of the table of content page in development
+	tocPath: '__path__.html',
 };

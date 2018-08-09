@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 const requireFileByPath = require('./../utils/requireFileByPath');
 const commonPaths = require('./../commonPaths');
 const constants = require('./../constants');
@@ -23,7 +24,7 @@ module.exports = (env, argv) => {
 		commonPaths.devServer.host
 	}:${commonPaths.devServer.port}/`;
 
-	// based on HTMLWebpackPlugin
+	// default page config based on HTMLWebpackPlugin
 	const defaultConfig = {
 		// where to inject the bundle files.
 		// One of true | 'head' | 'body' | false
@@ -36,13 +37,35 @@ module.exports = (env, argv) => {
 		// insert the webpack-dev-server hot reload script
 		// at this host:port/path; e.g., http://localhost:3000.
 		devServer: devServerUrl,
-		// Track usage of your site via Google Analytics.
-		googleAnalytics: null,
 	};
 
+	// merge page config with default config
 	const plugins = pagesConfig.map(
 		page => new HTMLWebpackPlugin(Object.assign(page, defaultConfig))
 	);
+
+	// in development we also add a table of content page
+	// as a start page for the dev-server
+	if (argv.mode === 'development') {
+		plugins.push(
+			new HTMLWebpackPlugin(
+				Object.assign(
+					{
+						// path of the html template in src
+						template: path.resolve(
+							__dirname,
+							'./../templates/toc.page'
+						),
+						// filename after build
+						filename: constants.tocPath,
+						// pages config file to be used in toc
+						pages: pagesConfig,
+					},
+					defaultConfig
+				)
+			)
+		);
+	}
 
 	return {
 		plugins,

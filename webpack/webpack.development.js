@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies, import/no-dynamic-require, global-require */
 const commonPaths = require('./commonPaths');
+const constants = require('./constants');
 const usesExtension = require('./utils/usesExtension');
 
 // eslint-disable-next-line no-unused-vars
@@ -28,6 +29,8 @@ module.exports = (env, argv) => {
 		devServer: {
 			// When open is enabled, the dev server will open the browser.
 			open: !usesBrowsersync,
+			// Specify a page to navigate to when opening the browser.
+			openPage: constants.tocPath,
 			// Where files get served for the dev-server
 			contentBase: './',
 			// Serve === localhost
