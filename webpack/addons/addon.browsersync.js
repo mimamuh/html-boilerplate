@@ -17,7 +17,7 @@ module.exports = (env, argv) => {
 				{
 					// browse to http://localhost:3000/ during development
 					host: commonPaths.devServer.host,
-					port: commonPaths.devServer.port + 1,
+					port: commonPaths.devServer.port + 10,
 					// proxy the Webpack Dev Server endpoint
 					// (which should be serving on http://localhost:8080/)
 					// through BrowserSync
@@ -31,7 +31,7 @@ module.exports = (env, argv) => {
 				{
 					// prevent BrowserSync from reloading the page
 					// and let Webpack Dev Server take care of this
-					reload: true,
+					reload: false,
 				}
 			),
 		],

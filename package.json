@@ -16,7 +16,7 @@
 		"build:watch": "yarn build -- --watch",
 		"build": "webpack --mode=production --env.addons=bundlebuddy",
 		"dev:addons": "yarn dev -- --env.addons=bundleanalyze",
-		"dev": "yarn webpack-dev-server -- --watch --mode=development --env.addons=bundleanalyze",
+		"dev": "yarn webpack-dev-server -- --watch --mode=development --env.addons=browsersync --env.addons=bundleanalyze",
 		"debug": "node --inspect --debug-brk ./node_modules/webpack/bin/webpack.js",
 		"test": "jest",
 		"test:watch": "jest --watch",
