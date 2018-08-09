@@ -13,7 +13,7 @@ const commonPaths = require('./../commonPaths');
  */
 // eslint-disable-next-line no-unused-vars
 module.exports = (env, argv) => {
-	if (!env.production) {
+	if (argv.mode !== 'production') {
 		console.warn(
 			'WARNING: Addon addon.critical.js only works in production mode!'
 		);

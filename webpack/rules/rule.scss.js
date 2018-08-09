@@ -23,7 +23,7 @@ module.exports = (env, argv) => ({
 							options: {
 								// Path to resolve URLs, URLs starting
 								// with / will not be translated
-								minimize: !!argv.development,
+								minimize: argv.mode === 'production',
 								sourceMap: true,
 							},
 						},

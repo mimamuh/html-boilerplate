@@ -13,7 +13,10 @@ module.exports = (env, argv) => ({
 			// using the standalone build (compiler + runtime)
 			// instead of the default runtime-only build
 			// see: https://github.com/vuejs/vue/tree/dev/dist#explanation-of-build-files
-			vue: argv.development ? 'vue/dist/vue.js' : 'vue/dist/vue.min.js',
+			vue:
+				argv.mode === 'development'
+					? 'vue/dist/vue.js'
+					: 'vue/dist/vue.min.js',
 		},
 	},
 

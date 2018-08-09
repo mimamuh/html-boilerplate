@@ -3,7 +3,7 @@ const commonPaths = require('./commonPaths');
 
 // eslint-disable-next-line no-unused-vars
 module.exports = (env, argv) => ({
-	devtool: 'source-map',
+	devtool: 'eval-source-map',
 
 	resolve: {
 		// TODO: Make it part of the common config

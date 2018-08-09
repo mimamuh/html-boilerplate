@@ -14,7 +14,7 @@ const {
  * 											are passed to it
  */
 module.exports = (env, argv) => {
-	console.log('env: ', argv);
+	console.log('env: ', env);
 	console.log('argv: ', argv);
 
 	const envConfig = require(`./webpack/webpack.${argv.mode}.js`);
