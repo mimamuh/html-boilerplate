@@ -50,7 +50,5 @@
     <% if (htmlWebpackPlugin.files.chunks.main) { %>
     <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
     <% } %>
-
-    <% } %>
   </body>
 </html>

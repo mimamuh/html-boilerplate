@@ -4,12 +4,12 @@ const requireFileByPath = require('./../utils/requireFileByPath').default;
 const commonPaths = require('./../commonPaths');
 const constants = require('./../constants');
 
-// eslint-disable-next-line no-unused-vars
 /**
  * Addon to cleanup old bundle files in the dist folder.
  * @param {Object} env
  * @param {Object} argv
  */
+// eslint-disable-next-line no-unused-vars
 module.exports = (env, argv) => {
 	// optional config.cleanOutput.js file
 	const cleanOutputConfig =
