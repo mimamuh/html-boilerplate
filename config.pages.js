@@ -14,4 +14,10 @@ module.exports = [
 		// description text for search engines – max 160 chars!
 		description: '…',
 	},
+	{
+		template: './src/pages/index.page',
+		filename: 'index.html',
+		title: 'index',
+		description: '…',
+	},
 ];

@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefixer = require('autoprefixer');
 
 /**
@@ -15,36 +15,48 @@ module.exports = (env, argv) => ({
 			{
 				// scss loader - uses postcss and autoprefixer
 				test: /\.(scss|css)$/,
-				use: ExtractTextPlugin.extract({
-					fallback: 'style-loader',
-					use: [
-						{
-							loader: 'css-loader',
-							options: {
-								// Path to resolve URLs, URLs starting
-								// with / will not be translated
-								minimize: argv.mode === 'production',
-								sourceMap: true,
-							},
+				use: [
+					{
+						loader:
+							argv.mode === 'production'
+								? MiniCssExtractPlugin.loader
+								: 'style-loader',
+					},
+					{
+						loader: 'css-loader',
+						options: {
+							// Path to resolve URLs, URLs starting
+							// with / will not be translated
+							minimize: argv.mode === 'production',
+							sourceMap: true,
 						},
-						{
-							loader: 'postcss-loader',
-							options: {
-								plugins() {
-									return [autoprefixer];
-								},
-								sourceMap: false, // NOTE: TODO: normally it should be true, but set to false because of issues.
+					},
+					{
+						loader: 'postcss-loader',
+						options: {
+							plugins() {
+								return [autoprefixer];
 							},
+							sourceMap: false, // NOTE: TODO: normally it should be true, but set to false because of issues.
 						},
-						{
-							loader: 'sass-loader',
-							options: {
-								sourceMap: false, // NOTE: TODO: normally it should be true, but set to false because of issues.
-							},
+					},
+					{
+						loader: 'sass-loader',
+						options: {
+							sourceMap: false, // NOTE: TODO: normally it should be true, but set to false because of issues.
 						},
-					],
-				}),
+					},
+				],
 			},
 		],
 	},
+
+	plugins: [
+		new MiniCssExtractPlugin({
+			filename:
+				argv.mode === 'development' ? '[name].css' : '[name].[contenthash].css',
+			chunkFilename:
+				argv.mode === 'development' ? '[id].css' : '[id].[contenthash].css',
+		}),
+	],
 });

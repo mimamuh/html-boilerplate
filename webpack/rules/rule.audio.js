@@ -13,6 +13,7 @@ module.exports = (env, argv) => ({
 		rules: [
 			{
 				test: /\.(mp3|wav)$/,
+				include: [commonPaths.audiosSrcPath],
 				use: [
 					{
 						loader: 'file-loader',
@@ -22,7 +23,6 @@ module.exports = (env, argv) => ({
 						},
 					},
 				],
-				include: [commonPaths.audioSrcPath],
 			},
 		],
 	},

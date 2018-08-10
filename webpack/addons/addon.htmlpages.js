@@ -52,10 +52,7 @@ module.exports = (env, argv) => {
 				Object.assign(
 					{
 						// path of the html template in src
-						template: path.resolve(
-							__dirname,
-							'./../templates/toc.page'
-						),
+						template: path.resolve(__dirname, './../templates/toc.page'),
 						// filename after build
 						filename: constants.tocPath,
 						// pages config file to be used in toc

@@ -23,11 +23,5 @@ module.exports = (env, argv) => {
 		},
 
 		plugins: [new webpack.ProgressPlugin()],
-
-		optimization: {
-			splitChunks: {
-				chunks: 'all',
-			},
-		},
 	};
 };

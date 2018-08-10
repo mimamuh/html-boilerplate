@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies, consistent-return */
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const colors = require('colors');
 const commonPaths = require('./../commonPaths');
 const constants = require('./../constants');
 
@@ -7,7 +8,9 @@ const constants = require('./../constants');
 module.exports = (env, argv) => {
 	if (argv.mode !== 'development') {
 		console.warn(
-			'WARNING: Addon addon.critical.js only works in development mode!'
+			colors.red(
+				'WARNING: Addon addon.critical.js only works in development mode!'
+			)
 		);
 		return;
 	}
@@ -22,11 +25,9 @@ module.exports = (env, argv) => {
 					// proxy the Webpack Dev Server endpoint
 					// (which should be serving on http://localhost:8080/)
 					// through BrowserSync
-					proxy: `${
-						commonPaths.devServer.https ? 'https' : 'http'
-					}://${commonPaths.devServer.host}:${
-						commonPaths.devServer.port
-					}/${constants.tocPath}`,
+					proxy: `${commonPaths.devServer.https ? 'https' : 'http'}://${
+						commonPaths.devServer.host
+					}:${commonPaths.devServer.port}/${constants.tocPath}`,
 				},
 				// plugin options
 				{

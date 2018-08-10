@@ -48,8 +48,25 @@ const getVendors = (env = {}, argv = {}) => {
 	});
 };
 
+// helper to load optimization rules from external files
+const getOptimizations = (env = {}, argv = {}) => {
+	const optimizations = [].concat
+		.apply([], [env.optimizations]) // normalize array of optimizations (flatten)
+		.filter(Boolean); // if optimizations is undefined, filter it out
+
+	return optimizations.map(optimizationName => {
+		const optimization = require(`./../optimizations/optimization.${optimizationName}.js`);
+		// execute module function with webpack env and argv context
+		if (typeof optimization === 'function') {
+			return optimization(env, argv);
+		}
+		return optimization;
+	});
+};
+
 module.exports = {
 	getAddons,
 	getRules,
 	getVendors,
+	getOptimizations,
 };

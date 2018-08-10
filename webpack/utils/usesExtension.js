@@ -4,6 +4,7 @@ const types = {
 	addons: 'addons',
 	rules: 'rules',
 	vendors: 'vendors',
+	optimizations: 'optimizations',
 };
 
 /**
@@ -16,15 +17,11 @@ const types = {
  */
 function usesExtension(env = {}, type, name) {
 	if (typeof env !== 'object') {
-		throw new TypeError(
-			'First parameter "env" has to be of type "Object".'
-		);
+		throw new TypeError('First parameter "env" has to be of type "Object".');
 	}
 
 	if (typeof type !== 'string') {
-		throw new TypeError(
-			'Second parameter "type" has to be of type "string".'
-		);
+		throw new TypeError('Second parameter "type" has to be of type "string".');
 	}
 
 	if (!Object.values(types).includes(type)) {
@@ -34,9 +31,7 @@ function usesExtension(env = {}, type, name) {
 	}
 
 	if (typeof type !== 'string') {
-		throw new TypeError(
-			'Third parameter "name" has to be of type "string".'
-		);
+		throw new TypeError('Third parameter "name" has to be of type "string".');
 	}
 
 	if (Object.prototype.hasOwnProperty.call(env, type)) {

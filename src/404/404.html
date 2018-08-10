@@ -1,16 +1,13 @@
 <main class="vue-app">
-  <h1>404 - Seite nicht gefunden</h1>
-  <img src="./../assets/img/404/404-cat.jpg" alt="404 cat">
+	<h1>404 - Seite nicht gefunden</h1>
+	<img src="./../assets/img/404/404-cat.jpg" alt="404 cat">
 
-  <my-component :message="myData"></my-component>
+	<vue-example :message="example"></vue-example>
 </main>
 
 <script type="text/javascript">
-// –– inject some data for vue
-var myData = 'Hallo, ich bin eine vue componente!';
-
-// merge data to global appData scope which our iniVueApp() uses later ...
-window.appData = Object.assign({}, window.appData || {}, {
-  myData: myData,
+// merge data to global vueAppData scope which our iniVueApp() uses later ...
+window.vueAppData = Object.assign({}, window.vueAppData || {}, {
+	example: "Hallo, I'm a vue component.",
 });
 </script>

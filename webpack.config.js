@@ -5,6 +5,7 @@ const {
 	getAddons,
 	getRules,
 	getVendors,
+	getOptimizations,
 } = require('./webpack/utils/getExtension');
 
 /**
@@ -23,7 +24,8 @@ module.exports = (env, argv) => {
 		envConfig(env, argv),
 		...getAddons(env, argv),
 		...getRules(env, argv),
-		...getVendors(env, argv)
+		...getVendors(env, argv),
+		...getOptimizations(env, argv)
 	);
 
 	console.log(mergedConfig);
@@ -42,6 +44,6 @@ module.exports = (env, argv) => {
 		- DONE: FavocionPlugin stuff ... :)
 	- we still need the 
 		- DONE: getPages config setup, where we load html files as entry
-		- find a solution for CommonWebpackPlugin stuff
-		- 
+		- DONE: find a solution for CommonWebpackPlugin stuff
+		- prevent splitchunks from creating extra vendor bundles ...
 */

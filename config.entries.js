@@ -10,4 +10,5 @@ module.exports = {
 
 	// page specific bundles
 	'404': path.resolve(__dirname, './src/404/js/', '404.js'),
+	index: path.resolve(__dirname, './src/index/js/', 'index.js'),
 };

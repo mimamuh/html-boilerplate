@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies, consistent-return */
 const WebpackOnBuildPlugin = require('on-build-webpack');
 const critical = require('critical');
+const colors = require('colors');
 const requireFileByPath = require('./../utils/requireFileByPath').default;
 const constants = require('./../constants');
 const commonPaths = require('./../commonPaths');
@@ -15,7 +16,9 @@ const commonPaths = require('./../commonPaths');
 module.exports = (env, argv) => {
 	if (argv.mode !== 'production') {
 		console.warn(
-			'WARNING: Addon addon.critical.js only works in production mode!'
+			colors.red(
+				'WARNING: Addon addon.critical.js only works in production mode!'
+			)
 		);
 		return;
 	}
@@ -47,9 +50,7 @@ module.exports = (env, argv) => {
 				// css inlined in your html file. This also affects cssLoader
 				// JavaScript. When you set it to false it will create files
 				// for each critical css by extending the filename with .css.
-				const inlineCriticalCss = !!(
-					criticalConfig && criticalConfig.inline
-				);
+				const inlineCriticalCss = !!(criticalConfig && criticalConfig.inline);
 
 				pagesConfig.forEach(page => {
 					critical.generate({

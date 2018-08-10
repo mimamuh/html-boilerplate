@@ -1,40 +1,51 @@
+/* eslint-disable import/first */
 /*
-    Import stuff which should be placed at
-    the end of the <body> section
+	Import stuff which should be placed at
+	the end of the <body> section
  */
 import './polyfills';
 
-// // –– vanilla-lazyload
-// // see: https://github.com/verlok/lazyload
-// import LazyLoad from 'lazyload';
+// –– lazysizes (lazyloading)
+// see: https://www.npmjs.com/package/lazysizes
+import 'lazysizes';
 
-// // –– jquery
-// // (optional)
-// // import $ from 'jquery';
+// –– scss
+// imports all our scss with webpack
+import './../scss/global.scss';
 
-// // –– scss
-// // imports all our scss with webpack
-// import './../scss/global.scss';
+// –– vue.js
+// ini vue app
+import iniVueApp from './iniVueApp';
 
-// // –– vue.js
-// // (optional)
-// // inis our vue app
-// import iniVueApp from './iniVueApp';
+// –– ini website
+// more about the ready states:
+// https://javascript.info/onload-ondomcontentloaded
 
-// // –– inis our website
-// // run all your global ini code for your website here ...
-// window.onload = () => {
-// 	// vue
-// 	const vueContainers = document.querySelectorAll('.vue-app');
-// 	vueContainers.forEach(element => {
-// 		iniVueApp({
-// 			element,
-// 		});
-// 	});
+// The DOMContentLoaded event is fired when the initial
+// HTML document has been completely loaded and parsed,
+// without waiting for stylesheets, images, and
+// subframes to finish loading.
+// eslint-disable-next-line no-unused-vars
+document.addEventListener('DOMContentLoaded', event => {
+	console.log(
+		'%cDOM fully loaded and parsed',
+		'background: #8be09f; color: #39485e'
+	);
+});
 
-// 	// ini lazyloading
-// 	// see: https://github.com/verlok/lazyload
-// 	const lazyLoad = new LazyLoad();
+// The load event is fired when a resource and its
+// dependent resources have finished loading.
+// eslint-disable-next-line no-unused-vars
+window.addEventListener('load', event => {
+	const vueContainers = document.querySelectorAll('.vue-app');
+	vueContainers.forEach(element => {
+		iniVueApp({
+			element,
+		});
+	});
 
-// 	console.log('%cPage ready', 'background: #8be09f; color: #39485e');
-// };
+	console.log(
+		'%cAll resources finished loading!',
+		'background: #8be09f; color: #39485e'
+	);
+});

@@ -13,6 +13,7 @@ module.exports = (env, argv) => ({
 		rules: [
 			{
 				test: /\.(woff|woff2|eot|ttf|svg)$/,
+				include: [commonPaths.fontsSrcPath],
 				use: [
 					{
 						loader: 'file-loader',
@@ -22,7 +23,6 @@ module.exports = (env, argv) => ({
 						},
 					},
 				],
-				include: [commonPaths.fontsSrcPath],
 			},
 		],
 	},
