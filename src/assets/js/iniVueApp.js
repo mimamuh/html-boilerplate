@@ -42,7 +42,7 @@ function iniVueApp({ element }: { element: string | HTMLElement }) {
 		el: element,
 		data: window.vueAppData ? window.vueAppData : {},
 	});
-	console.log(app);
+
 	return app;
 }
 

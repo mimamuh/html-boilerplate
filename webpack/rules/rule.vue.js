@@ -18,9 +18,9 @@ module.exports = (env, argv) => {
 	);
 
 	if (!usesJavascriptRule) {
-		throw new Error(
-			colors.red(
-				'Rule "vue" needs rule "javascript" to work probably. Add "--env.rules=javascript" to your script in package.json.'
+		console.log(
+			colors.yellow(
+				'INFO: Rule "vue" may need a rule like "javascript" to work probably. Add "--env.rules=javascript" to your script in package.json.'
 			)
 		);
 	}
@@ -28,9 +28,9 @@ module.exports = (env, argv) => {
 	const usesScssRule = usesExtension(env, usesExtension.type.rules, 'scss');
 
 	if (!usesScssRule) {
-		throw new Error(
-			colors.red(
-				'Rule "vue" needs rule "scss" to work probably. Add "--env.rules=scss" to your script in package.json.'
+		console.log(
+			colors.yellow(
+				'INFO: Rule "vue" may need a rule like "scss" to work probably. Add "--env.rules=scss" to your script in package.json.'
 			)
 		);
 	}

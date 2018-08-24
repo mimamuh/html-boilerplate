@@ -37,7 +37,6 @@
     <!-- import your page html here -->
     <%= require('./../index/index.html') %>
 
-    <pre><%= JSON.stringify(htmlWebpackPlugin, null, ' ') %></pre>
     
     <% if (htmlWebpackPlugin.options.devServer) { %>
     <script src="<%= htmlWebpackPlugin.options.devServer %>webpack-dev-server.js" type="text/javascript"></script>

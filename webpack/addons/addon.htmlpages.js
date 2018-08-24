@@ -45,8 +45,9 @@ module.exports = (env, argv) => {
 	);
 
 	// in development we also add a table of content page
-	// as a start page for the dev-server
+	// and a info page as a start page for the dev-server
 	if (argv.mode === 'development') {
+		// toc page
 		plugins.push(
 			new HTMLWebpackPlugin(
 				Object.assign(
@@ -57,6 +58,28 @@ module.exports = (env, argv) => {
 						filename: constants.tocPath,
 						// pages config file to be used in toc
 						pages: pagesConfig,
+					},
+					defaultConfig
+				)
+			)
+		);
+
+		// info page
+		plugins.push(
+			new HTMLWebpackPlugin(
+				Object.assign(
+					{
+						// path of the html template in src
+						template: path.resolve(__dirname, './../templates/info.page'),
+						// filename after build
+						filename: constants.infoPath,
+						// custom data passed to the template
+						infos: {
+							webpack: {
+								env,
+								argv,
+							},
+						},
 					},
 					defaultConfig
 				)

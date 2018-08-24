@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const requireFileByPath = require('./../utils/requireFileByPath').default;
+const requireFileByPath = require('./../utils/requireFileByPath');
 const commonPaths = require('./../commonPaths');
 const constants = require('./../constants');
 

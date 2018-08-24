@@ -9,7 +9,7 @@ module.exports = (env, argv) => {
 	if (argv.mode !== 'development') {
 		console.warn(
 			colors.red(
-				'WARNING: Addon addon.critical.js only works in development mode!'
+				'WARNING: Addon addon.browsersync.js only works in development mode!'
 			)
 		);
 		return;

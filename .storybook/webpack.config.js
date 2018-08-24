@@ -1,88 +1,57 @@
-var path = require('path');
-var webpack = require('webpack');
-// var HTMLWebpackPlugin = require('html-webpack-plugin');
-// good tutorial: http://www.pro-react.com/materials/appendixA/
+const path = require('path');
+const webpack = require('webpack');
+const webpackMerge = require('webpack-merge');
+const vueRule = require('./../webpack/rules/rule.vue');
+const htmlRule = require('./../webpack/rules/rule.html');
+const fontsRule = require('./../webpack/rules/rule.fonts');
+const imagesRule = require('./../webpack/rules/rule.images');
+const audioRule = require('./../webpack/rules/rule.audio');
 
-const htmlRules = {
-	// load html files
-	test: /\.(html|htm)$/,
-	use: [
-		{
-			loader: 'html-loader',
-			options: {
-				// which tag:attribute combination should be processed
-				attrs: [':data-src', 'img:src', 'img:srcset', 'source:srcset'],
-				// if it interploates ES6 string syntax in our
-				// html like ${require('./example.html')}
-				interpolate: true,
-			},
-		},
-	],
-};
-
-const fontRules = {
-	// load static assets like fonts, png, and resolve path ...
-	test: /\.(woff|woff2|eot|ttf|svg)$/,
-	loader: 'file-loader',
-	query: {
-		name: './assets/fonts/[name]-[hash].[ext]',
-	},
-	include: [path.resolve(__dirname, '../src/assets/fonts')],
-};
-
-const assetRules = {
-	// load static assets (images) ...
-	test: /\.(png|jpg|jpeg|gif|svg)$/,
-	loader: 'file-loader',
-	query: {
-		name: './assets/img/[name]-[hash].[ext]',
-	},
-	exclude: [path.resolve(__dirname, '../src/assets/fonts')],
-};
-
-const scssRules = {
-	// scss loader - uses postcss and autoprefixer
-	test: /\.(scss|css)$/,
-	loader: [
-		'style-loader',
-		'css-loader',
-		{
-			loader: 'postcss-loader',
-			options: {
-				plugins: () => [require('autoprefixer')],
-			},
-		},
-		'sass-loader',
-	],
-};
-
-const vueRules = {
-	// scss loader - uses postcss and autoprefixer
-	test: /\.vue$/,
-	loader: 'vue-loader',
-};
-
-module.exports = {
+// as the scss rule is so different between storybook and the
+// setup we have in our webpack config, we have a custom one here
+const scssRule = {
 	module: {
-		rules: [htmlRules, assetRules, fontRules, scssRules, vueRules],
+		rules: [
+			{
+				// scss loader - uses postcss and autoprefixer
+				test: /\.(scss|css)$/,
+				loader: [
+					'style-loader',
+					'css-loader',
+					{
+						loader: 'postcss-loader',
+						options: {
+							plugins: () => [require('autoprefixer')],
+						},
+					},
+					'sass-loader',
+				],
+			},
+		],
 	},
+};
 
-	resolve: {
-		alias: {
-			waypoints: 'waypoints/lib/noframework.waypoints.js',
-			swiper: 'swiper/dist/js/swiper.js',
-			// using the standalone build (compiler + runtime)
-			// instead of the default runtime-only build
-			// see: https://github.com/vuejs/vue/tree/dev/dist#explanation-of-build-files
-			vue: 'vue/dist/vue.js',
-		},
-	},
+// Export a function. Accept the base config as the only param.
+module.exports = (storybookBaseConfig, configType) => {
+	// configType has a value of 'DEVELOPMENT' or 'PRODUCTION'
+	// You can change the configuration based on that.
+	// 'PRODUCTION' is used when building the static version of storybook.
+	const env = {
+		mode: configType === 'DEVELOPMENT' ? 'development' : 'production',
+	};
 
-	// needed for enzyme to work properly
-	// see: http://airbnb.io/enzyme/docs/guides/webpack.html
-	externals: {
-		'react/addons': true,
-		'react/lib/ExecutionEnvironment': true,
-		'react/lib/ReactContext': true,
-	},
+	const argv = {
+		mode: configType === 'DEVELOPMENT' ? 'development' : 'production',
+	};
+
+	// Return the altered config
+	return webpackMerge(
+		storybookBaseConfig,
+		htmlRule(env, argv),
+		scssRule,
+		fontsRule(env, argv),
+		vueRule(env, argv),
+		imagesRule(env, argv),
+		audioRule(env, argv)
+	);
 };

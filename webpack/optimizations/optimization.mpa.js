@@ -15,14 +15,10 @@
 module.exports = (env, argv) => ({
 	optimization: {
 		splitChunks: {
-			// This indicates which chunks will be selected for optimization.
-			// If a string is provided, possible values are all, async, and
-			// initial. Providing all can be particularly powerful because
-			// it means that chunks can be shared even between async and
-			// non-async chunks.
-			chunks: 'all',
 			// Create a commons chunk, which includes all code shared between entry points.
 			cacheGroups: {
+				// To disable any of the default cache groups, set them to false
+				default: false,
 				commons: {
 					name: 'commons',
 					chunks: 'initial',

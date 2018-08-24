@@ -9,14 +9,14 @@ module.exports = (env, argv) => ({
 			// In `server` mode analyzer will start HTTP server to show bundle report.
 			// In `static` mode single HTML file with bundle report will be generated.
 			// In `disabled` mode you can use this plugin to just generate Webpack Stats JSON file by setting `generateStatsFile` to `true`.
-			analyzerMode: argv.mode === 'development' ? 'server' : 'disabled',
+			analyzerMode: argv.mode === 'development' ? 'server' : 'static',
 			// Host that will be used in `server` mode to start HTTP server.
 			analyzerHost: '0.0.0.0',
 			// Port that will be used in `server` mode to start HTTP server.
 			analyzerPort: 8888,
 			// Path to bundle report file that will be generated in `static` mode.
 			// Relative to bundles output directory.
-			reportFilename: 'report.html',
+			reportFilename: 'bundleanalyze.html',
 			// Module sizes to show in report by default.
 			// Should be one of `stat`, `parsed` or `gzip`.
 			// See "Definitions" section for more information.

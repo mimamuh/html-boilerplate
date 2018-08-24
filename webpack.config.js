@@ -15,9 +15,6 @@ const {
  * 											are passed to it
  */
 module.exports = (env, argv) => {
-	console.log('env: ', env);
-	console.log('argv: ', argv);
-
 	const envConfig = require(`./webpack/webpack.${argv.mode}.js`);
 	const mergedConfig = webpackMerge(
 		commonConfig(env, argv),
@@ -28,22 +25,5 @@ module.exports = (env, argv) => {
 		...getOptimizations(env, argv)
 	);
 
-	console.log(mergedConfig);
 	return mergedConfig;
 };
-
-/*
-	TODO: 
-	- DONE: add getVendors helper to this file
-	- cleanup webpack configs ...
-	- cleanup packag.json scripts
-	- test all ... :)
-	- of old production config we still need
-		- DONE: the CleanWebpackPlugin
-		- DONE: and WebpackOnBuildPlugin
-		- DONE: FavocionPlugin stuff ... :)
-	- we still need the 
-		- DONE: getPages config setup, where we load html files as entry
-		- DONE: find a solution for CommonWebpackPlugin stuff
-		- prevent splitchunks from creating extra vendor bundles ...
-*/

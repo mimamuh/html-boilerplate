@@ -37,7 +37,6 @@
     <!-- import your page html here -->
     <%= require('./../404/404.html') %>
 
-
     
     <% if (htmlWebpackPlugin.options.devServer) { %>
     <script src="<%= htmlWebpackPlugin.options.devServer %>webpack-dev-server.js" type="text/javascript"></script>

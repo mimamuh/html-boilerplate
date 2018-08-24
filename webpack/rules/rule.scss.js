@@ -54,9 +54,9 @@ module.exports = (env, argv) => ({
 	plugins: [
 		new MiniCssExtractPlugin({
 			filename:
-				argv.mode === 'development' ? '[name].css' : '[name].[contenthash].css',
+				argv.mode === 'development' ? '[name].css' : '[name]-[contenthash].css',
 			chunkFilename:
-				argv.mode === 'development' ? '[id].css' : '[id].[contenthash].css',
+				argv.mode === 'development' ? '[id].css' : '[id]-[contenthash].css',
 		}),
 	],
 });

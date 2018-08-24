@@ -19,7 +19,7 @@ module.exports = (env, argv) => {
 		output: {
 			path: commonPaths.outputPath,
 			publicPath: '/',
-			filename: 'assets/js/[name]-[hash].bundle.js',
+			filename: 'assets/js/[name]-[hash].js',
 		},
 
 		plugins: [new webpack.ProgressPlugin()],
