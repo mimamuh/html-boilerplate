@@ -19,7 +19,7 @@ module.exports = (env, argv) => ({
 						loader: 'file-loader',
 						options: {
 							name: 'audio/[name]-[hash].[ext]',
-							outputPath: commonPaths.assetsPath,
+							outputPath: 'assets/',
 						},
 					},
 				],

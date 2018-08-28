@@ -19,7 +19,7 @@ module.exports = (env, argv) => ({
 						loader: 'file-loader',
 						options: {
 							name: 'fonts/[name]-[hash].[ext]',
-							outputPath: commonPaths.assetsPath,
+							outputPath: 'assets/',
 						},
 					},
 				],
