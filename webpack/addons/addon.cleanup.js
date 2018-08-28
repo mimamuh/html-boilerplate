@@ -11,7 +11,7 @@ const constants = require('./../constants');
  */
 // eslint-disable-next-line no-unused-vars
 module.exports = (env, argv) => {
-	// optional config.cleanOutput.js file
+	// optional webpack.config.cleanOutput.js file
 	const cleanOutputConfig =
 		requireFileByPath(
 			commonPaths.configsFilesDir,
