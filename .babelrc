@@ -10,10 +10,10 @@
 					"browsers": [
 						"last 3 versions",
 						"> 1% in DE",
-						"Chrome >= 40",
-						"Firefox >= 35",
-						"Safari >= 8",
-						"iOS >= 8",
+						"Chrome >= 50",
+						"Firefox >= 44",
+						"Safari >= 9",
+						"iOS >= 9",
 						"Explorer >= 10",
 						"Edge >= 12"
 					]
