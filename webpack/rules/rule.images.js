@@ -1,4 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
+const path = require('path');
 const commonPaths = require('./../commonPaths');
 
 /**
@@ -20,8 +21,14 @@ module.exports = (env, argv) => ({
 					{
 						loader: 'file-loader',
 						options: {
-							name: 'img/[name]-[hash].[ext]',
-							outputPath: 'assets/',
+							name: pathString => {
+								const fromSrc = path.relative(
+									commonPaths.sourcePath,
+									pathString
+								);
+								const { dir } = path.parse(fromSrc);
+								return `${dir}/[name]-[hash].[ext]`;
+							},
 						},
 					},
 				],
