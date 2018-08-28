@@ -54,14 +54,8 @@ module.exports = {
 		'promise/always-return': 'error',
 		'promise/catch-or-return': 'error',
 		'promise/no-native': 'off',
-		'react/jsx-filename-extension': [
-			'error',
-			{ extensions: ['.js', '.jsx'] },
-		],
-		'no-underscore-dangle': [
-			'error',
-			{ allowAfterThis: true, allow: ['_id'] },
-		],
+		'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx'] }],
+		'no-underscore-dangle': ['error', { allowAfterThis: true, allow: ['_id'] }],
 
 		// react plugin
 		'react/sort-comp': [
