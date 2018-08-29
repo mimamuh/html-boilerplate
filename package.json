@@ -1,6 +1,6 @@
 {
 	"name": "squares-and-brackets",
-	"version": "0.3.0",
+	"version": "0.3.1",
 	"description": "website",
 	"author": "Squares And Brackets GbR",
 	"license": "MIT",
@@ -10,7 +10,7 @@
 		"bundles-to-backend": "gulp bundles-to-backend",
 		"inject-scss": "gulp inject-scss",
 		"build:analyze": "yarn build -- --env.addons=bundleanalyze --env.addons=bundlebuddy",
-		"build": "webpack --mode=production --env.addons=cleanup --env.optimizations=mpa --env.addons=htmlpages --env.rules=html --env.rules=images --env.rules=fonts --env.rules=audio --env.rules=vue --env.rules=javascript --env.rules=scss",
+		"build": "webpack --mode=production --env.addons=cleanup --env.optimizations=mpa --env.addons=htmlpages --env.rules=html --env.rules=images --env.rules=fonts --env.rules=audio --env.rules=vue --env.rules=javascript --env.rules=scss --env.addons=critical",
 		"dev:analyze": "yarn dev -- --env.addons=bundleanalyze",
 		"dev": "yarn webpack-dev-server --watch --mode=development --env.optimizations=mpa --env.addons=htmlpages --env.rules=html --env.rules=images --env.rules=fonts --env.rules=audio --env.rules=vue --env.rules=javascript --env.rules=scss --env.addons=devserver --env.addons=browsersync",
 		"debug": "node --inspect --debug-brk ./node_modules/webpack/bin/webpack.js",

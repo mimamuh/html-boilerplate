@@ -2,7 +2,7 @@
 const WebpackOnBuildPlugin = require('on-build-webpack');
 const critical = require('critical');
 const colors = require('colors');
-const requireFileByPath = require('./../utils/requireFileByPath').default;
+const requireFileByPath = require('./../utils/requireFileByPath');
 const constants = require('./../constants');
 const commonPaths = require('./../commonPaths');
 
