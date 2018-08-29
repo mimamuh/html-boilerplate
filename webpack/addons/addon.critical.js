@@ -32,7 +32,7 @@ module.exports = (env, argv) => {
 	// optional critical.config.js file
 	const criticalConfig = requireFileByPath(
 		commonPaths.configsFilesDir,
-		constants.pagesConfig,
+		constants.criticalConfig,
 		false
 	);
 
