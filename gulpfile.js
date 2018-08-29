@@ -1,269 +1,141 @@
-/* eslint-disable prettier */
-'use strict';
+const gulp = require('gulp');
+const {
+	copyFilesFactory,
+	createAssetsJsonFactory,
+	injectImportStatementsFactory,
+} = require('./../../gulp-tasks');
 
-var gulp = require('gulp');
-var rename = require('gulp-rename');
-var inject = require('gulp-inject');
-var tap = require('gulp-tap');
-var gutil = require('gulp-util');
-var path = require('path');
-var array = require('lodash/array');
-var argv = require('yargs').argv;
-var fs = require('fs');
+const taskName = 'bundles-to-backend';
+const taskNameCopyFiles = `${taskName}:copy`;
+const taskNameAssetsJson = `${taskName}:assets.json`;
 
-/**
- * This function replaces a certain file extension with another extension
- * @param  string   sourceFile  whole direcotry path
- * @return string   processed directory path
- */
-function switchFileExtensions(sourceFile, newExtension) {
-	const parsedPath = path.parse(sourceFile);
-	return `${parsedPath.dir}/${parsedPath.name}${newExtension}`;
-}
-
-const checkForMissingStoryFiles = () =>
-	new Promise((resolve, reject) => {
-		const relativePathsToHtmlFiles = ['src/**/*.html'];
-		const relativePathsToStoryFiles = ['src/**/stories/*.js'];
-		let htmlFilesArr = [];
-		let storyFilesArr = [];
-		Promise.all([
-			getFileArray(relativePathsToHtmlFiles).then(result => {
-				htmlFilesArr = result;
-			}),
-			getFileArray(relativePathsToStoryFiles).then(result => {
-				storyFilesArr = result;
-			}),
-		])
-			.then(() => {
-				resolve(
-					array
-						.differenceBy(htmlFilesArr, storyFilesArr, 'name')
-						.map(file => `${file.dir}/${file.base}`)
-				);
-			})
-			.catch(error => console.log(error));
-	});
-
-const getFileArray = sourcePath =>
-	new Promise((resolve, reject) => {
-		let fileArray = [];
-		gulp
-			.src(sourcePath)
-			.pipe(
-				// TODO refactoring with gutil instead of tap
-				// The only way to get all the files in a stream is through some kind of callback function.
-				// see: https://stackoverflow.com/questions/41594589/convert-gulp-src-stream-to-array
-				gutil.buffer(function(err, files) {
-					fileArray = files.map(file => path.parse(file.path));
-				})
-			)
-			.on('finish', () => {
-				resolve(fileArray);
-			});
-	});
-
-const createStoryFiles = files =>
-	new Promise((resolve, reject) => {
-		const pathToStoryTemplate = './.storybook/StoryTemplate.js';
-		console.log(pathToStoryTemplate);
-		gulp
-			.src(files)
-			.pipe(
-				tap(file => {
-					const parsedPath = path.parse(file.path);
-					const storyDestinationPath = `${parsedPath.dir}/stories/`;
-					gulp
-						.src(pathToStoryTemplate)
-						.pipe(
-							rename(filePath => {
-								filePath.dirname = '';
-								filePath.basename = parsedPath.name;
-							})
-						)
-						.pipe(gulp.dest(storyDestinationPath))
-						.on('end', function() {
-							injectImportStatements(
-								storyDestinationPath,
-								parsedPath.name,
-								'.js',
-								`./../${parsedPath.base}`
-							);
-						});
-				})
-			)
-			.on('end', () => {
-				resolve();
-			});
-	});
-
-/**
- * injects html import statements inside a story file
- * @param  {[type]} targetPath          directory of the story file
- * @param  {[type]} targetFile
- * @param  {[type]} targetFileExtension [description]
- * @param  {[type]} source              [description]
- * @return {[type]}                     [description]
- */
-const injectImportStatements = (
-	targetPath,
-	targetFile,
-	targetFileExtension,
-	source
-) => {
-	new Promise((resolve, reject) => {
-		const cwd = targetPath;
-		const target = `${cwd}${targetFile}${targetFileExtension}`;
-		const options = {
-			read: false,
-			cwd: cwd,
-		};
-		gulp
-			.src(target)
-			.pipe(
-				inject(gulp.src(source, options), {
-					starttag: '/* inject:imports */',
-					endtag: '/* endinject */',
-					transform: function(filepath) {
-						return "import htmlTemplate from '." + filepath + "';";
-					},
-				})
-			)
-			.pipe(
-				inject(gulp.src(source, options), {
-					starttag: '/* inject:filename */',
-					endtag: '/* endinject */',
-					transform: function(filepath) {
-						return "'" + targetFile + "'";
-					},
-				})
-			)
-			.pipe(gulp.dest(cwd));
-	});
+// Permission settings for specific tasks.
+// They may not apply to all tasks!!!
+const permissionsConfig = {
+	// Use "allowForceRemove" to spedify that your gulp tasks
+	// are allowed to run outsite of the root folder gulp is
+	// executed in. Needed if you want to execute tasks outside
+	// of your project root folder. Be aware that it could ruin
+	// your computer if you are careless.
+	allowForceRemove: true,
+	// Use "dryRun" to spedify if you want to run the gulp tasks
+	// without any transformative operations. Only the tasks of
+	// "gulp-tasks" may support this feature. On a dry run the
+	// tasks will log their output to your terminal
+	dryRun: false,
 };
 
-const injectSassImportStatements = (srcPath, file) =>
-	new Promise((resolve, reject) => {
-		const cwd = './src'; // currentWorkingDirectory
-		const target = `${srcPath}/${file}`;
-		const source = [`${cwd}/**/styles/*.scss`, '!' + target];
-		const options = { read: false };
-		gulp
-			.src(target)
-			.pipe(
-				inject(gulp.src(source, options), {
-					relative: true,
-					starttag: '/* inject:imports */',
-					endtag: '/* endinject */',
-					transform: function(filepath) {
-						filepath = switchFileExtensions(filepath, '');
-						console.log(filepath);
-						return "@import './" + filepath + "';";
-					},
-				})
-			)
-			.pipe(gulp.dest(srcPath))
-			.on('end', () => {
-				resolve();
-				console.log('finished injecting files into global.scss');
-			});
-	});
-
-/**
- * This function creates an empty file.
- * @param  string filepath  path of the file which should be created e. g. component/text/Atext
- * @return {
- *              root    root directory of the file
- *              dir     directory of the file
- *              base    filename + extension
- *              ext     extension of the file
- *              name    filename
- *         }
- */
-const createEmptyFile = filepath => {
-	if (!filepath || filepath.length === 0) {
-		throw 'createEmptyFile demands a path as parameter, but you have passed ' +
-			filepath;
-	} else if (typeof filepath !== 'string') {
-		throw 'createEmptyFile a parameter of type string, but you have passed ' +
-			typeof filepath;
-	}
-
-	const parsedFile = path.parse(filepath);
-	const root = 'src/';
-	console.log(parsedFile);
-	fs.mkdir(root + parsedFile.dir, 511, function(error) {
-		fs.writeFileSync(root + filepath, ' ', { mode: 511, flag: 'w' });
-	});
-	return parsedFile;
+// Config to copy asset from one project to another
+const copyConfig = {
+	permissions: permissionsConfig,
+	// Array with copy commands ...
+	// @from: Use "from" to specify from which folder you want to copy files.
+	// @to: Use "to" to specify to which folder you want to copy the files.
+	// @extensions: Use "extensions" to specify which files should be copied based on their extension.
+	// @includeSubDirs: Use "includeSubDirs" when you also want to copy files from subdirectories. Defaults to "false". Files copied from subdirectories keep their folder structure.
+	// @removeSrcFiles: Use "removeSrcFiles" when source files should be deleted after they have been copied to their destination. Defaults to "false".
+	// @removeDistFiles: Use "removeDistFiles" when files in the destination directory should be removed before new files will be copied there. It only removes files which match the same extension patterns like the source files. Defaults to "false".
+	copy: [
+		{
+			from: './dist/',
+			to: './../backend/web',
+			extensions: ['css', 'css.map'],
+			includeSubDirs: false,
+			removeSrcFiles: false,
+			removeDistFiles: true,
+		},
+		{
+			from: './dist/critical',
+			to: './../backend/templates/critical',
+			extensions: ['css'],
+			includeSubDirs: false,
+			removeSrcFiles: false,
+			removeDistFiles: false,
+		},
+		{
+			from: './dist/assets/js/',
+			to: './../backend/web/assets/js/',
+			extensions: ['js', 'js.map'],
+			includeSubDirs: false,
+			removeSrcFiles: false,
+			removeDistFiles: true,
+		},
+	],
 };
 
-const camelCaseToHyphen = filename => {
-	const charArray = [...filename];
-	charArray.forEach((element, index) => {
-		if (element === element.toUpperCase() && index > 0) {
-			charArray[index] = `-${element.toLowerCase()}`;
-		} else if (index === 0) {
-			charArray[index] = `${element.toLowerCase()}`;
-		}
-	});
-	return charArray.join('');
+// Create the copy task
+copyFilesFactory(gulp, taskNameCopyFiles, copyConfig);
+
+// Config create a assets.json which could be used with
+// the Craft Rev plugin: https://github.com/clubstudioltd/craft-asset-rev
+const assetsJsonConfig = {
+	// Specify permission options ...
+	permissions: permissionsConfig,
+	// Use "projectRoot" to specify where your project is
+	// located relative to your gulpfile.js
+	projectRoot: './../backend/',
+	// specify output options ...
+	output: {
+		// Use "assetsShouldBeRelativeTo" to specify to which folder
+		// the assets in your assets.json file should be relative to.
+		// "assetsShouldBeRelativeTo" should be relative to "projectRoot".
+		assetsShouldBeRelativeTo: './web/',
+		// Use "storeAssetsJsonTo" to specify where you want to store
+		// your assets.json file relative to "projectRoot".
+		storeAssetsJsonTo: './web/',
+	},
+	// Array with include commands ...
+	// @from: Use "from" to specify from where you want to include assets to your assets.json.
+	// @extensions: Use "extensions" to specify which files should be included in your assets.json based on their extension.
+	// @includeSubDirs: Use "includeSubDirs" to spedify if files from subdirectories should be included. Defaults to "false".
+	include: [
+		{
+			from: './web',
+			extensions: ['css'],
+			includeSubDirs: false,
+		},
+		{
+			from: './web/assets/js/',
+			extensions: ['js'],
+			includeSubDirs: false,
+		},
+	],
 };
 
-const createJSXComponent = filepath => {
-	const jsxFile = createEmptyFile(filepath);
-	const storyFilePath = `${jsxFile.dir}/stories/${jsxFile.name}.jsx.js`;
-	const styleFilePath = `${jsxFile.dir}/styles/${camelCaseToHyphen(
-		jsxFile.name
-	)}.scss`;
-	const storyFile = createEmptyFile(storyFilePath);
-	const styleFile = createEmptyFile(styleFilePath);
+// Create the generate assets.json task
+createAssetsJsonFactory(gulp, taskNameAssetsJson, assetsJsonConfig);
+
+// Finally we combine the copy task and the assets.json task to one task
+gulp.task(taskName, gulp.series(taskNameCopyFiles, taskNameAssetsJson));
+
+// Inject scss dependencies to a global.scss file
+const injectScssConfig = {
+	// Glob string to find files to be
+	// injected as import statements to your
+	// summary file.
+	inject: './src/**/styles/*.scss',
+	to: {
+		// File in which we inject the found files
+		// as a import statement
+		file: './src/assets/scss/global.scss',
+		// Inject import statements between the following
+		// tags. Make sure to have them written in your file!
+		between: {
+			startTag: '/* inject:imports */',
+			endTag: '/* endinject */',
+		},
+	},
+	// Template for the import statement.
+	// It uses the lodash template syntax:
+	// https://lodash.com/docs/4.17.10#template
+	// Possible variables are:
+	// <%= path %> 		'/home/user/dir/file.txt'
+	// <%= base %> 		'file.txt'
+	// <%= ext %> 		'.txt'
+	// <%= dir %> 		'/home/user/dir'
+	// <%= name %> 		'file'
+	// <%= root %> 		'/'
+	with: "@import '<%= dir %>/<%= name %>';",
 };
 
-const injectSass = () => {
-	injectSassImportStatements(
-		'src/assets/scss',
-		'global.scss'
-	).catch(error => {
-		console.log(error);
-	});
-};
-
-const createStories = () => {
-	checkForMissingStoryFiles()
-		.then(result => {
-			createStoryFiles(result).catch(error => {
-				console.log(error);
-			});
-		})
-		.catch(error => {
-			console.log(error);
-		});
-};
-
-const createJSX = () => {
-	createJsxBundle();
-	// .
-	// catch((error) => {
-	//     console.log(error);
-	// });
-};
-
-/**
- * creates story files for all html files inside /src
- */
-gulp.task('create-stories', createStories);
-
-/**
- * once-only build
- */
-gulp.task('inject-scss', injectSass);
-
-/**
- * this task creates a jsx file, it's story and its scss-file
- */
-gulp.task('create-jsx', function() {
-	// console.log(process.argv[4]);
-	//console.log(argv.filename);
-	createJSXComponent(argv.filename);
-});
+injectImportStatementsFactory(gulp, 'inject-scss', injectScssConfig);
