@@ -1,11 +1,12 @@
 {
 	"name": "squares-and-brackets",
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"description": "website",
 	"author": "Squares And Brackets GbR",
 	"license": "MIT",
 	"main": "index.html",
 	"scripts": {
+		"html": "hygen html new",
 		"bundles-to-backend": "gulp bundles-to-backend",
 		"inject-scss": "gulp inject-scss",
 		"build:analyze": "yarn build -- --env.addons=bundleanalyze --env.addons=bundlebuddy",
@@ -18,12 +19,7 @@
 		"test:coverage": "jest --coverage",
 		"storybook": "start-storybook -p 9001",
 		"storybook:build": "build-storybook",
-		"lint": "eslint --cache --format=node_modules/eslint-formatter-pretty .",
-		"lint-fix": "npm run lint -- --fix",
-		"lint-styles": "stylelint app/*.css app/components/*.css --syntax scss",
-		"lint-styles-fix": "stylefmt -r app/*.css app/components/*.css",
-		"flow": "flow check",
-		"flow-typed": "rimraf flow-typed/npm && flow-typed install --overwrite || true"
+		"flow": "flow check"
 	},
 	"jest": {
 		"setupFiles": [
