@@ -19,6 +19,13 @@ module.exports = {
 			});
 		}
 
+		questions.push({
+			type: 'confirm',
+			name: 'withJS',
+			message: 'With .js file?',
+			default: false,
+		});
+
 		if (questions.length === 0) {
 			return Promise.resolve({ allow: true });
 		}
