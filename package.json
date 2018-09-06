@@ -1,6 +1,6 @@
 {
 	"name": "squares-and-brackets",
-	"version": "0.3.3",
+	"version": "0.3.5",
 	"description": "website",
 	"author": "Squares And Brackets GbR",
 	"license": "MIT",
@@ -12,7 +12,7 @@
 		"build:analyze": "yarn build -- --env.addons=bundleanalyze --env.addons=bundlebuddy",
 		"build": "webpack --mode=production --env.addons=cleanup --env.optimizations=mpa --env.addons=htmlpages --env.rules=html --env.rules=images --env.rules=fonts --env.rules=audio --env.rules=vue --env.rules=javascript --env.rules=scss --env.addons=critical --env.addons=favicons",
 		"dev:analyze": "yarn dev -- --env.addons=bundleanalyze",
-		"dev": "yarn webpack-dev-server --watch --mode=development --env.optimizations=mpa --env.addons=htmlpages --env.rules=html --env.rules=images --env.rules=fonts --env.rules=audio --env.rules=vue --env.rules=javascript --env.rules=scss --env.addons=devserver --env.addons=browsersync",
+		"dev": "yarn webpack-dev-server --watch --mode=development --env.optimizations=mpa --env.addons=htmlpages --env.rules=html --env.rules=images --env.rules=fonts --env.rules=audio --env.rules=vue --env.rules=javascript --env.rules=scss --env.addons=devserver --env.addons=browsersync --env.addons=reacterroroverlay",
 		"debug": "node --inspect --debug-brk ./node_modules/webpack/bin/webpack.js",
 		"test": "jest",
 		"test:watch": "jest --watch",
@@ -30,6 +30,7 @@
 		"squares-and-brackets"
 	],
 	"devDependencies": {
+		"@mimamuh/gulp-tasks": "^2.1.0",
 		"@storybook/addon-backgrounds": "^3.3.14",
 		"@storybook/addon-knobs": "^3.3.14",
 		"@storybook/addons": "^3.3.14",
@@ -56,6 +57,7 @@
 		"css-loader": "^1.0.0",
 		"enzyme": "^3.4.1",
 		"enzyme-adapter-react-16": "^1.2.0",
+		"error-overlay-webpack-plugin": "^0.1.5",
 		"eslint": "^4.18.1",
 		"eslint-config-airbnb": "^16.1.0",
 		"eslint-config-prettier": "^2.9.0",
@@ -75,7 +77,6 @@
 		"flow-bin": "^0.78.0",
 		"flow-runtime": "^0.17.0",
 		"gulp": "^4.0.0",
-		"@mimamuh/gulp-tasks": "^2.1.0",
 		"html-loader": "^0.5.5",
 		"html-webpack-plugin": "^3.2.0",
 		"imports-loader": "^0.8.0",
