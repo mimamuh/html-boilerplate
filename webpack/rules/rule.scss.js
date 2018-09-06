@@ -37,13 +37,13 @@ module.exports = (env, argv) => ({
 							plugins() {
 								return [autoprefixer];
 							},
-							sourceMap: false, // NOTE: TODO: normally it should be true, but set to false because of issues.
+							sourceMap: true,
 						},
 					},
 					{
 						loader: 'sass-loader',
 						options: {
-							sourceMap: false, // NOTE: TODO: normally it should be true, but set to false because of issues.
+							sourceMap: true,
 						},
 					},
 				],
