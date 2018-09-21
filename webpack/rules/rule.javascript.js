@@ -35,6 +35,11 @@ module.exports = (env, argv) => {
 					use: [
 						{
 							loader: 'babel-loader',
+							options: {
+								// The current active environment used for babel during configuration loading.
+								envName:
+									argv.mode === 'development' ? 'development' : 'production',
+							},
 						},
 					],
 					exclude: [/node_modules/],

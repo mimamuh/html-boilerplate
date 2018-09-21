@@ -2,6 +2,7 @@ module.exports = {
 	env: {
 		browser: true,
 		es6: true,
+		jest: true,
 	},
 	parser: 'babel-eslint',
 	parserOptions: {
@@ -18,14 +19,12 @@ module.exports = {
 		'plugin:jsx-a11y/recommended',
 		'plugin:import/warnings',
 		'plugin:import/errors',
-		'airbnb',
 		'prettier',
 		'prettier/flowtype',
 		'prettier/react',
 	],
 	plugins: [
 		'flowtype',
-		'flowtype-errors',
 		'import',
 		'promise',
 		'compat',
@@ -36,7 +35,7 @@ module.exports = {
 	settings: {
 		'import/resolver': {
 			webpack: {
-				config: 'webpack.config.renderer.dev.js',
+				config: 'webpack.config.js',
 			},
 		},
 	},

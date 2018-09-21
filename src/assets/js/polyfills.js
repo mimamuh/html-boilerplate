@@ -1,5 +1,5 @@
 // polyfill for ES standard features
-import 'babel-polyfill';
+import '@babel/polyfill';
 
 // polyfill for <picture> elements
 import 'picturefill';
