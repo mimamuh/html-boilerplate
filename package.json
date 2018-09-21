@@ -1,6 +1,6 @@
 {
 	"name": "squares-and-brackets",
-	"version": "0.4.1",
+	"version": "0.5.0",
 	"description": "website",
 	"author": "Squares And Brackets GbR",
 	"license": "MIT",
@@ -40,6 +40,7 @@
 		"@babel/plugin-syntax-dynamic-import": "^7.0.0",
 		"@babel/plugin-syntax-import-meta": "^7.0.0",
 		"@babel/preset-env": "^7.0.0",
+		"@babel/preset-flow": "^7.0.0",
 		"@babel/preset-react": "^7.0.0",
 		"@mimamuh/gulp-tasks": "^2.1.0",
 		"@storybook/addon-backgrounds": "^3.4.11",
@@ -103,8 +104,7 @@
 		"webpack-bundle-size-analyzer": "^2.7.0",
 		"webpack-cli": "^3.1.0",
 		"webpack-dev-server": "^3.1.5",
-		"webpack-merge": "^4.1.4",
-		"@babel/preset-flow": "^7.0.0"
+		"webpack-merge": "^4.1.4"
 	},
 	"dependencies": {
 		"@babel/polyfill": "^7.0.0",
