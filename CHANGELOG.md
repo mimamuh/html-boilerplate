@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 
 
+## [0.5.2] - 2018-09-22
+### Add
+- Node as environment to .eslintrc to prevent errors of global node vars
+
 ## [0.5.1] - 2018-09-22
 ### Changed
 - Removed lodash dependency as it is not in use
