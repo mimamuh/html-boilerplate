@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.6.1] - 2018-09-22
+### Change
+- Load vue on 'DOMContentLoaded' instead of 'load'.
 
 ## [0.6.0] - 2018-09-22
 ### Change
