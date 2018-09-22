@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.6.2] - 2018-09-22
+### Fix
+- Fix issue with eslint config and import plugin settings
+
 ## [0.6.1] - 2018-09-22
 ### Change
 - Load vue on 'DOMContentLoaded' instead of 'load'.
@@ -23,6 +27,8 @@ All notable changes to this project will be documented in this file.
 - Updated project dependencies
 
 
+[0.6.2]: https://github.com/mimamuh/html-boilerplate/compare/v0.6.1...v0.6.2
+[0.6.1]: https://github.com/mimamuh/html-boilerplate/compare/v0.6.0...v0.6.1
 [0.6.0]: https://github.com/mimamuh/html-boilerplate/compare/v0.5.1...v0.6.0
 [0.5.1]: https://github.com/mimamuh/html-boilerplate/compare/v0.5.0...v0.5.1
 [0.5.0]: https://github.com/mimamuh/html-boilerplate/compare/v0.4.1...v0.5.0
