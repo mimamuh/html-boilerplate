@@ -1,8 +1,6 @@
 module.exports = function(api) {
 	const isDevelopment = api.env('development');
 
-	console.log(api, isDevelopment);
-
 	const presets = [
 		[
 			'@babel/preset-env',
