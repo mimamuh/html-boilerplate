@@ -22,6 +22,13 @@ import iniVueApp from './iniVueApp';
 // subframes to finish loading.
 // eslint-disable-next-line no-unused-vars
 document.addEventListener('DOMContentLoaded', event => {
+	const vueContainers = document.querySelectorAll('.vue-app');
+	vueContainers.forEach(element => {
+		iniVueApp({
+			element,
+		});
+	});
+
 	console.log(
 		'%cDOM fully loaded and parsed',
 		'background: #8be09f; color: #39485e'
@@ -32,13 +39,6 @@ document.addEventListener('DOMContentLoaded', event => {
 // dependent resources have finished loading.
 // eslint-disable-next-line no-unused-vars
 window.addEventListener('load', event => {
-	const vueContainers = document.querySelectorAll('.vue-app');
-	vueContainers.forEach(element => {
-		iniVueApp({
-			element,
-		});
-	});
-
 	console.log(
 		'%cAll resources finished loading!',
 		'background: #8be09f; color: #39485e'
