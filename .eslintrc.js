@@ -33,13 +33,7 @@ module.exports = {
 		'jest',
 		'jsx-a11y',
 	],
-	settings: {
-		'import/resolver': {
-			webpack: {
-				config: 'webpack.config.js',
-			},
-		},
-	},
+	settings: {},
 	rules: {
 		'no-bitwise': ['error', { allow: ['~'] }],
 		'no-plusplus': 0,
