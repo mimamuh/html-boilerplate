@@ -1,9 +1,4 @@
 /* eslint-disable import/first */
-/*
-	Import stuff which should be placed at
-	the end of the <body> section
- */
-import './polyfills';
 
 // –– lazysizes (lazyloading)
 // see: https://www.npmjs.com/package/lazysizes

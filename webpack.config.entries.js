@@ -6,6 +6,7 @@ const path = require('path');
 // use either html files or handlebars files (.hbs).
 module.exports = {
 	// main bundles
+	polyfills: path.resolve(__dirname, './src/assets/js/', 'polyfills.js'),
 	main: path.resolve(__dirname, './src/assets/js/', 'main.js'),
 
 	// page specific bundles
