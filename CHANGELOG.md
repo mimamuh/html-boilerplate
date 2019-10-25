@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## unreleases
+### Changed
+- Updated `.nvm` with new node version
+- 
+
+
 ## [0.6.2] - 2018-09-22
 ### Fix
 - Fix issue with eslint config and import plugin settings
