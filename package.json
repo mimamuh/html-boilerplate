@@ -112,7 +112,7 @@
 		"custom-event-polyfill": "^1.0.6",
 		"fastdom": "^1.0.8",
 		"intersection-observer": "^0.5.0",
-		"lazysizes": "^4.1.0",
+		"lazysizes": "^5.2.1",
 		"matchmedia-polyfill": "^0.3.1",
 		"nodelist-foreach-polyfill": "^1.2.0",
 		"picturefill": "^3.0.2",
